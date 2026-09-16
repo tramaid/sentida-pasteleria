@@ -33,3 +33,20 @@ El prefijo `54 9` es obligatorio para que WhatsApp resuelva móviles argentinos;
 
 - Varias fotos del banco llevan el sello de la marca anterior y dos tarjetas muestran un producto distinto al de su título (ver `QA.md`).
 - No hay definición sobre precios, detalle por producto ni zona de entrega.
+
+## Las tres versiones
+
+- **`/` + `/tienda/`** — v1. La home indexable con su JSON-LD y el catálogo
+  con el motor de CARVAN. Congelada como referencia.
+- **`/tienda-v2/`** — v2. La arquitectura editorial, Erode y el configurador
+  de nueve pasos. Congelada como referencia. Va en `noindex`: es maqueta.
+- **`/tienda-v3/`** — **la consolidación, y la que se sigue.** Composición y
+  tipografía de la v2 sobre el motor de la v1, con un solo sistema de tokens
+  (`v3.css`), un solo archivo de datos (`datos.json`), una sola biblioteca de
+  fotos (`assets/`) y **un solo pedido**: lo que se elige del catálogo y la
+  torta que sale del configurador terminan en la misma solicitud y en un único
+  mensaje de WhatsApp. Indexable.
+
+La duplicación que queda es deliberada y temporal: la v1 y la v2 siguen con su
+copia de fotos porque tienen que seguir renderizando. Cuando la v3 tome la raíz
+se borran las dos.

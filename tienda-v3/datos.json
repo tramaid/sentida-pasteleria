@@ -1,0 +1,491 @@
+{
+  "_nota": "Fuente única de datos de la v3: la usan la home, el catálogo, la ficha y el configurador. Los productos son los que pasaron las dueñas; no se agrega ninguno que no esté en esa lista.",
+  "_pendiente": "porciones vacías a propósito: nadie las definió para las tortas clásicas. Faltan también precio, seña, anticipación mínima, costos de envío y horarios de retiro.",
+  "_fotos_sin_asignar": [
+    "cheesecake con frutos rojos (dos tomas)",
+    "tarta con base sablée, crema, frutos rojos y bombones (dos tomas)",
+    "brownie con crema, frutillas y bombones",
+    "tarta de chocolate con ganache",
+    "tarta de frutillas (tres tomas más)",
+    "cheesecake con cobertura de chocolate y trozos (segunda toma)",
+    "key lime pie (dos tomas más)",
+    "tortas con golosinas y bombones (cinco tomas)"
+  ],
+  "_campos_backend": [
+    "nombre",
+    "slug",
+    "categoria",
+    "descripcion",
+    "fotografias",
+    "precio",
+    "precio_desde",
+    "activo",
+    "stock",
+    "fecha_disponible",
+    "tamanos",
+    "porciones",
+    "sabores",
+    "rellenos",
+    "adicionales",
+    "precio_adicionales",
+    "campana_estacional",
+    "fecha_limite_pedido"
+  ],
+  "categorias": [
+    {
+      "slug": "tortas",
+      "nombre": "Nuestras tortas",
+      "subcategorias": []
+    },
+    {
+      "slug": "pasteleria",
+      "nombre": "Pastelería",
+      "subcategorias": [
+        {
+          "slug": "alfajores",
+          "nombre": "Alfajores"
+        },
+        {
+          "slug": "cookies",
+          "nombre": "Cookies y galletas"
+        },
+        {
+          "slug": "cupcakes",
+          "nombre": "Cupcakes"
+        }
+      ]
+    },
+    {
+      "slug": "temporada",
+      "nombre": "Temporada",
+      "subcategorias": []
+    }
+  ],
+  "productos": [
+    {
+      "id": 1,
+      "slug": "key-lime-pie",
+      "nombre": "Key Lime Pie",
+      "categoria": "tortas",
+      "subcategoria": "",
+      "estado": "clasico",
+      "foto": "../assets/producto-key-lime-pie.webp",
+      "descripcion": "Base crocante, curd de lima y merengue.",
+      "porciones": [],
+      "destacado": true,
+      "orden": 1
+    },
+    {
+      "id": 4,
+      "slug": "cheesecake-marroc",
+      "nombre": "Cheesecake Marroc",
+      "categoria": "tortas",
+      "subcategoria": "",
+      "estado": "clasico",
+      "foto": "../assets/producto-cheesecake-marroc.webp",
+      "descripcion": "Cobertura de chocolate con trozos de Marroc.",
+      "porciones": [],
+      "destacado": true,
+      "orden": 2
+    },
+    {
+      "id": 5,
+      "slug": "brownie-ddl-frutos-rojos",
+      "nombre": "Brownie con dulce de leche y frutos rojos",
+      "categoria": "tortas",
+      "subcategoria": "",
+      "estado": "clasico",
+      "foto": "../assets/producto-brownie-frutos-rojos.webp",
+      "descripcion": "Base de brownie, dulce de leche, crema y frutos rojos.",
+      "porciones": [],
+      "destacado": true,
+      "orden": 3
+    },
+    {
+      "id": 7,
+      "slug": "frutillas-con-crema",
+      "nombre": "Frutillas con crema",
+      "categoria": "tortas",
+      "subcategoria": "",
+      "estado": "clasico",
+      "foto": "../assets/producto-frutillas-con-crema.webp",
+      "descripcion": "Frutillas frescas sobre crema, con un toque de lima.",
+      "porciones": [],
+      "destacado": true,
+      "orden": 4
+    },
+    {
+      "id": 11,
+      "slug": "pavlova-lima",
+      "nombre": "Pavlova con crema, curd de lima y frutos de estación",
+      "categoria": "tortas",
+      "subcategoria": "",
+      "estado": "clasico",
+      "foto": "../assets/producto-pavlova-lima.webp",
+      "descripcion": "Merengue, crema, curd de lima y frutos de estación.",
+      "porciones": [],
+      "destacado": true,
+      "orden": 5
+    },
+    {
+      "id": 14,
+      "slug": "chocotorta",
+      "nombre": "Chocotorta",
+      "categoria": "tortas",
+      "subcategoria": "",
+      "estado": "clasico",
+      "foto": "../assets/producto-chocotorta.webp",
+      "descripcion": "Capas de galleta de chocolate y crema de dulce de leche.",
+      "porciones": [],
+      "destacado": true,
+      "orden": 6
+    },
+    {
+      "id": 15,
+      "slug": "alfajores-maicena",
+      "nombre": "Alfajores de maicena",
+      "categoria": "pasteleria",
+      "subcategoria": "alfajores",
+      "estado": "clasico",
+      "foto": "../assets/past-alfajores.webp",
+      "descripcion": "Rellenos de dulce de leche.",
+      "porciones": [],
+      "destacado": false,
+      "orden": 7
+    },
+    {
+      "id": 16,
+      "slug": "cupcakes",
+      "nombre": "Cupcakes decorados",
+      "categoria": "pasteleria",
+      "subcategoria": "cupcakes",
+      "estado": "clasico",
+      "foto": "../assets/past-cupcakes.webp",
+      "descripcion": "Decorados a mano, en la paleta que elijas.",
+      "porciones": [],
+      "destacado": false,
+      "orden": 8
+    },
+    {
+      "id": 17,
+      "slug": "galletas-decoradas",
+      "nombre": "Galletas decoradas",
+      "categoria": "pasteleria",
+      "subcategoria": "cookies",
+      "estado": "clasico",
+      "foto": "../assets/past-galletas-decoradas.webp",
+      "descripcion": "Con glasé, a tema o con el nombre.",
+      "porciones": [],
+      "destacado": false,
+      "orden": 9
+    },
+    {
+      "id": 18,
+      "slug": "galletas-corazon",
+      "nombre": "Galletas corazón",
+      "categoria": "pasteleria",
+      "subcategoria": "cookies",
+      "estado": "clasico",
+      "foto": "../assets/past-galletas-corazon.webp",
+      "descripcion": "Con mensaje escrito a mano.",
+      "porciones": [],
+      "destacado": false,
+      "orden": 10
+    },
+    {
+      "id": 19,
+      "slug": "cupcakes-tematicos",
+      "nombre": "Cupcakes temáticos",
+      "categoria": "pasteleria",
+      "subcategoria": "cupcakes",
+      "estado": "clasico",
+      "foto": "../assets/past-cupcakes-tematicos.webp",
+      "descripcion": "Con personajes en pasta de azúcar.",
+      "porciones": [],
+      "destacado": false,
+      "orden": 11
+    },
+    {
+      "id": 20,
+      "slug": "galletas-tematicas",
+      "nombre": "Galletas temáticas",
+      "categoria": "pasteleria",
+      "subcategoria": "cookies",
+      "estado": "clasico",
+      "foto": "../assets/past-galletas-tematicas.webp",
+      "descripcion": "Para acompañar la torta del cumpleaños.",
+      "porciones": [],
+      "destacado": false,
+      "orden": 12
+    },
+    {
+      "id": 2,
+      "slug": "cheesecake-tradicional",
+      "nombre": "Cheesecake tradicional",
+      "categoria": "tortas",
+      "subcategoria": "",
+      "estado": "clasico",
+      "foto": null,
+      "descripcion": "El clásico de la casa.",
+      "porciones": [],
+      "destacado": false,
+      "orden": 13
+    },
+    {
+      "id": 3,
+      "slug": "cheesecake-dulce-de-leche",
+      "nombre": "Cheesecake de dulce de leche",
+      "categoria": "tortas",
+      "subcategoria": "",
+      "estado": "clasico",
+      "foto": null,
+      "descripcion": "",
+      "porciones": [],
+      "destacado": false,
+      "orden": 14
+    },
+    {
+      "id": 6,
+      "slug": "brownie-ddl-chantilly",
+      "nombre": "Brownie con dulce de leche y crema chantilly",
+      "categoria": "tortas",
+      "subcategoria": "",
+      "estado": "clasico",
+      "foto": null,
+      "descripcion": "",
+      "porciones": [],
+      "destacado": false,
+      "orden": 15
+    },
+    {
+      "id": 8,
+      "slug": "sablee-ddl-crema-frutos-rojos",
+      "nombre": "Sablée con dulce de leche, crema y frutos rojos",
+      "categoria": "tortas",
+      "subcategoria": "",
+      "estado": "clasico",
+      "foto": null,
+      "descripcion": "",
+      "porciones": [],
+      "destacado": false,
+      "orden": 16
+    },
+    {
+      "id": 9,
+      "slug": "carrot-cake",
+      "nombre": "Carrot Cake",
+      "categoria": "tortas",
+      "subcategoria": "",
+      "estado": "clasico",
+      "foto": null,
+      "descripcion": "",
+      "porciones": [],
+      "destacado": false,
+      "orden": 17
+    },
+    {
+      "id": 10,
+      "slug": "torta-matilda",
+      "nombre": "Torta Matilda",
+      "categoria": "tortas",
+      "subcategoria": "",
+      "estado": "clasico",
+      "foto": null,
+      "descripcion": "",
+      "porciones": [],
+      "destacado": false,
+      "orden": 18
+    },
+    {
+      "id": 12,
+      "slug": "pavlova-ddl-frutos-rojos",
+      "nombre": "Pavlova con crema chantilly, dulce de leche y frutos rojos",
+      "categoria": "tortas",
+      "subcategoria": "",
+      "estado": "clasico",
+      "foto": null,
+      "descripcion": "",
+      "porciones": [],
+      "destacado": false,
+      "orden": 19
+    },
+    {
+      "id": 13,
+      "slug": "torta-havannet",
+      "nombre": "Torta Havannet",
+      "categoria": "tortas",
+      "subcategoria": "",
+      "estado": "clasico",
+      "foto": null,
+      "descripcion": "",
+      "porciones": [],
+      "destacado": false,
+      "orden": 20
+    },
+    {
+      "id": 21,
+      "slug": "pan-dulce",
+      "nombre": "Pan dulce",
+      "categoria": "temporada",
+      "subcategoria": "",
+      "estado": "temporada",
+      "foto": null,
+      "descripcion": "Frutos secos tostados y chips de chocolate, glaseado con aroma a naranja. Aprox. 700 g.",
+      "porciones": [],
+      "destacado": false,
+      "orden": 21
+    },
+    {
+      "id": 22,
+      "slug": "rosca-de-pascua",
+      "nombre": "Rosca de Pascua",
+      "categoria": "temporada",
+      "subcategoria": "",
+      "estado": "temporada",
+      "foto": null,
+      "descripcion": "",
+      "porciones": [],
+      "destacado": false,
+      "orden": 22
+    }
+  ],
+  "galeria_decoradas": [
+    {
+      "foto": "../assets/deco-tematica-hp.webp",
+      "alt": "Torta temática de Harry Potter"
+    },
+    {
+      "foto": "../assets/deco-tematica-frozen.webp",
+      "alt": "Tortas temáticas de Frozen con Olaf"
+    },
+    {
+      "foto": "../assets/deco-numero-15.webp",
+      "alt": "Torta número 15 con macarons y flores"
+    },
+    {
+      "foto": "../assets/deco-tematica-vaquita.webp",
+      "alt": "Torta infantil con motivo de vaquita"
+    },
+    {
+      "foto": "../assets/deco-numero-celeste.webp",
+      "alt": "Torta número decorada en tonos celestes"
+    },
+    {
+      "foto": "../assets/deco-letra-s.webp",
+      "alt": "Torta con forma de letra S y flores"
+    },
+    {
+      "foto": "../assets/deco-tematica-golf.webp",
+      "alt": "Torta temática de golf con galletas a juego"
+    },
+    {
+      "foto": "../assets/deco-tematica-tiktok.webp",
+      "alt": "Torta temática de TikTok"
+    },
+    {
+      "foto": "../assets/deco-numero-cactus.webp",
+      "alt": "Torta número 30 de galletas con cactus"
+    },
+    {
+      "foto": "../assets/deco-dos-pisos.webp",
+      "alt": "Torta de dos pisos con flores naturales"
+    }
+  ],
+  "configurador": {
+    "tamanos": [
+      {
+        "id": "chica",
+        "nombre": "Torta chica",
+        "porciones": "10 / 12 porciones"
+      },
+      {
+        "id": "mediana",
+        "nombre": "Torta mediana",
+        "porciones": "15 / 25 porciones"
+      },
+      {
+        "id": "grande",
+        "nombre": "Torta grande",
+        "porciones": "20 / 30 porciones"
+      }
+    ],
+    "bizcochuelos": [
+      {
+        "id": "vainilla",
+        "nombre": "Vainilla"
+      },
+      {
+        "id": "chocolate",
+        "nombre": "Chocolate"
+      }
+    ],
+    "relleno1": [
+      {
+        "id": "ddl",
+        "nombre": "Dulce de leche"
+      },
+      {
+        "id": "butter-choco",
+        "nombre": "Butter choco"
+      }
+    ],
+    "agregados": [
+      {
+        "id": "bombon",
+        "nombre": "Bombón"
+      },
+      {
+        "id": "merenguitos",
+        "nombre": "Merenguitos"
+      },
+      {
+        "id": "chips",
+        "nombre": "Chips"
+      },
+      {
+        "id": "nuez",
+        "nombre": "Nuez"
+      },
+      {
+        "id": "mani",
+        "nombre": "Maní"
+      }
+    ],
+    "relleno2": [
+      {
+        "id": "frutos-rojos",
+        "nombre": "Frutos rojos"
+      },
+      {
+        "id": "oreo",
+        "nombre": "Crema Oreo"
+      },
+      {
+        "id": "bonobon",
+        "nombre": "Crema Bon o Bon"
+      },
+      {
+        "id": "chocotorta",
+        "nombre": "Crema Chocotorta"
+      },
+      {
+        "id": "kinder",
+        "nombre": "Crema Kinder"
+      }
+    ],
+    "cobertura": "Buttercream sabor vainilla",
+    "incluye": [
+      "Nombre",
+      "Número en chocolate",
+      "Decoraciones básicas en pasta de azúcar",
+      "Velita",
+      "Detalles en buttercream"
+    ],
+    "adicional_posible": [
+      "Figuras especiales",
+      "Adornos complejos",
+      "Flores naturales",
+      "Decoraciones extraordinarias"
+    ]
+  }
+}

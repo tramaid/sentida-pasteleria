@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catálogo · SENTIDA Pastelería</title>
+<meta name="description" content="Todas las tortas y la pastelería de SENTIDA. Elegí lo que te gusta y pedí tu presupuesto.">
+<meta name="theme-color" content="#FEFAF8">
+<link rel="canonical" href="https://tramaid.github.io/sentida-pasteleria/tienda-v3/catalogo.html">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SENTIDA Pastelería">
+<meta property="og:title" content="Catálogo · SENTIDA Pastelería">
+<meta property="og:description" content="Todas las tortas y la pastelería de SENTIDA. Elegí lo que te gusta y pedí tu presupuesto.">
+<meta property="og:image" content="https://tramaid.github.io/sentida-pasteleria/assets/og-sentida.jpg">
+<meta property="og:url" content="https://tramaid.github.io/sentida-pasteleria/tienda-v3/catalogo.html">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f%5B%5D=erode@400,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="v3.css">
+<script src="v3.js" defer></script>
+<script src="catalogo.js" defer></script>
+
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cab">
+  <div class="cab-in">
+    <a class="cab-marca" href="index.html" aria-label="SENTIDA Pastelería, inicio"><img src="../assets/logo-sentida.svg" alt="SENTIDA Pastelería" width="170" height="65"></a>
+    <button class="cab-burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    <nav class="cab-nav" id="nav" aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="decoradas.html">Tortas decoradas</a>
+      <a href="como-comprar.html">Cómo comprar</a>
+      <a href="index.html#nosotras">Nosotras</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <div class="cab-acc">
+      <a class="btn btn-1" href="decoradas.html">Crear mi torta</a>
+      <a class="cab-bolsa" href="pedido.html" aria-label="Mi pedido, vacío"><svg viewBox="0 0 32 36" aria-hidden="true"><path d="M7 11h18l2 22H5L7 11Z"/><path d="M11 13V8a5 5 0 0 1 10 0v5"/></svg><span class="bag-n" hidden>0</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+  <div class="cat-shell">
+
+    <aside class="cat-side" id="cat-side" aria-label="Filtros del catálogo">
+      <div>
+        <h2 class="cat-side-h">Buscar</h2>
+        <div class="js-buscar" id="js-buscar">
+          <label class="sr-only" for="cat-q">Buscar en el catálogo</label>
+          <input type="search" id="cat-q" placeholder="Torta, alfajores, cheesecake…" autocomplete="off">
+          <button type="button" class="js-buscar-limpiar" id="cat-q-limpiar" aria-label="Limpiar la búsqueda" hidden>&times;</button>
+        </div>
+      </div>
+
+      <nav aria-label="Categorías">
+        <h2 class="cat-side-h">Categorías</h2>
+        <div class="cat-side-list" id="cat-side-list"></div>
+      </nav>
+
+      <button type="button" class="cat-side-disp" id="filtro-temporada" aria-pressed="false">
+        <span class="box" aria-hidden="true">&#10003;</span>
+        Solo temporada
+      </button>
+
+      <div class="nota" style="margin:0">Los productos de temporada se hacen por tanda y tienen fecha de cierre.</div>
+    </aside>
+
+    <div class="cat-main">
+      <button type="button" class="cat-filtros-btn" id="cat-filtros-btn" aria-expanded="false" aria-controls="cat-side">Filtros</button>
+
+      <div class="cat-main-head">
+        <span class="filete" aria-hidden="true"></span>
+        <h1>Catálogo</h1>
+        <p class="n" id="cat-total" role="status" aria-live="polite">&mdash;</p>
+        <p class="n" id="cat-termino" hidden></p>
+      </div>
+
+      <div class="cat-barra">
+        <div class="cat-orden">
+          <label class="sr-only" for="cat-orden-sel">Ordenar el catálogo</label>
+          <select id="cat-orden-sel">
+            <option value="sugerido">Orden sugerido</option>
+            <option value="alfabetico">Alfabético (A&ndash;Z)</option>
+            <option value="novedades">Destacados primero</option>
+          </select>
+        </div>
+        <div class="cat-modo" role="group" aria-label="Ver los productos como">
+          <button type="button" id="modo-grilla" class="on" aria-pressed="true" aria-label="Ver en grilla">
+            <svg viewBox="0 0 18 18" aria-hidden="true"><rect x="0" y="0" width="8" height="8" rx="1"/><rect x="10" y="0" width="8" height="8" rx="1"/><rect x="0" y="10" width="8" height="8" rx="1"/><rect x="10" y="10" width="8" height="8" rx="1"/></svg>
+          </button>
+          <button type="button" id="modo-lista" aria-pressed="false" aria-label="Ver en lista">
+            <svg viewBox="0 0 18 18" aria-hidden="true"><rect x="0" y="1" width="18" height="3" rx="1"/><rect x="0" y="7.5" width="18" height="3" rx="1"/><rect x="0" y="14" width="18" height="3" rx="1"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <p class="sr-only" id="cat-aviso" role="status" aria-live="polite"></p>
+
+      <div class="cat-vacio-panel" id="cat-vacio" hidden>
+        No encontramos nada con esos filtros. Probá sacando alguno, o escribinos y lo vemos juntas.
+      </div>
+
+      <div class="v2-prod-grid" id="prod-grid"></div>
+
+      <div id="zona-cargar" hidden>
+        <button type="button" class="cat-mas" id="cat-mas">Ver más productos</button>
+        <p class="cat-restan" id="cat-restan"></p>
+      </div>
+
+      <nav class="cat-paginacion" id="cat-paginacion" aria-label="Paginado del catálogo" hidden></nav>
+    </div>
+
+  </div>
+</main>
+
+<div class="vr-overlay" id="vr" hidden>
+  <div class="vr-panel" id="vr-panel" role="dialog" aria-modal="true" aria-labelledby="vr-titulo" tabindex="-1">
+    <div class="vr-tirador" aria-hidden="true"></div>
+    <button type="button" class="vr-cerrar" id="vr-cerrar" aria-label="Cerrar la vista rápida">&#10005;</button>
+    <div class="vr-cuerpo" id="vr-cuerpo"></div>
+  </div>
+</div>
+
+<footer class="pie" id="contacto">
+  <div class="pie-in">
+    <div>
+      <img class="pie-sello" src="../assets/SENTIDASELLO.svg" alt="Sello de SENTIDA Pastelería" width="132" height="132" loading="lazy">
+      <p class="etiqueta">Lo soñás, lo creamos</p>
+    </div>
+    <div>
+      <h2>Tienda</h2>
+      <ul>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="decoradas.html">Tortas decoradas</a></li>
+        <li><a href="como-comprar.html">Cómo comprar</a></li>
+        <li><a href="pedido.html">Mi pedido</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Contacto</h2>
+      <ul>
+        <li><a href="https://wa.me/5491158300787" target="_blank" rel="noopener">Anto · 11 5830-0787</a></li>
+        <li><a href="https://wa.me/5491131459646" target="_blank" rel="noopener">Nadia · 11 3145-9646</a></li>
+        <li><a href="https://www.instagram.com/sentidapasteleria/" target="_blank" rel="noopener">@sentidapasteleria</a></li>
+        <li><span class="etiqueta">Martínez, San Isidro</span></li>
+      </ul>
+    </div>
+  </div>
+  <p class="pie-fin">SENTIDA Pastelería · Precios, seña y plazos pendientes de carga.</p>
+</footer>
+</body>
+</html>
