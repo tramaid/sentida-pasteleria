@@ -1,28 +1,40 @@
 # Control de entrega
 
-Estado: **versión revisable**.
+Estado: **base visual de TRAMA aplicada**. Última pasada: 16/09/2026.
 
-## Verificado
+## Verificado con mediciones
 
-- Estructura semántica y jerarquía de encabezados.
-- Referencias locales: 10 comprobadas, ninguna faltante.
-- Destinos internos: todos los anclajes resuelven.
-- JavaScript: sintaxis válida.
-- Activos: logo SVG original y fotografías del banco entregado; no se recortó la captura de referencia.
-- Responsive: reglas específicas para escritorio, tablet y mobile.
-- Accesibilidad base: enlace de salto, foco visible, etiquetas, textos alternativos y reducción de movimiento.
+Nueve anchos (360, 390, 414, 620, 700, 768, 850, 1024, 1440), con el menú
+abierto y cerrado, en ventanas de 900 y 2000 px de alto:
 
-## Pendiente de validación visual final
+- Sin desborde horizontal: `scrollWidth === clientWidth` en los nueve.
+- Ningún texto por debajo de 11 px.
+- Ningún párrafo en Cormorant: la serif quedó solo en títulos y en la firma.
+- Ningún target táctil por debajo de 24×24 (WCAG 2.5.8 AA).
+- Ningún texto ni botón sobre fotografía por debajo de 850 px.
+- Escape cierra el menú y devuelve el foco al botón.
+- «Inicio» queda activo al cargar, también en ventanas altas.
+- Sin `font-style: italic` ni Segoe Print en el CSS.
+- Los únicos hex del CSS son los siete tokens de la paleta de marca.
 
-El entorno no pudo instalar Chromium por bloqueo de descarga, por lo que no se generaron capturas reales ni overlay/diff. La comparación visual final debe hacerse al abrir el proyecto en navegador a 1055 × 1491 px, 1440 px y 390 px.
+## Pendiente de la sesión de fotos
 
-## Verificación visual (resuelta)
+- «Torta Oreo» muestra una torta de limón, que además repite el producto de
+  la tarjeta 2. «Brownie con frutillas» muestra una tarta de frutillas.
+- **Varias fotos del banco llevan el sello de «tienda de pasteles»**, la marca
+  anterior: se ve en `producto-torta-frutas.webp`, en
+  `producto-cheesecake-frutos-rojos.webp` y en
+  `producto-brownie-frutos-rojos.webp`. Revisar todas antes de publicar.
+- Las fotos son verticales 9:16 recortadas a 1:1; falta `object-position` por
+  foto hasta tener tomas cuadradas.
+- Los tres fondos (hero, celebraciones, proceso) siguen siendo provisorios.
+- Falta el retrato de Anto y Nadia para Nosotras.
 
-Se verificó con capturas headless reales a 320, 360, 390, 430, 600, 700, 768, 850, 1024, 1280 y 1440 px. Sin scroll horizontal en ninguno de los once anchos.
+## Pendiente de decisión
 
-## Datos pendientes
-
-- Fotos correctas para dos tarjetas de "Nuestros favoritos": "Torta Oreo" muestra una torta de limón y "Brownie con frutillas" muestra una tarta de frutillas.
-- La foto sin usar `producto-brownie-frutos-rojos.webp` tiene un sticker de otra marca ("tienda de pasteles") visible en la bandeja.
+- Tipografía display: Cormorant, una Didone, o el archivo original de la marca.
+- Posicionamiento: pastelería de autor o tortas temáticas. Bloquea EST-02 y EST-03.
+- Bloque «Cómo pedir» (EST-04): falta seña, anticipación, zonas y costo de envío.
+- Horario de retiro y sello circular del pie (EST-06).
 - Facebook: no se conectó porque no hay cuenta confirmada.
-- Plataforma o flujo definitivo de catálogo/pedidos (hoy las tarjetas no son clickeables ni tienen precio).
+- Precio y detalle por producto: hoy las tarjetas no son clickeables.

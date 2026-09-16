@@ -1,10 +1,352 @@
-:root{--ice:#dde6ed;--paper:#fefbf9;--blush:#f8eade;--sand:#cfb59e;--brown:#6d4e38;--ink:#402d21;--sage:#547778;--sage-dark:#3f5c5d;--serif:"Cormorant Garamond",Georgia,serif;--sans:"Montserrat",Arial,sans-serif;--pad:clamp(24px,5.8vw,86px)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:16px}.skip-link{position:fixed;z-index:99;left:1rem;top:-5rem;background:var(--ink);color:white;padding:.8rem 1rem}.skip-link:focus{top:1rem}.sr-only{position:absolute;width:1px;height:1px;clip:rect(0,0,0,0);overflow:hidden}a{color:inherit}.site-header{height:82px;background:rgba(254,251,249,.96);position:relative;z-index:10}.header-inner{height:100%;max-width:1100px;margin:auto;padding:0 7%;display:grid;grid-template-columns:210px 1fr 34px;align-items:center;gap:25px}.brand{display:block}.brand img{display:block;width:180px;height:auto}.site-header nav{display:flex;justify-content:center;gap:clamp(20px,3vw,42px);align-items:center}.site-header nav a,footer nav a{text-decoration:none;font-size:15px;white-space:nowrap}.site-header nav a{padding:29px 0 7px;border-bottom:1px solid transparent}.site-header nav a:hover,.site-header nav a:focus-visible,.site-header nav a.active{border-color:var(--brown)}.bag{justify-self:end}.bag svg{width:25px;fill:none;stroke:var(--ink);stroke-width:1.4}.menu-toggle{display:none;border:0;background:none;padding:10px}.menu-toggle span:not(.sr-only){display:block;width:24px;border-top:1px solid var(--ink);margin:5px}
-.hero{min-height:405px;background:url("assets/hero-sentida-desktop.webp") center/cover no-repeat;position:relative}.hero-content{padding:52px var(--pad) 30px;max-width:590px}.hero h1{font-size:clamp(42px,4.1vw,62px);line-height:.93;font-weight:500;letter-spacing:-.025em;margin:0 0 16px}.hero-content>p{font-family:var(--sans);font-size:15px;line-height:1.5;margin:0 0 17px}.hero-actions{display:flex;gap:14px}.button{display:inline-flex;align-items:center;justify-content:center;min-width:150px;padding:13px 23px;text-decoration:none;border:1px solid var(--brown);border-radius:4px;font-size:15px;transition:.2s ease}.button span{margin-left:9px}.button.primary{background:var(--brown);color:white}.button.secondary{background:rgba(254,251,249,.72)}.button:hover,.button:focus-visible{transform:translateY(-2px);box-shadow:0 7px 18px rgba(64,45,33,.12)}.values{display:flex;gap:50px;margin-top:20px}.values div{text-align:center;font-size:13px;line-height:1.05;min-width:70px}.values svg,.order-side svg{width:37px;height:37px;fill:none;stroke:var(--brown);stroke-width:1.25;display:block;margin:0 auto 5px}.hand-note{font-family:"Segoe Print","Bradley Hand",cursive;font-style:italic;color:rgba(109,78,56,.62);transform:rotate(-8deg);line-height:1.35}.hero-note{position:absolute;right:5.7%;top:210px;font-size:19px;text-align:center}.hand-note span{display:block;font-style:normal;font-size:24px}
-.favorites{padding:15px 20px 24px;background:linear-gradient(90deg,#fdf7f2,var(--paper),#fdf7f2)}.section-heading{text-align:center}.section-heading h2,.celebrations h2,.story h2,.order h2{font-weight:500;margin:0}.section-heading h2{font-size:35px}.section-heading p,.eyebrow,.order-center>p{font-family:var(--sans);text-transform:uppercase;letter-spacing:.32em;font-size:9px;margin:2px 0 14px}.products{display:grid;grid-template-columns:repeat(6,1fr);gap:11px;max-width:1060px;margin:auto}.product{text-align:center;min-width:0}.product img{width:100%;height:175px;object-fit:cover;border-radius:9px;display:block;margin-bottom:7px;filter:saturate(.88)}.product h3{font-weight:500;font-size:16px;margin:0 0 4px}.product p{font-size:12px;line-height:1.25;margin:0 auto;max-width:145px}
-.celebrations{min-height:285px;background:url("assets/celebraciones-30-desktop.webp") center/cover no-repeat;position:relative;display:flex;align-items:center}.celebrations-copy{width:52%;margin-left:48%;padding:35px 70px 35px 25px}.eyebrow{margin-bottom:8px}.celebrations h2{font-size:31px;line-height:1}.celebrations-copy>p:not(.eyebrow){font-family:var(--sans);font-size:13px;line-height:1.45;max-width:470px}.celebration-note{position:absolute;right:4%;bottom:22px;text-align:center;font-size:16px}
-.story{min-height:175px;background:url("assets/proceso-crema-desktop.webp") center/cover no-repeat;position:relative;display:flex;align-items:center}.story-copy{padding:22px var(--pad);width:48%}.story h2{font-size:28px;line-height:.95}.story-copy p{font-size:14px;line-height:1.25;max-width:440px;margin:10px 0}.story-copy>a{font-size:13px;text-underline-offset:3px}.story-note{position:absolute;right:4%;top:40px;font-size:16px;text-align:center}
-.order{margin:14px 3%;min-height:110px;background:var(--ice);border-radius:13px;display:grid;grid-template-columns:1fr 1.3fr 1fr;align-items:center;padding:8px 36px}.order-side{display:flex;align-items:center;justify-content:center;gap:20px}.order-side svg{width:48px;height:48px;margin:0}.order-side p{font-family:var(--sans);text-transform:uppercase;letter-spacing:.22em;text-align:center;font-size:8px;line-height:1.5}.order-center{text-align:center}.order h2{font-size:30px;line-height:1}.order-center>p{margin:3px 0 7px}.order-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}.whatsapp{display:inline-flex;gap:9px;align-items:center;justify-content:center;min-height:44px;text-decoration:none;color:white;background:var(--sage);padding:9px 22px;border-radius:4px;font-size:14px;transition:background .2s ease}.whatsapp svg{width:18px;height:18px;flex:none;fill:currentColor}.whatsapp:hover,.whatsapp:focus-visible{background:var(--sage-dark)}footer{min-height:130px;display:grid;grid-template-columns:230px 1fr auto;align-items:center;gap:16px 24px;padding:24px 6% 20px;position:relative}.footer-brand img{width:160px}footer nav{display:flex;justify-content:center;gap:4px 28px;flex-wrap:wrap}footer nav a{padding:8px 0}.footer-contact{font-family:var(--sans);font-size:12px;line-height:1.5;text-align:right;justify-self:end}.footer-contact p{margin:0}.footer-contact a{display:inline-flex;align-items:center;justify-content:flex-end;gap:8px;min-height:34px;padding:6px 0;text-decoration:none;border-bottom:1px solid transparent}.footer-contact a:hover,.footer-contact a:focus-visible{border-color:var(--sand)}.footer-contact .footer-place{text-transform:uppercase;letter-spacing:.2em;font-size:11px;color:var(--brown);margin:0 0 2px}.social svg{width:17px;height:17px;flex:none;fill:none;stroke:var(--ink);stroke-width:1.4}.footer-tagline{grid-column:1/-1;text-align:center;font-family:var(--sans);text-transform:uppercase;letter-spacing:.24em;font-size:8px}.footer-tagline:before,.footer-tagline:after{content:"";display:inline-block;width:75px;border-top:1px solid var(--sand);vertical-align:middle;margin:0 18px}.footer-tagline span{margin:0 10px}
-:focus-visible{outline:2px solid #2f6577;outline-offset:4px}@media(max-width:850px){.header-inner{grid-template-columns:1fr auto auto;padding:0 24px}.brand img{width:150px}.menu-toggle{display:block;grid-column:2}.bag{grid-column:3}.site-header nav{position:absolute;top:82px;left:0;right:0;background:var(--paper);padding:24px;display:none;flex-direction:column;gap:5px;box-shadow:0 10px 30px rgba(64,45,33,.1)}.site-header nav.open{display:flex}.site-header nav a{padding:10px}.hero{background-position:58% center}.hero-content{max-width:500px;padding-left:34px}.hero-note{display:none}.products{overflow-x:auto;display:flex;scroll-snap-type:x mandatory;padding-bottom:8px}.product{flex:0 0 205px;scroll-snap-align:start}.product img{height:220px}.celebrations-copy{width:60%;margin-left:40%;padding-right:30px}.celebration-note{display:none}.story-copy{width:58%}.story-note{display:none}.order{padding:15px}.order-side{gap:8px}footer{grid-template-columns:170px 1fr auto;padding:22px 24px 18px}.footer-brand img{width:150px}footer nav{gap:10px 16px}.footer-contact{font-size:11px}}
-@media(max-width:600px){.site-header{height:72px}.site-header nav{top:72px}.header-inner{padding:0 18px}.brand img{width:132px}.hero{min-height:690px;background-size:auto 420px;background-position:68% bottom;background-repeat:no-repeat;background-color:var(--blush)}.hero:after{content:"";position:absolute;left:0;right:0;top:255px;height:100px;background:linear-gradient(var(--blush),transparent);pointer-events:none}.hero-content{padding:32px 22px 0;max-width:none;position:relative;z-index:1}.hero h1{font-size:42px}.hero-content>p br{display:none}.hero-actions{flex-wrap:wrap}.button{min-width:140px;padding:12px 17px}.values{position:absolute;top:525px;left:15px;right:15px;justify-content:space-around;gap:8px;color:var(--paper);text-shadow:0 1px 5px var(--ink)}.values svg{stroke:var(--paper)}.favorites{padding-top:24px}.section-heading h2{font-size:31px}.products{margin-right:-20px}.celebrations{min-height:570px;background-size:auto 290px;background-position:left top;background-repeat:no-repeat;background-color:var(--paper);align-items:flex-end}.celebrations-copy{width:100%;margin:0;padding:315px 24px 35px}.celebrations h2{font-size:29px}.story{min-height:470px;background-size:auto 220px;background-position:right bottom;background-repeat:no-repeat;background-color:var(--blush);align-items:flex-start}.story-copy{width:100%;padding:35px 24px}.story-copy p{max-width:none}.order{grid-template-columns:1fr;margin:12px;padding:24px 15px;gap:18px}.order-side{display:none}.order h2{font-size:31px}footer{display:flex;flex-direction:column;gap:22px;padding:34px 20px;min-height:270px;text-align:center}.footer-brand img{width:175px}footer nav{flex-wrap:wrap;gap:12px 22px}.footer-contact{text-align:center;justify-self:auto;font-size:13px}.footer-contact a{justify-content:center}.footer-tagline{font-size:7px}.footer-tagline:before,.footer-tagline:after{width:25px;margin:0 7px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+/* ============================================================
+   SENTIDA Pastelería — sistema visual
+   Tokens y reglas según la base visual de TRAMA (16/09/2026).
+   Reglas duras: el celeste nunca va en texto; sin itálicas;
+   Cormorant solo en títulos; ninguna etiqueta por debajo de 11px.
+   ============================================================ */
+
+:root{
+  /* --- Paleta de marca --- */
+  --sentida-blanco:#FEFAF8;
+  --sentida-crema:#F8EADE;
+  --sentida-beige:#CFB59E;
+  --sentida-celeste:#DDE6ED;
+  --sentida-marron-medio:#6C4D38;
+  --sentida-marron:#402D21;
+  --sentida-celeste-profundo:#46627A;
+
+  /* --- Roles --- */
+  --color-fondo:var(--sentida-blanco);
+  --color-superficie:var(--sentida-crema);
+  --color-borde:var(--sentida-beige);
+  --color-texto:var(--sentida-marron);
+  --color-texto-2:var(--sentida-marron-medio);
+  --color-acento-fondo:var(--sentida-celeste);
+  --color-acento-texto:var(--sentida-celeste-profundo);
+  --color-boton:var(--sentida-marron);
+  --color-boton-texto:var(--sentida-blanco);
+
+  /* --- Tipografía --- */
+  --font-display:"Cormorant Garamond", Georgia, serif;
+  --font-texto:"Montserrat", "Helvetica Neue", Arial, sans-serif;
+  --fs-h1:clamp(2.5rem, 5vw, 3.5rem);      /* 40–56 */
+  --fs-h2:clamp(1.875rem, 3.5vw, 2.25rem); /* 30–36 */
+  --fs-h3:1.375rem;                        /* 22, ficha de producto */
+  --fs-texto:1rem;                         /* 16 */
+  --fs-texto-chico:0.9375rem;              /* 15, piso de texto corrido */
+  --fs-meta:0.875rem;                      /* 14, solo metadatos */
+  --fs-etiqueta:0.75rem;                   /* 12, piso absoluto 11 */
+  --tracking-etiqueta:0.2em;
+
+  /* --- Espaciado, base 4px --- */
+  --sp-1:0.25rem; --sp-2:0.5rem;  --sp-3:0.75rem; --sp-4:1rem;
+  --sp-5:1.5rem;  --sp-6:2rem;    --sp-7:2.5rem;  --sp-8:3rem;
+  --sp-9:4rem;
+  --gutter:clamp(1.5rem, 5.8vw, 5.375rem);
+  --ancho-max:1100px;
+  --radio:3px;
+}
+
+/* ------------------------------------------------------------
+   Base
+   ------------------------------------------------------------ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--color-fondo);
+  color:var(--color-texto);
+  font-family:var(--font-texto);
+  font-size:var(--fs-texto);
+  line-height:1.6;
+}
+h1,h2,h3{font-family:var(--font-display); font-weight:500; margin:0; text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+img{max-width:100%}
+em,i{font-style:normal; font-weight:500}          /* sin itálicas */
+:focus-visible{outline:2px solid var(--color-acento-texto); outline-offset:4px}
+
+.sr-only{position:absolute; width:1px; height:1px; clip:rect(0,0,0,0); overflow:hidden}
+.skip-link{
+  position:fixed; z-index:99; left:var(--sp-4); top:-6rem;
+  background:var(--color-texto); color:var(--color-boton-texto);
+  padding:var(--sp-3) var(--sp-4); border-radius:var(--radio);
+}
+.skip-link:focus{top:var(--sp-4)}
+
+/* Etiqueta: Montserrat, caja alta, tracking abierto, nunca bajo 11px */
+.etiqueta{
+  font-family:var(--font-texto);
+  font-size:var(--fs-etiqueta);
+  text-transform:uppercase;
+  letter-spacing:var(--tracking-etiqueta);
+  line-height:1.5;
+  color:var(--color-texto-2);
+}
+
+/* Doble filete celeste bajo los títulos de sección (EST-01).
+   La segunda línea mide el 78 % de la primera. */
+.filete{
+  display:flex; flex-direction:column; align-items:center; gap:3px;
+  margin-top:var(--sp-3);
+}
+.filete::before,.filete::after{
+  content:""; height:1px; background:var(--color-acento-texto); opacity:.55;
+}
+.filete::before{width:120px}
+.filete::after{width:94px}
+.filete.izq{align-items:flex-start}
+
+/* ------------------------------------------------------------
+   Header
+   ------------------------------------------------------------ */
+.site-header{background:var(--color-fondo); position:relative; z-index:10}
+.header-inner{
+  max-width:var(--ancho-max); margin-inline:auto;
+  min-height:82px; padding:var(--sp-3) var(--sp-5);
+  display:grid; grid-template-columns:auto 1fr auto;
+  align-items:center; gap:var(--sp-5);
+}
+.brand{display:block}
+.brand img{display:block; width:180px; height:auto}
+
+.site-header nav{display:flex; justify-content:center; align-items:center; gap:clamp(1rem,3vw,2.6rem)}
+.site-header nav a,footer nav a{
+  font-family:var(--font-texto); font-size:var(--fs-texto-chico);
+  text-decoration:none; white-space:nowrap;
+}
+.site-header nav a{padding:var(--sp-3) 0; border-bottom:1px solid transparent}
+.site-header nav a:hover,.site-header nav a:focus-visible,.site-header nav a.active{
+  border-color:var(--color-texto-2);
+}
+.bag{justify-self:end; padding:var(--sp-2); display:block}
+.bag svg{width:25px; height:28px; display:block; fill:none; stroke:var(--color-texto); stroke-width:1.4}
+.menu-toggle{display:none; border:0; background:none; padding:var(--sp-3); cursor:pointer}
+.menu-toggle span:not(.sr-only){
+  display:block; width:24px; border-top:1px solid var(--color-texto); margin:5px;
+}
+
+/* ------------------------------------------------------------
+   Botones
+   ------------------------------------------------------------ */
+.button,.whatsapp{
+  display:inline-flex; align-items:center; justify-content:center; gap:var(--sp-2);
+  min-height:2.75rem; padding:var(--sp-3) var(--sp-5);
+  font-family:var(--font-texto); font-size:var(--fs-texto-chico);
+  text-decoration:none; border-radius:var(--radio);
+  transition:background-color .2s ease, color .2s ease, transform .2s ease;
+}
+.button{min-width:9.5rem; border:1px solid var(--color-boton)}
+.button.primary{background:var(--color-boton); color:var(--color-boton-texto)}
+/* fondo sólido, no transparente: este botón cae sobre fotografía */
+.button.secondary{background:var(--color-fondo); color:var(--color-texto)}
+.button.secondary:hover,.button.secondary:focus-visible{background:var(--color-acento-fondo)}
+.button.primary:hover,.button.primary:focus-visible{background:var(--color-texto-2)}
+.button:hover,.button:focus-visible{transform:translateY(-2px)}
+
+/* Botón de WhatsApp: botón principal de marca (12,5:1), no un verde suelto */
+.whatsapp{background:var(--color-boton); color:var(--color-boton-texto)}
+.whatsapp:hover,.whatsapp:focus-visible{background:var(--color-texto-2)}
+.whatsapp svg{width:1.15rem; height:1.15rem; flex:none; fill:currentColor}
+
+/* ------------------------------------------------------------
+   Hero
+   ------------------------------------------------------------ */
+.hero{
+  position:relative; min-height:26rem;
+  background:var(--color-superficie) url("assets/hero-sentida-desktop.webp") center/cover no-repeat;
+}
+.hero-content{padding:var(--sp-7) var(--gutter) var(--sp-6); max-width:38rem}
+.hero h1{font-size:var(--fs-h1); line-height:.95; letter-spacing:-.025em; margin-bottom:var(--sp-4); max-width:14ch}
+.hero-content>p{font-size:var(--fs-texto-chico); margin-bottom:var(--sp-5); max-width:38ch}
+.hero-actions{display:flex; flex-wrap:wrap; gap:var(--sp-3)}
+
+.values{display:flex; flex-wrap:wrap; gap:var(--sp-6); margin-top:var(--sp-6)}
+.values div{text-align:center; width:6.5rem}
+.values span{display:block; margin-top:var(--sp-1); font-size:var(--fs-etiqueta); line-height:1.4; color:var(--color-texto-2)}
+.values svg,.order-side svg{
+  width:2.3rem; height:2.3rem; display:block; margin-inline:auto;
+  fill:none; stroke:var(--color-texto-2); stroke-width:1.25;
+}
+
+/* ------------------------------------------------------------
+   Favoritos
+   ------------------------------------------------------------ */
+.favorites{padding:var(--sp-8) var(--sp-5); background:var(--color-fondo)}
+.section-heading{text-align:center; margin-bottom:var(--sp-7)}
+.section-heading h2{font-size:var(--fs-h2); line-height:1.05}
+.section-heading>p{margin-top:var(--sp-2)}
+.section-heading .filete{margin-inline:auto}
+
+.products{
+  display:grid; grid-template-columns:repeat(6,1fr); gap:var(--sp-3);
+  max-width:var(--ancho-max); margin-inline:auto;
+}
+.product{text-align:center; min-width:0}
+/* height:auto neutraliza el atributo height del HTML, que si no gana
+   sobre aspect-ratio y devuelve la tarjeta a 9:16 */
+.product img{
+  width:100%; height:auto; aspect-ratio:1/1;
+  object-fit:cover; object-position:center;
+  border-radius:8px; display:block;
+}
+.product h3{font-size:var(--fs-h3); line-height:1.2; margin:var(--sp-3) 0 var(--sp-1)}
+.product p{
+  font-size:var(--fs-meta); line-height:1.5; color:var(--color-texto-2);
+  margin-inline:auto; max-width:24ch;
+}
+
+/* ------------------------------------------------------------
+   Celebraciones e historia
+   ------------------------------------------------------------ */
+.celebrations{
+  position:relative; min-height:22rem; display:flex; align-items:center;
+  background:var(--color-fondo) url("assets/celebraciones-30-desktop.webp") center/cover no-repeat;
+}
+.celebrations-copy{width:52%; margin-left:48%; padding:var(--sp-7) var(--sp-7) var(--sp-7) var(--sp-5)}
+.celebrations h2{font-size:var(--fs-h2); line-height:1.05; margin:var(--sp-2) 0 var(--sp-4)}
+.celebrations-copy>p:not(.etiqueta){font-size:var(--fs-texto-chico); max-width:46ch; margin-bottom:var(--sp-5)}
+
+.story{
+  position:relative; min-height:20rem; display:flex; align-items:center;
+  background:var(--color-superficie) url("assets/proceso-crema-desktop.webp") center/cover no-repeat;
+}
+.story-copy{width:52%; padding:var(--sp-7) var(--gutter)}
+.story h2{font-size:var(--fs-h2); line-height:1.05}
+.story-copy>p{font-size:var(--fs-texto-chico); max-width:46ch; margin:var(--sp-4) 0 var(--sp-5)}
+
+/* Única firma que sobrevive de las cuatro frases manuscritas (AUD-05, opción A):
+   fondo liso, redonda, marrón medio al 100 % — 7,3:1 */
+.firma{
+  font-family:var(--font-display); font-size:1.75rem; line-height:1.25;
+  color:var(--color-texto-2); max-width:18ch;
+}
+
+/* ------------------------------------------------------------
+   Banda de pedido
+   ------------------------------------------------------------ */
+.order{
+  margin:var(--sp-6) var(--sp-5); padding:var(--sp-6) var(--sp-5);
+  background:var(--color-acento-fondo); border-radius:12px;
+  display:grid; grid-template-columns:1fr 1.4fr 1fr; align-items:center; gap:var(--sp-5);
+}
+.order-side{display:flex; align-items:center; justify-content:center; gap:var(--sp-4)}
+.order-side svg{width:3rem; height:3rem; margin:0}
+.order-side p{text-align:center}
+.order-center{text-align:center}
+.order h2{font-size:var(--fs-h2); line-height:1.05}
+.order-center>.etiqueta{margin:var(--sp-2) 0 var(--sp-5)}
+.order-actions{display:flex; flex-wrap:wrap; gap:var(--sp-3); justify-content:center}
+
+/* ------------------------------------------------------------
+   Pie
+   ------------------------------------------------------------ */
+footer{
+  display:grid; grid-template-columns:230px 1fr auto;
+  align-items:center; gap:var(--sp-5) var(--sp-6);
+  padding:var(--sp-7) var(--sp-6) var(--sp-6);
+}
+.footer-brand img{width:160px}
+footer nav{display:flex; justify-content:center; flex-wrap:wrap; gap:var(--sp-1) var(--sp-6)}
+footer nav a{padding:var(--sp-2) 0}
+
+.footer-contact{font-size:var(--fs-meta); line-height:1.5; text-align:right; justify-self:end}
+.footer-contact p{margin:0}
+.footer-contact a{
+  display:inline-flex; align-items:center; justify-content:flex-end; gap:var(--sp-2);
+  min-height:2.125rem; padding:var(--sp-2) 0;
+  text-decoration:none; border-bottom:1px solid transparent;
+}
+.footer-contact a:hover,.footer-contact a:focus-visible{border-color:var(--color-borde)}
+.footer-contact .footer-place{margin-bottom:var(--sp-1)}
+.social svg{width:17px; height:17px; flex:none; fill:none; stroke:var(--color-texto); stroke-width:1.4}
+
+.footer-tagline{
+  grid-column:1/-1; text-align:center;
+  display:flex; align-items:center; justify-content:center; gap:var(--sp-5);
+}
+.footer-tagline::before,.footer-tagline::after{
+  content:""; height:1px; width:min(75px,12vw); background:var(--color-borde);
+}
+
+/* ------------------------------------------------------------
+   Tablet y mobile: las tres secciones con foto se apilan.
+   Nada de texto sobre fotografía por debajo de 850px (AUD-04).
+   ------------------------------------------------------------ */
+@media (max-width:850px){
+  .header-inner{grid-template-columns:1fr auto auto; padding-inline:var(--sp-5)}
+  .brand img{width:150px}
+  .menu-toggle{display:block; grid-column:2}
+  .bag{grid-column:3}
+  .site-header nav{
+    position:absolute; top:100%; left:0; right:0;
+    background:var(--color-fondo); padding:var(--sp-5);
+    display:none; flex-direction:column; align-items:stretch; gap:0;
+    box-shadow:0 10px 30px rgba(64,45,33,.12);
+  }
+  .site-header nav.open{display:flex}
+  .site-header nav a{padding:var(--sp-3) var(--sp-2)}
+
+  .hero,.celebrations,.story{
+    display:flex; flex-direction:column; align-items:stretch;
+    min-height:0; background-image:none;
+  }
+  .hero{background-color:var(--color-superficie)}
+  .celebrations{background-color:var(--color-fondo)}
+  .story{background-color:var(--color-superficie)}
+
+  .hero::after,.celebrations::after,.story::after{
+    content:""; display:block; width:100%; aspect-ratio:1.8/1;
+    background-size:cover; background-repeat:no-repeat;
+  }
+  .hero::after{background-image:url("assets/hero-sentida-mobile.webp"); background-position:62% center; order:2}
+  .celebrations::after{background-image:url("assets/celebraciones-30-mobile.webp"); background-position:center; order:1}
+  .story::after{background-image:url("assets/proceso-crema-mobile.webp"); background-position:70% center; order:2}
+
+  .hero-content{order:1}
+  .celebrations-copy{order:2}
+  .story-copy{order:1}
+  .hero-content,.celebrations-copy,.story-copy{
+    width:100%; max-width:none; margin:0; padding:var(--sp-6) var(--sp-5);
+  }
+  .values{gap:var(--sp-5)}
+
+  .products{
+    display:flex; overflow-x:auto; scroll-snap-type:x mandatory;
+    padding-bottom:var(--sp-2);
+  }
+  .product{flex:0 0 13rem; scroll-snap-align:start}
+
+  .order{grid-template-columns:1fr; text-align:center}
+  .order-side{display:none}
+
+  footer{grid-template-columns:170px 1fr auto; padding-inline:var(--sp-5)}
+  .footer-contact{font-size:var(--fs-etiqueta)}
+}
+
+@media (max-width:600px){
+  .hero h1{max-width:none}
+  .hero::after,.celebrations::after,.story::after{aspect-ratio:1.5/1}
+  .favorites{padding-inline:var(--sp-4)}
+  .products{margin-right:calc(var(--sp-4) * -1)}
+  .order{margin-inline:var(--sp-4)}
+  footer{
+    display:flex; flex-direction:column; align-items:center; text-align:center;
+    gap:var(--sp-5); padding:var(--sp-8) var(--sp-5);
+  }
+  .footer-brand img{width:175px}
+  .footer-contact{text-align:center; justify-self:auto; font-size:var(--fs-meta)}
+  .footer-contact a{justify-content:center}
+  .footer-tagline{gap:var(--sp-3)}
+}
+
+/* ------------------------------------------------------------
+   Movimiento reducido: se quita el desplazamiento, no el feedback.
+   Los cambios de color se conservan porque no son movimiento.
+   ------------------------------------------------------------ */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .button:hover,.button:focus-visible{transform:none}
+  *,*::before,*::after{animation-duration:.01ms !important; animation-iteration-count:1 !important}
+}

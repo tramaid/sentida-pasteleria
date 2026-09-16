@@ -31,5 +31,5 @@ El prefijo `54 9` es obligatorio para que WhatsApp resuelva móviles argentinos;
 
 ## Pendientes comerciales
 
-- Dos tarjetas de "Nuestros favoritos" muestran un producto distinto al que anuncia su título (ver `QA.md`).
+- Varias fotos del banco llevan el sello de la marca anterior y dos tarjetas muestran un producto distinto al de su título (ver `QA.md`).
 - No hay definición sobre precios, detalle por producto ni zona de entrega.
