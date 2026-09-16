@@ -11,11 +11,15 @@
   if (!conf) return;
 
   var CLAVE = 'sentida-v2-torta';
-  var ORDEN = ['fecha', 'tamano', 'bizcochuelo', 'rellenos', 'decoracion', 'evento', 'entrega', 'resumen', 'reserva'];
+  var MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  var DIAS = ['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
 
   var s = {agregados: []};
   try { s = Object.assign(s, JSON.parse(localStorage.getItem(CLAVE)) || {}); } catch (e) {}
   if (!Array.isArray(s.agregados)) s.agregados = [];
+  // Los archivos adjuntos no sobreviven a una recarga: guardar el número
+  // dejaba el resumen diciendo "2 imágenes" sin ninguna imagen.
+  delete s.referencias;
 
   var paso = 0;
   var secciones = Array.prototype.slice.call(conf.querySelectorAll('.paso'));
@@ -25,65 +29,124 @@
     try { localStorage.setItem(CLAVE, JSON.stringify(s)); } catch (e) {}
   }
 
+  function txt(v) {
+    return String(v == null ? '' : v)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+
   /* ---------- agenda (paso 0) ---------- */
+  // toISOString() convierte a UTC y en husos positivos devolvía el día
+  // anterior. La fecha se arma local, que es la que se ve en pantalla.
+  function iso(d) {
+    var m = String(d.getMonth() + 1), dd = String(d.getDate());
+    return d.getFullYear() + '-' + (m.length < 2 ? '0' + m : m) + '-' + (dd.length < 2 ? '0' + dd : dd);
+  }
+
   function construirAgenda() {
     var cont = $('agenda');
     if (!cont) return;
     var hoy = new Date();
-    var dias = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
-    var html = dias.map(function (d) {
-      return '<span class="etiqueta" style="text-align:center">' + d + '</span>';
+    var cortos = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
+    var largos = ['lunes','martes','miércoles','jueves','viernes','sábado','domingo'];
+    var html = cortos.map(function (d, i) {
+      return '<span class="etiqueta" style="text-align:center" aria-hidden="true" title="' + largos[i] + '">' + d + '</span>';
     }).join('');
     // Arranca el lunes de la semana que viene y muestra cuatro semanas.
     var inicio = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + 7);
     inicio.setDate(inicio.getDate() - ((inicio.getDay() + 6) % 7));
+    var mesEnCurso = -1;
     for (var i = 0; i < 28; i++) {
       var d = new Date(inicio.getFullYear(), inicio.getMonth(), inicio.getDate() + i);
-      var iso = d.toISOString().slice(0, 10);
+      // Rótulo de mes cada vez que cambia: la grilla mostraba "30, 1, 2"
+      // sin ninguna referencia de a qué mes pertenecía cada número.
+      if (d.getMonth() !== mesEnCurso) {
+        mesEnCurso = d.getMonth();
+        html += '<p class="agenda-mes">' + MESES[mesEnCurso] +
+          (d.getFullYear() !== hoy.getFullYear() ? ' ' + d.getFullYear() : '') + '</p>';
+        // Alinear el primer día del mes con su columna.
+        var hueco = (d.getDay() + 6) % 7;
+        for (var h = 0; h < hueco; h++) html += '<span class="agenda-dia hoyno" aria-hidden="true"></span>';
+      }
+      var fecha = iso(d);
       // Estados de ejemplo, deterministas. En producción vienen de la agenda.
       var carga = (d.getDate() * 7 + d.getMonth()) % 10;
-      var clase = carga < 2 ? 'lleno' : (carga < 4 ? 'pocos' : '');
-      var lleno = clase === 'lleno';
-      html += '<button type="button" class="agenda-dia ' + (lleno ? '' : clase) +
-        '" data-fecha="' + iso + '" ' + (lleno ? 'disabled aria-label="Completo"' : '') + '>' +
-        d.getDate() + '</button>';
+      var lleno = carga < 2, pocos = !lleno && carga < 4;
+      var nombre = DIAS[d.getDay()] + ' ' + d.getDate() + ' de ' + MESES[d.getMonth()] +
+        (lleno ? ', completo' : (pocos ? ', últimos cupos' : ', con lugar'));
+      html += '<button type="button" class="agenda-dia' + (pocos ? ' pocos' : '') +
+        '" data-fecha="' + fecha + '" aria-label="' + nombre + '"' +
+        (lleno ? ' disabled' : '') + '>' + d.getDate() + '</button>';
     }
     cont.innerHTML = html;
     cont.querySelectorAll('[data-fecha]').forEach(function (b) {
       b.addEventListener('click', function () {
-        cont.querySelectorAll('.agenda-dia').forEach(function (o) { o.classList.remove('on'); });
-        b.classList.add('on');
+        cont.querySelectorAll('.agenda-dia').forEach(function (o) {
+          o.classList.remove('on'); o.removeAttribute('aria-pressed');
+        });
+        b.classList.add('on'); b.setAttribute('aria-pressed', 'true');
         s.fecha = b.dataset.fecha;
         guardar(); pintarResumen(); validar();
       });
-      if (s.fecha === b.dataset.fecha) b.classList.add('on');
+      if (s.fecha === b.dataset.fecha) { b.classList.add('on'); b.setAttribute('aria-pressed', 'true'); }
     });
   }
 
-  function fechaLegible(iso) {
-    if (!iso) return '';
-    var p = iso.split('-');
-    var meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-    return Number(p[2]) + ' de ' + meses[Number(p[1]) - 1];
+  function fechaLegible(valor) {
+    if (!valor) return '';
+    var p = valor.split('-');
+    return Number(p[2]) + ' de ' + MESES[Number(p[1]) - 1];
   }
 
-  /* ---------- opciones y chips ---------- */
+  /* ---------- opciones ---------- */
+  var grupos = {};
   conf.querySelectorAll('.opcion[data-campo]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var campo = b.dataset.campo;
-      conf.querySelectorAll('.opcion[data-campo="' + campo + '"]').forEach(function (o) {
-        o.classList.remove('on'); o.setAttribute('aria-checked', 'false');
-      });
+    var campo = b.dataset.campo;
+    (grupos[campo] = grupos[campo] || []).push(b);
+    b.addEventListener('click', function () { elegir(b); });
+    if (s[campo] === b.dataset.valor) {
       b.classList.add('on'); b.setAttribute('aria-checked', 'true');
-      s[campo] = b.dataset.valor;
-      if (b.dataset.extra) s[campo + 'Extra'] = b.dataset.extra;
       if (campo === 'entrega') $('envio-campos').hidden = b.dataset.valor !== 'Envío a domicilio';
-      guardar(); pintarResumen(); validar();
-    });
-    if (s[b.dataset.campo] === b.dataset.valor) {
-      b.classList.add('on'); b.setAttribute('aria-checked', 'true');
-      if (b.dataset.campo === 'entrega') $('envio-campos').hidden = b.dataset.valor !== 'Envío a domicilio';
     }
+  });
+
+  function elegir(b) {
+    var campo = b.dataset.campo;
+    grupos[campo].forEach(function (o) {
+      o.classList.remove('on');
+      o.setAttribute('aria-checked', 'false');
+      o.tabIndex = -1;
+    });
+    b.classList.add('on'); b.setAttribute('aria-checked', 'true'); b.tabIndex = 0;
+    s[campo] = b.dataset.valor;
+    if (b.dataset.extra) s[campo + 'Extra'] = b.dataset.extra;
+    if (campo === 'entrega') $('envio-campos').hidden = b.dataset.valor !== 'Envío a domicilio';
+    guardar(); pintarResumen(); validar();
+  }
+
+  // Un radiogroup es una sola parada de tabulación y se recorre con las
+  // flechas. Sin esto, llegar a "Crema Kinder" eran cinco tabulaciones y
+  // el lector de pantalla no anunciaba la posición dentro del grupo.
+  Object.keys(grupos).forEach(function (campo) {
+    var lista = grupos[campo];
+    var marcado = lista.filter(function (b) { return b.classList.contains('on'); })[0];
+    lista.forEach(function (b, i) {
+      b.tabIndex = (marcado ? b === marcado : i === 0) ? 0 : -1;
+      b.setAttribute('aria-setsize', String(lista.length));
+      b.setAttribute('aria-posinset', String(i + 1));
+      b.addEventListener('keydown', function (e) {
+        var salto = {ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1}[e.key];
+        if (salto) {
+          e.preventDefault();
+          var n = lista[(lista.indexOf(b) + salto + lista.length) % lista.length];
+          elegir(n); n.focus();
+        } else if (e.key === 'Home' || e.key === 'End') {
+          e.preventDefault();
+          var m = e.key === 'Home' ? lista[0] : lista[lista.length - 1];
+          elegir(m); m.focus();
+        }
+      });
+    });
   });
 
   conf.querySelectorAll('.chip[data-campo="agregados"]').forEach(function (b) {
@@ -115,10 +178,10 @@
         ? (n === 1 ? '1 imagen adjunta.' : n + ' imágenes adjuntas.')
         : 'Podés subir una o varias imágenes.';
       $('refs-lista').innerHTML = Array.prototype.slice.call(refs.files).map(function (f) {
-        return '<span class="chip" style="cursor:default">' + f.name.slice(0, 22) + '</span>';
+        return '<span class="chip" style="cursor:default">' + txt(f.name.slice(0, 22)) + '</span>';
       }).join('');
       s.referencias = n;
-      guardar(); pintarResumen();
+      pintarResumen();
     });
   }
 
@@ -149,7 +212,7 @@
     if (lat) {
       lat.innerHTML = f.length
         ? f.map(function (x) {
-            return '<div class="fila"><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>';
+            return '<div class="fila"><dt>' + txt(x[0]) + '</dt><dd>' + txt(x[1]) + '</dd></div>';
           }).join('')
         : '<p class="vacio">Todavía no elegiste nada.</p>';
     }
@@ -165,8 +228,9 @@
     if (full) {
       full.innerHTML = '<div class="resumen" style="position:static; padding:0; background:none">' +
         f.map(function (x) {
-          return '<div class="fila"><dt>' + x[0] + '</dt><dd>' + x[1] +
-            ' <button class="editar" type="button" data-ir="' + x[2] + '">Editar</button></dd></div>';
+          return '<div class="fila"><dt>' + txt(x[0]) + '</dt><dd>' + txt(x[1]) +
+            ' <button class="editar" type="button" data-ir="' + x[2] + '">Editar<span class="sr-only"> ' +
+            txt(String(x[0]).toLowerCase()) + '</span></button></dd></div>';
         }).join('') + '</div>';
       full.querySelectorAll('[data-ir]').forEach(function (b) {
         b.addEventListener('click', function () { ir(Number(b.dataset.ir)); });
@@ -175,11 +239,15 @@
     var bv = $('barra-v');
     if (bv) bv.textContent = f.length ? f[f.length - 1][0] + ': ' + f[f.length - 1][1] : 'Elegí la fecha';
 
+    // El enlace de WhatsApp se arma siempre, no sólo después de tocar algo:
+    // arrancaba en href="#" y sin JS quedaba muerto.
     var wa = $('wa-final');
     if (wa) {
-      var txt = 'Hola SENTIDA! Quiero reservar una torta decorada:\n\n' +
-        f.map(function (x) { return '• ' + x[0] + ': ' + x[1]; }).join('\n');
-      wa.href = 'https://wa.me/5491158300787?text=' + encodeURIComponent(txt);
+      var cuerpo = f.length
+        ? f.map(function (x) { return '• ' + x[0] + ': ' + x[1]; }).join('\n')
+        : '(todavía no configuré nada, quiero consultar)';
+      wa.href = 'https://wa.me/5491158300787?text=' +
+        encodeURIComponent('Hola SENTIDA! Quiero reservar una torta decorada:\n\n' + cuerpo);
     }
   }
 
@@ -188,10 +256,20 @@
     var ol = $('pasos');
     ol.innerHTML = secciones.map(function (sec, i) {
       var clase = i < paso ? 'hecho' : (i === paso ? 'activo' : '');
-      return '<li class="' + (i === paso ? 'activo' : '') + '"><span class="paso-barra ' + clase +
-        '"></span><span class="rot">' + sec.dataset.rot + '</span></li>';
+      return '<li class="' + (i === paso ? 'activo' : '') + '"' +
+        (i === paso ? ' aria-current="step"' : '') +
+        '><span class="paso-barra ' + clase + '"></span><span class="rot">' + sec.dataset.rot + '</span></li>';
     }).join('');
   }
+
+  // Qué falta para poder seguir. Antes el botón se apagaba sin decir por qué.
+  var PORQUE = {
+    0: 'Elegí una fecha para seguir.',
+    1: 'Elegí un tamaño para seguir.',
+    2: 'Elegí el bizcochuelo para seguir.',
+    3: 'Elegí un relleno de cada grupo para seguir.',
+    6: 'Elegí si la retirás o te la llevamos.'
+  };
 
   function validar() {
     var req = [null, 'tamano', 'bizcochuelo', null, null, null, 'entrega', null, null];
@@ -201,6 +279,11 @@
     else if (req[paso]) falta = !s[req[paso]];
     $('siguiente').disabled = falta;
     $('barra-sig').disabled = falta;
+    var aviso = $('conf-falta');
+    if (aviso) {
+      if (falta) aviso.textContent = PORQUE[paso] || 'Completá este paso para seguir.';
+      aviso.hidden = !falta;
+    }
   }
 
   var primera = true;
@@ -215,6 +298,10 @@
     pintarPasos(); pintarResumen(); validar();
     if (primera) { primera = false; return; }
     conf.scrollIntoView({behavior: 'smooth', block: 'start'});
+    // El contenido se reemplazaba entero y el foco se quedaba en el botón
+    // anterior: con lector de pantalla no se anunciaba nada del paso nuevo.
+    var h = secciones[paso].querySelector('h2');
+    if (h) { h.tabIndex = -1; h.focus({preventScroll: true}); }
   }
 
   $('siguiente').addEventListener('click', function () { ir(paso + 1); });

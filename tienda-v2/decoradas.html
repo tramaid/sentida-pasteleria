@@ -19,7 +19,7 @@
 <script src="conf.js" defer></script>
 </head>
 <body>
-<a class="sr-only" href="#configurador">Saltar al configurador</a>
+<a class="saltar" href="#configurador">Saltar al configurador</a>
 
 <header class="cab">
   <div class="cab-in">
@@ -38,7 +38,7 @@
   </div>
 </header>
 
-<main>
+<main id="contenido">
 
   <!-- ══ INTRO ══ -->
   <section class="envoltorio" style="padding-block:var(--s8) var(--s7)">
@@ -50,7 +50,8 @@
     </p>
   </section>
 
-  <section class="envoltorio" aria-label="Algunas que hicimos" style="padding-bottom:var(--s8)">
+  <section class="envoltorio" aria-labelledby="gal-t" style="padding-bottom:var(--s8)">
+    <h2 id="gal-t" class="etiqueta" style="margin-bottom:var(--s4)">Algunas que hicimos</h2>
     <div class="galeria" id="galeria"></div>
   </section>
 
@@ -66,8 +67,8 @@
            se borra esta sección y el paso 5 vuelve a pedir la fecha. -->
       <section class="paso" data-paso="0" data-rot="Fecha">
         <div class="conf-cab">
-          <span class="etiqueta acento">Antes de empezar</span>
-          <h1>¿Para qué día la necesitás?</h1>
+          <h2>¿Para qué día la necesitás?</h2>
+          <span class="conf-n">Paso 1 de 9 · Fecha</span>
           <p>Trabajamos por agenda y con cupo por día. Miramos la fecha primero para no hacerte diseñar una torta sobre un día que ya está completo.</p>
         </div>
         <div class="agenda" id="agenda" role="group" aria-label="Elegí una fecha"></div>
@@ -84,8 +85,8 @@
       <!-- PASO 1 — TAMAÑO -->
       <section class="paso" data-paso="1" data-rot="Tamaño" hidden>
         <div class="conf-cab">
-          <span class="etiqueta acento">Paso 1</span>
-          <h1>¿De qué tamaño?</h1>
+          <h2>¿De qué tamaño?</h2>
+          <span class="conf-n">Paso 2 de 9 · Tamaño</span>
           <p>Elegí según cuánta gente va a haber. Si dudás, conviene la de más porciones.</p>
         </div>
         <div class="opciones" role="radiogroup" aria-label="Tamaño">
@@ -108,8 +109,8 @@
       <!-- PASO 2 — BIZCOCHUELO -->
       <section class="paso" data-paso="2" data-rot="Bizcochuelo" hidden>
         <div class="conf-cab">
-          <span class="etiqueta acento">Paso 2</span>
-          <h1>¿Qué bizcochuelo?</h1>
+          <h2>¿Qué bizcochuelo?</h2>
+          <span class="conf-n">Paso 3 de 9 · Bizcochuelo</span>
         </div>
         <div class="opciones" role="radiogroup" aria-label="Bizcochuelo">
           <button class="opcion" type="button" role="radio" aria-checked="false" data-campo="bizcochuelo" data-valor="Vainilla"><span class="t">Vainilla</span></button>
@@ -120,18 +121,19 @@
       <!-- PASO 3 — RELLENOS -->
       <section class="paso" data-paso="3" data-rot="Rellenos" hidden>
         <div class="conf-cab">
-          <span class="etiqueta acento">Paso 3</span>
-          <h1>Los rellenos</h1>
+          <h2>Los rellenos</h2>
+          <span class="conf-n">Paso 4 de 9 · Rellenos</span>
           <p>Van dos rellenos: elegís uno de cada grupo. Al primero podés sumarle agregados.</p>
         </div>
 
-        <h2 class="etiqueta" style="margin-bottom:var(--s3)">Relleno 1 — elegí uno</h2>
+        <h3 class="etiqueta" style="margin-bottom:var(--s3)">Relleno 1 — elegí uno</h3>
         <div class="opciones" role="radiogroup" aria-label="Relleno 1">
           <button class="opcion" type="button" role="radio" aria-checked="false" data-campo="relleno1" data-valor="Dulce de leche"><span class="t">Dulce de leche</span></button>
           <button class="opcion" type="button" role="radio" aria-checked="false" data-campo="relleno1" data-valor="Butter choco"><span class="t">Butter choco</span></button>
         </div>
 
-        <h2 class="etiqueta" style="margin:var(--s7) 0 var(--s3)">Agregados al relleno 1 — los que quieras</h2>
+        <h3 class="etiqueta" style="margin:var(--s7) 0 var(--s2)">Agregados al relleno 1</h3>
+        <p class="ayuda" style="margin-bottom:var(--s3)">Sumá los que quieras.</p>
         <div class="chips" role="group" aria-label="Agregados">
           <button class="chip" type="button" aria-pressed="false" data-campo="agregados" data-valor="Bombón">Bombón</button>
           <button class="chip" type="button" aria-pressed="false" data-campo="agregados" data-valor="Merenguitos">Merenguitos</button>
@@ -139,9 +141,9 @@
           <button class="chip" type="button" aria-pressed="false" data-campo="agregados" data-valor="Nuez">Nuez</button>
           <button class="chip" type="button" aria-pressed="false" data-campo="agregados" data-valor="Maní">Maní</button>
         </div>
-        <p class="etiqueta" style="margin-top:var(--s3)">Algunos agregados pueden modificar el precio</p>
+        <p class="ayuda" style="margin-top:var(--s3)">Algunos agregados pueden modificar el precio.</p>
 
-        <h2 class="etiqueta" style="margin:var(--s7) 0 var(--s3)">Relleno 2 — elegí uno</h2>
+        <h3 class="etiqueta" style="margin:var(--s7) 0 var(--s3)">Relleno 2 — elegí uno</h3>
         <div class="opciones" role="radiogroup" aria-label="Relleno 2">
           <button class="opcion" type="button" role="radio" aria-checked="false" data-campo="relleno2" data-valor="Frutos rojos"><span class="t">Frutos rojos</span></button>
           <button class="opcion" type="button" role="radio" aria-checked="false" data-campo="relleno2" data-valor="Crema Oreo"><span class="t">Crema Oreo</span></button>
@@ -154,8 +156,8 @@
       <!-- PASO 4 — DECORACIÓN -->
       <section class="paso" data-paso="4" data-rot="Decoración" hidden>
         <div class="conf-cab">
-          <span class="etiqueta acento">Paso 4</span>
-          <h1>Cómo la imaginás</h1>
+          <h2>Cómo la imaginás</h2>
+          <span class="conf-n">Paso 5 de 9 · Decoración</span>
           <p>La cobertura es buttercream sabor vainilla. Sobre eso, contanos la idea.</p>
         </div>
 
@@ -177,7 +179,7 @@
 
         <div class="incluye">
           <div>
-            <h2 class="etiqueta">Incluido en el valor base</h2>
+            <h3 class="etiqueta">Incluido en el valor base</h3>
             <ul>
               <li>Nombre</li>
               <li>Número en chocolate</li>
@@ -187,7 +189,7 @@
             </ul>
           </div>
           <div>
-            <h2 class="etiqueta">Puede tener un adicional</h2>
+            <h3 class="etiqueta">Puede tener un adicional</h3>
             <ul>
               <li>Figuras especiales</li>
               <li>Adornos complejos</li>
@@ -202,8 +204,8 @@
       <!-- PASO 5 — EVENTO -->
       <section class="paso" data-paso="5" data-rot="Evento" hidden>
         <div class="conf-cab">
-          <span class="etiqueta acento">Paso 5</span>
-          <h1>De quién es el festejo</h1>
+          <h2>De quién es el festejo</h2>
+          <span class="conf-n">Paso 6 de 9 · Evento</span>
         </div>
         <div class="campo">
           <label for="homenajeado">Nombre de quien cumple</label>
@@ -227,8 +229,8 @@
       <!-- PASO 6 — ENTREGA -->
       <section class="paso" data-paso="6" data-rot="Entrega" hidden>
         <div class="conf-cab">
-          <span class="etiqueta acento">Paso 6</span>
-          <h1>¿La retirás o te la llevamos?</h1>
+          <h2>¿La retirás o te la llevamos?</h2>
+          <span class="conf-n">Paso 7 de 9 · Entrega</span>
         </div>
         <div class="opciones" role="radiogroup" aria-label="Entrega">
           <button class="opcion" type="button" role="radio" aria-checked="false" data-campo="entrega" data-valor="Retiro por Martínez">
@@ -242,15 +244,15 @@
           <div class="campo"><label for="localidad">Localidad</label><input type="text" id="localidad" data-campo="localidad"></div>
           <div class="campo"><label for="direccion">Dirección</label><input type="text" id="direccion" data-campo="direccion"></div>
           <div class="campo"><label for="cp">Código postal</label><input type="text" id="cp" data-campo="cp" inputmode="numeric"></div>
-          <p class="etiqueta">El costo del envío se confirma según la distancia</p>
+          <p class="ayuda">El costo del envío se confirma según la distancia.</p>
         </div>
       </section>
 
       <!-- PASO 7 — RESUMEN -->
       <section class="paso" data-paso="7" data-rot="Resumen" hidden>
         <div class="conf-cab">
-          <span class="etiqueta acento">Paso 7</span>
-          <h1>Tu torta, hasta acá</h1>
+          <h2>Tu torta, hasta acá</h2>
+          <span class="conf-n">Paso 8 de 9 · Resumen</span>
           <p>Revisá que esté todo bien. Podés editar cualquier punto.</p>
         </div>
         <dl id="resumen-full"></dl>
@@ -263,19 +265,19 @@
       <!-- PASO 8 — RESERVA -->
       <section class="paso" data-paso="8" data-rot="Reserva" hidden>
         <div class="conf-cab">
-          <span class="etiqueta acento">Paso 8</span>
-          <h1>Reservar la fecha</h1>
+          <h2>Reservar la fecha</h2>
+          <span class="conf-n">Paso 9 de 9 · Reserva</span>
           <p>Trabajamos con cupo por día. <strong>La fecha queda confirmada una vez realizada la seña.</strong></p>
         </div>
         <div class="opciones">
-          <button class="opcion" type="button" id="btn-reservar" style="cursor:default">
+          <button class="opcion" type="button" id="btn-reservar" disabled aria-describedby="reservar-por-que">
             <span class="t">Reservar fecha</span>
             <span class="s">Te enviamos el presupuesto y el link para la seña</span>
-            <span class="p">Se conecta con el medio de pago</span>
+            <span class="p">Todavía sin conectar</span>
           </button>
         </div>
-        <p class="nota">
-          <strong>Falta definir con las dueñas</strong> el porcentaje de la seña, la anticipación mínima y las reglas de reprogramación. Hasta que estén, este paso no puede cobrar.
+        <p class="nota" id="reservar-por-que">
+          <strong>Falta definir con las dueñas</strong> el porcentaje de la seña, la anticipación mínima y las reglas de reprogramación. Hasta que estén, este paso no puede cobrar: por eso el botón está apagado y la reserva sigue por WhatsApp.
         </p>
         <div style="margin-top:var(--s7); padding-top:var(--s5); border-top:var(--linea)">
           <p class="etiqueta">¿Preferís hablarlo?</p>
@@ -288,6 +290,7 @@
         <button class="btn btn-3" type="button" id="atras">← Atrás</button>
         <button class="btn btn-1" type="button" id="siguiente">Continuar</button>
       </nav>
+      <p class="conf-falta" id="conf-falta" role="status" hidden></p>
     </div>
 
     <!-- ══ RESUMEN LATERAL — no es un carrito, es la torta creciendo ══ -->
@@ -316,7 +319,7 @@
       <p class="etiqueta">Lo soñás, lo creamos</p>
     </div>
     <div>
-      <h3>Tienda</h3>
+      <h2>Tienda</h2>
       <ul>
         <li><a href="tortas.html">Nuestras tortas</a></li>
         <li><a href="decoradas.html">Tortas decoradas</a></li>
@@ -325,7 +328,7 @@
       </ul>
     </div>
     <div>
-      <h3>Contacto</h3>
+      <h2>Contacto</h2>
       <ul>
         <li><a href="https://wa.me/5491158300787" target="_blank" rel="noopener">Anto · 11 5830-0787</a></li>
         <li><a href="https://wa.me/5491131459646" target="_blank" rel="noopener">Nadia · 11 3145-9646</a></li>
@@ -334,7 +337,7 @@
       </ul>
     </div>
   </div>
-  <p class="pie-fin etiqueta">SENTIDA Pastelería · Maqueta v2 · Precios y fechas pendientes de carga</p>
+  <p class="pie-fin">SENTIDA Pastelería · Maqueta v2 · Precios y fechas pendientes de carga.</p>
 </footer>
 </body>
 </html>

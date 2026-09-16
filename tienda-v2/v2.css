@@ -65,6 +65,9 @@
 }
 
 *,*::before,*::after{box-sizing:border-box}
+/* El atributo hidden lo pisaba .btn{display:inline-flex}: el botón Atrás
+   se veía en el paso 0 y Continuar sobrevivía al último paso. */
+[hidden]{display:none !important}
 html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
 body{
   margin:0; background:var(--fondo); color:var(--texto);
@@ -79,8 +82,24 @@ h1,h2,h3{font-family:var(--display); font-weight:500; margin:0; line-height:1.05
 p{margin:0}
 em,i{font-style:normal; font-weight:500}
 :focus-visible{outline:2px solid var(--acento); outline-offset:3px}
+::selection{background:var(--acento-fondo); color:var(--texto)}
+::-moz-selection{background:var(--acento-fondo); color:var(--texto)}
+html{scrollbar-color:var(--beige) var(--blanco)}
+input,textarea{caret-color:var(--acento)}
+/* Todo destino de ancla queda debajo de la cabecera pegajosa (96 px). */
+[id]{scroll-margin-top:104px}
 
 .sr-only{position:absolute;width:1px;height:1px;clip:rect(0,0,0,0);overflow:hidden}
+/* El salto de contenido estaba en sr-only y nunca se veía: quien navega
+   con teclado y ve la pantalla no tenía forma de saber que existía. */
+.saltar{
+  position:absolute; left:var(--gutter); top:-100px; z-index:90;
+  background:var(--accion); color:var(--accion-texto);
+  padding:var(--s3) var(--s5); text-decoration:none;
+  font-size:var(--fs-meta); letter-spacing:.08em; text-transform:uppercase;
+  transition:top .15s ease-out;
+}
+.saltar:focus{top:var(--s3)}
 .envoltorio{max-width:var(--ancho); margin-inline:auto; padding-inline:var(--gutter)}
 
 /* ---------- recursos gráficos de la identidad ---------- */
@@ -136,19 +155,25 @@ em,i{font-style:normal; font-weight:500}
 
 /* ---------- pie ---------- */
 .pie{margin-top:var(--s10); border-top:var(--linea); background:var(--superficie)}
+/* La banda operativa ya cierra con su propia regla: el margen del pie
+   dejaba una franja vacía de 96 px entre dos líneas. */
+main:has(> .operativa:last-child) + .pie{margin-top:0}
 .pie-in{
   max-width:var(--ancho); margin-inline:auto; padding:var(--s9) var(--gutter) var(--s7);
   display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:var(--s7);
 }
-.pie h3{font-size:var(--fs-h3); margin-bottom:var(--s3)}
+.pie h2{font-size:var(--fs-h3); font-family:var(--display); font-weight:500; margin-bottom:var(--s3)}
 .pie ul{list-style:none; margin:0; padding:0; display:grid; gap:var(--s2)}
 .pie a{display:inline-block; padding-block:var(--s2); text-decoration:none; font-size:var(--fs-meta); color:var(--texto-2)}
 .pie a:hover{color:var(--texto)}
 /* Por debajo de unos 90px la bajada del sello deja de leerse */
-.pie-sello{width:112px; height:auto; margin-bottom:var(--s4)}
+.pie-sello{width:132px; height:auto; margin-bottom:var(--s4)}
+/* Eran 70 caracteres en mayúsculas a 12 px con 0,2 em de tracking:
+   una etiqueta sirve para dos o tres palabras, no para una frase. */
 .pie-fin{
   border-top:var(--linea); padding:var(--s4) var(--gutter);
   max-width:var(--ancho); margin-inline:auto; text-align:center;
+  font-size:var(--fs-meta); color:var(--texto-2);
 }
 
 /* ============================================================
@@ -185,10 +210,23 @@ em,i{font-style:normal; font-weight:500}
 .rutas > :nth-child(3){margin-top:var(--s7)}
 .ruta img{width:100%; height:100%; object-fit:cover; object-position:center 45%; position:absolute; inset:0; transition:transform .7s cubic-bezier(.4,0,.2,1)}
 .ruta:hover img{transform:scale(1.04)}
-.ruta::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(64,45,33,.05) 20%, rgba(64,45,33,.82))}
+/* El velo llegaba a .82 recién en el borde inferior y el párrafo arranca
+   bastante más arriba. Medido sobre los píxeles compuestos de las tres
+   fotos actuales daba 4,82:1 en el peor caso: pasaba la AA, pero por
+   dos décimas. Como el banco es todo fotografía clara de celular,
+   cambiar una foto por otra más blanca lo tiraba abajo. Ahora el piso
+   medido es 5,99:1 y los dos tercios de arriba siguen limpios. */
+.ruta::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg,
+    rgba(64,45,33,0) 38%,
+    rgba(64,45,33,.32) 60%,
+    rgba(64,45,33,.72) 77%,
+    rgba(64,45,33,.88) 100%);
+}
 .ruta-txt{position:relative; z-index:2; height:100%; display:flex; flex-direction:column; justify-content:flex-end; padding:var(--s6)}
 .ruta-txt h2{color:var(--blanco); font-size:var(--fs-h2)}
-.ruta-txt p{color:var(--crema); font-size:var(--fs-meta); margin-top:var(--s2); max-width:32ch}
+.ruta-txt p{color:var(--crema); font-size:var(--fs-chico); margin-top:var(--s2); max-width:34ch}
 .ruta-txt .filete{margin-bottom:var(--s4)}
 .ruta-txt .filete::before,.ruta-txt .filete::after{background:var(--celeste); opacity:.85}
 
@@ -257,19 +295,61 @@ em,i{font-style:normal; font-weight:500}
 /* ============================================================
    LISTADOS
    ============================================================ */
-.listado{display:grid; grid-template-columns:220px minmax(0,1fr); gap:var(--s8); align-items:start; padding-block:var(--s8)}
-.filtros{position:sticky; top:96px; display:grid; gap:var(--s6)}
-.filtros h2{font-size:var(--fs-etiqueta); letter-spacing:var(--track); text-transform:uppercase; font-family:var(--ui); font-weight:500; color:var(--texto-2); padding-bottom:var(--s2); border-bottom:var(--linea)}
+/* El título encabeza la grilla y los filtros cuelgan a su izquierda.
+   Antes el aside iba primero en el DOM y en mobile la pantalla de entrada
+   era la barra de filtros, con el nombre de la sección recién debajo. */
+.listado{
+  display:grid; grid-template-columns:220px minmax(0,1fr);
+  column-gap:var(--s8); row-gap:var(--s7);
+  align-items:start; padding-block:var(--s8);
+}
+.listado-cab{grid-column:1 / -1}
+.filtros{position:sticky; top:104px; display:grid; gap:var(--s6)}
+.filtros h2, .filtros .rot{font-size:var(--fs-etiqueta); letter-spacing:var(--track); text-transform:uppercase; font-family:var(--ui); font-weight:500; color:var(--texto-2); padding-bottom:var(--s2); border-bottom:var(--linea)}
 .filtros ul{list-style:none; margin:var(--s3) 0 0; padding:0; display:grid}
 .filtros li a{display:block; padding:var(--s2) 0; text-decoration:none; font-size:var(--fs-meta); color:var(--texto-2)}
 .filtros li a:hover,.filtros li a.on{color:var(--acento)}
 .grilla{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:var(--s7) var(--s6)}
-.galeria{display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:var(--s2)}
+/* Cinco columnas: las diez fotos llenan dos filas exactas.
+   Con auto-fill daban siete y sobraba una fila de tres. */
+.galeria{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:var(--s2)}
 .galeria figure{aspect-ratio:1; overflow:hidden; background:var(--superficie)}
 .galeria img{width:100%; height:100%; object-fit:cover; object-position:center 34%}
-.listado-cab{margin-bottom:var(--s7)}
 .listado-cab h1{font-size:var(--fs-h1); margin-top:var(--s3)}
 .listado-cab .n{font-size:var(--fs-meta); color:var(--texto-2); margin-top:var(--s2)}
+
+/* ============================================================
+   FICHA DE PRODUCTO
+   Las tarjetas ya apuntaban acá y la página no existía: las 22 fichas
+   del catálogo terminaban en un 404.
+   ============================================================ */
+.volver{display:inline-flex; align-items:center; gap:var(--s2); min-height:44px; font-size:var(--fs-meta); color:var(--texto-2); text-decoration:none}
+.volver:hover{color:var(--texto)}
+
+.ficha{display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr); gap:var(--s9); align-items:start; padding-block:var(--s5) var(--s10)}
+.ficha-foto{position:relative; aspect-ratio:4/5; overflow:hidden; background:var(--superficie)}
+.ficha-foto img{width:100%; height:100%; object-fit:cover; object-position:center 42%}
+.ficha-cuerpo{position:sticky; top:104px}
+.ficha h1{font-size:var(--fs-h1); margin-top:var(--s4)}
+.ficha-desc{font-size:var(--fs-chico); color:var(--texto-2); margin-top:var(--s5); max-width:44ch}
+.ficha-precio{margin-top:var(--s6); padding-block:var(--s4); border-block:var(--linea)}
+.ficha-precio .v{font-family:var(--display); font-weight:500; font-size:1.5rem; display:block; margin-top:var(--s1)}
+.ficha-cta{display:flex; flex-wrap:wrap; gap:var(--s3); margin-top:var(--s6)}
+.ficha-datos{margin:var(--s7) 0 0; display:grid; gap:var(--s3)}
+.ficha-datos div{display:grid; grid-template-columns:auto 1fr; gap:var(--s4); align-items:baseline}
+.ficha-datos dt{font-size:var(--fs-etiqueta); letter-spacing:.1em; text-transform:uppercase; color:var(--texto-2); min-width:9ch}
+.ficha-datos dd{margin:0; font-size:var(--fs-chico)}
+
+.mas{border-top:var(--linea); padding-block:var(--s8) var(--s10)}
+.mas-cab{display:flex; align-items:flex-end; justify-content:space-between; gap:var(--s5); flex-wrap:wrap; margin-bottom:var(--s6)}
+.mas-cab h2{font-size:var(--fs-h2)}
+.mas-grilla{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:var(--s5)}
+
+/* Estado vacío y de error: si datos.json no carga, la grilla se quedaba
+   en blanco para siempre y nadie sabía si era la conexión o el catálogo. */
+.aviso{border:var(--linea); background:var(--superficie); padding:var(--s6); text-align:center}
+.aviso p{font-size:var(--fs-chico); color:var(--texto-2); max-width:44ch; margin-inline:auto}
+.aviso .btn{margin-top:var(--s4)}
 
 /* ============================================================
    CONFIGURADOR
@@ -284,8 +364,12 @@ em,i{font-style:normal; font-weight:500}
 .pasos .rot{display:block; margin-top:var(--s2); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--texto-2)}
 .pasos li.activo .rot{color:var(--texto); font-weight:600}
 
+/* El "Paso 3" iba arriba del título como copete. El copete no aporta
+   nada que el título no diga; el número de paso sí, pero es metadato y
+   va debajo, junto a la barra de progreso que ya lo muestra. */
 .conf-cab{margin-bottom:var(--s6)}
-.conf-cab h1{font-size:var(--fs-h2); margin-top:var(--s2)}
+.conf-n{display:block; margin-top:var(--s3); font-size:var(--fs-etiqueta); letter-spacing:var(--track); text-transform:uppercase; color:var(--acento)}
+.conf-cab h2{font-size:var(--fs-h2)}
 .conf-cab p{font-size:var(--fs-chico); color:var(--texto-2); margin-top:var(--s3); max-width:56ch}
 
 /* Radio cards: nada de selects donde hay pocas opciones */
@@ -322,25 +406,29 @@ em,i{font-style:normal; font-weight:500}
   padding:var(--s3) var(--s4); min-height:48px; width:100%;
 }
 .campo textarea{min-height:104px; resize:vertical}
-.campo .ayuda{font-size:var(--fs-meta); color:var(--texto-2)}
+.ayuda{font-size:var(--fs-meta); color:var(--texto-2); max-width:56ch}
 
 /* La nota sobre referencias: informativa, no advertencia legal */
 .nota{
-  border-left:2px solid var(--acento); background:var(--superficie);
+  border-left:1px solid var(--acento); background:var(--superficie);
   padding:var(--s4) var(--s5); margin-block:var(--s5);
-  font-size:var(--fs-meta); color:var(--texto-2); max-width:60ch;
+  font-size:var(--fs-chico); color:var(--texto-2); max-width:60ch;
 }
 .nota strong{color:var(--texto); font-weight:600}
 
 .incluye{display:grid; grid-template-columns:1fr 1fr; gap:var(--s6); margin-block:var(--s6)}
 .incluye ul{list-style:none; margin:var(--s3) 0 0; padding:0; display:grid; gap:var(--s2)}
-.incluye li{font-size:var(--fs-meta); color:var(--texto-2); padding-left:var(--s4); position:relative}
+.incluye li{font-size:var(--fs-chico); color:var(--texto-2); padding-left:var(--s4); position:relative}
 .incluye li::before{content:""; position:absolute; left:0; top:.7em; width:8px; height:1px; background:var(--acento)}
 
-.conf-nav{display:flex; justify-content:space-between; gap:var(--s4); margin-top:var(--s8); padding-top:var(--s5); border-top:var(--linea)}
+.conf-nav{display:flex; gap:var(--s4); margin-top:var(--s8); padding-top:var(--s5); border-top:var(--linea)}
+.conf-nav #siguiente{margin-inline-start:auto}
 
 /* Resumen lateral: no es un carrito, es la torta creciendo */
-.resumen{position:sticky; top:96px; background:var(--superficie); padding:var(--s6)}
+.conf-falta{font-size:var(--fs-meta); color:var(--texto-2); margin-top:var(--s3); text-align:right}
+.conf-falta[hidden]{display:none !important}
+
+.resumen{position:sticky; top:104px; background:var(--superficie); padding:var(--s6)}
 .resumen h2{font-family:var(--display); font-size:var(--fs-h3); margin-bottom:var(--s2)}
 .resumen .lema{font-size:var(--fs-meta); color:var(--texto-2); margin-bottom:var(--s5)}
 .resumen dl{margin:0; display:grid; gap:var(--s3)}
@@ -355,17 +443,27 @@ em,i{font-style:normal; font-weight:500}
 .barra-mob{display:none}
 
 /* Fechas */
+/* La grilla mostraba 21…30, 1, 2, 4… sin decir de qué mes. */
+.agenda-mes{
+  grid-column:1 / -1; margin-top:var(--s3);
+  font-size:var(--fs-etiqueta); letter-spacing:var(--track);
+  text-transform:uppercase; color:var(--acento);
+}
+.agenda-mes:first-child{margin-top:0}
+.agenda-dia.hoyno{visibility:hidden}
 .agenda{display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:4px; width:100%; max-width:420px; margin-top:var(--s5)}
 .agenda-dia{
   aspect-ratio:1; display:grid; place-items:center; border:1px solid var(--borde);
   background:var(--fondo); cursor:pointer; font-size:var(--fs-meta); color:var(--texto);
 }
-.agenda-dia[disabled]{color:var(--beige); background:var(--superficie); cursor:not-allowed; text-decoration:line-through}
+/* Estaba en beige sobre crema: 1,66:1. "Ese día está completo" es
+   información del negocio, no un control apagado decorativo. 6,5:1. */
+.agenda-dia[disabled]{color:var(--texto-2); background:var(--superficie); border-color:var(--beige); cursor:not-allowed; text-decoration:line-through; text-decoration-thickness:1px}
 .agenda-dia.pocos{border-color:var(--acento)}
 .agenda-dia.on{background:var(--accion); color:var(--accion-texto); border-color:var(--accion)}
 .agenda-ref{display:flex; flex-wrap:wrap; gap:var(--s4); margin-top:var(--s4)}
 .agenda-ref span{display:flex; align-items:center; gap:var(--s2); font-size:var(--fs-etiqueta); letter-spacing:.06em; text-transform:uppercase; color:var(--texto-2)}
-.agenda-ref i{width:12px; height:12px; border:1px solid var(--borde); display:block}
+.agenda-ref i{width:22px; height:10px; border:1px solid var(--borde); display:block}
 .agenda-ref i.pocos{border-color:var(--acento)}
 .agenda-ref i.lleno{background:var(--superficie)}
 
@@ -410,14 +508,31 @@ em,i{font-style:normal; font-weight:500}
   .idea-in,.nosotras-in{grid-template-columns:1fr; gap:var(--s7)}
   .listado{grid-template-columns:1fr; gap:var(--s5)}
   .filtros{position:static}
+  /* En "Nuestras tortas" el aside son notas, no filtros: arriba se comían
+     la pantalla de entrada entera antes de mostrar una sola torta. */
+  .listado.notas-abajo .filtros{order:3}
+  .listado.notas-abajo .grilla{order:2}
   .filtros ul{display:flex; flex-wrap:wrap; gap:var(--s2)}
   .filtros li a{border:1px solid var(--borde); padding:var(--s2) var(--s4); min-height:40px; display:flex; align-items:center}
   .filtros li a.on{border-color:var(--acento)}
   .grilla{grid-template-columns:1fr 1fr; gap:var(--s5) var(--s4)}
-  .galeria{grid-template-columns:1fr 1fr}
+  /* La galería pasa a carrusel: diez fotos en dos columnas eran mil
+     píxeles de scroll antes de llegar al configurador, que es el trabajo
+     real de esta pantalla. */
+  .galeria{
+    display:flex; gap:var(--s2); overflow-x:auto; overscroll-behavior-inline:contain;
+    scroll-snap-type:x mandatory; padding-bottom:var(--s2);
+    scrollbar-color:var(--beige) transparent;
+  }
+  .galeria figure{flex:0 0 58%; scroll-snap-align:start}
 
   .incluye{grid-template-columns:1fr}
   .pasos .rot{display:none}
+
+  .ficha{grid-template-columns:1fr; gap:var(--s6); padding-block:var(--s4) var(--s8)}
+  .ficha-cuerpo{position:static}
+  .ficha-foto{aspect-ratio:1}
+  .mas-grilla{grid-template-columns:1fr 1fr}
 
   /* La barra inferior reemplaza al resumen lateral */
   .resumen{display:none}
@@ -430,15 +545,30 @@ em,i{font-style:normal; font-weight:500}
   .barra-mob .info{flex:1; min-width:0}
   .barra-mob .t{display:block; font-size:var(--fs-etiqueta); letter-spacing:.1em; text-transform:uppercase; color:var(--texto-2)}
   .barra-mob .v{display:block; font-size:var(--fs-meta); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
-  .conf{padding-bottom:var(--s10)}
-  .conf-nav{position:relative; z-index:1}
+  .conf{padding-bottom:var(--s9)}
+  /* La barra fija ya lleva Continuar: abajo se veían dos botones
+     idénticos a la vez. En el pie del paso queda solo Atrás. */
+  .conf-nav{position:relative; z-index:1; padding-bottom:var(--s7)}
+  .conf-nav #siguiente{display:none !important}
+  .conf-falta{text-align:left}
 }
 
 @media (max-width:560px){
-  .destacados,.grilla{grid-template-columns:1fr}
+  /* La grilla se queda en dos columnas: con una sola, el catálogo de
+     catorce tortas (ocho todavía sin foto) es una cinta interminable
+     de placas vacías a pantalla completa. */
+  .destacados{grid-template-columns:1fr}
+  .grilla{grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--s5) var(--s3)}
+  .prod-nom{font-size:1.15rem}
+  .prod-pie{flex-direction:column; align-items:flex-start; gap:var(--s1)}
   .operativa-in{grid-template-columns:1fr}
   .pie-in{grid-template-columns:1fr; gap:var(--s6)}
   .opciones{grid-template-columns:1fr}
+  .mas-grilla{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media (max-width:380px){
+  .grilla{grid-template-columns:1fr}
 }
 
 @media (prefers-reduced-motion:reduce){

@@ -7,6 +7,13 @@
 <meta name="description" content="Pastelería artesanal hecha a mano en Martínez. Tortas decoradas por encargo, tortas clásicas y pastelería. Lo soñás, lo creamos.">
 <meta name="theme-color" content="#FEFAF8">
 <meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SENTIDA Pastelería">
+<meta property="og:title" content="SENTIDA Pastelería · Lo soñás, lo creamos">
+<meta property="og:description" content="Pastelería artesanal hecha a mano en Martínez. Tortas decoradas por encargo, tortas clásicas y pastelería.">
+<meta property="og:image" content="../assets/og-sentida.jpg">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +25,7 @@
 <script src="v2.js" defer></script>
 </head>
 <body>
-<a class="sr-only" href="#contenido">Saltar al contenido</a>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
 
 <header class="cab">
   <div class="cab-in">
@@ -54,7 +61,7 @@
       </div>
     </div>
     <div class="hero-foto">
-      <img src="fotos/edit-hero.webp" alt="Tarta de frutillas con crema recién terminada" width="1600" height="1200">
+      <img src="fotos/edit-hero.webp" alt="Tarta de frutillas con crema recién terminada" width="1600" height="1200" fetchpriority="high">
     </div>
   </section>
 
@@ -62,27 +69,27 @@
   <section class="rutas" aria-label="Qué querés pedir">
     <a class="ruta grande" href="decoradas.html">
       <img src="fotos/deco-dos-pisos.webp" alt="Torta de dos pisos con flores naturales" loading="lazy">
-      <span class="ruta-txt">
+      <div class="ruta-txt">
         <span class="filete" aria-hidden="true"></span>
         <h2>Tortas decoradas</h2>
-        <p>La diseñamos con vos, paso a paso: tamaño, bizcochuelo, rellenos y temática. Reservás la fecha y la creamos.</p>
-      </span>
+        <p>La diseñamos con vos: tamaño, bizcochuelo, rellenos y temática.</p>
+      </div>
     </a>
     <a class="ruta" href="tortas.html">
       <img src="fotos/producto-key-lime-pie.webp" alt="Key Lime Pie con merengue y lima" loading="lazy">
-      <span class="ruta-txt">
+      <div class="ruta-txt">
         <span class="filete" aria-hidden="true"></span>
         <h2>Nuestras tortas</h2>
-        <p>Las clásicas de la casa, listas para elegir tamaño y encargar.</p>
-      </span>
+        <p>Las clásicas de la casa, listas para encargar.</p>
+      </div>
     </a>
     <a class="ruta" href="pasteleria.html">
       <img src="fotos/past-alfajores.webp" alt="Alfajores de maicena rellenos de dulce de leche" loading="lazy">
-      <span class="ruta-txt">
+      <div class="ruta-txt">
         <span class="filete" aria-hidden="true"></span>
         <h2>Pastelería</h2>
         <p>Alfajores, cookies, cupcakes y galletas decoradas.</p>
-      </span>
+      </div>
     </a>
   </section>
 
@@ -123,7 +130,7 @@
   <section class="sec envoltorio nosotras" id="nosotras" aria-labelledby="nos-t">
     <div class="nosotras-in">
       <div class="nosotras-foto">
-        <img src="../assets/proceso-crema-desktop.webp" alt="Crema batida en un bol, en plena preparación" loading="lazy">
+        <img src="fotos/edit-detalle-macarons.webp" alt="Detalle de una torta con macarons, merenguitos y flores, hecha a mano" loading="lazy">
       </div>
       <div>
         <span class="filete" aria-hidden="true"></span>
@@ -154,7 +161,7 @@
       <p class="etiqueta">Lo soñás, lo creamos</p>
     </div>
     <div>
-      <h3>Tienda</h3>
+      <h2>Tienda</h2>
       <ul>
         <li><a href="tortas.html">Nuestras tortas</a></li>
         <li><a href="decoradas.html">Tortas decoradas</a></li>
@@ -163,7 +170,7 @@
       </ul>
     </div>
     <div>
-      <h3>Contacto</h3>
+      <h2>Contacto</h2>
       <ul>
         <li><a href="https://wa.me/5491158300787" target="_blank" rel="noopener">Anto · 11 5830-0787</a></li>
         <li><a href="https://wa.me/5491131459646" target="_blank" rel="noopener">Nadia · 11 3145-9646</a></li>
@@ -172,7 +179,7 @@
       </ul>
     </div>
   </div>
-  <p class="pie-fin etiqueta">SENTIDA Pastelería · Maqueta v2 · Precios y fechas pendientes de carga</p>
+  <p class="pie-fin">SENTIDA Pastelería · Maqueta v2 · Precios y fechas pendientes de carga.</p>
 </footer>
 </body>
 </html>

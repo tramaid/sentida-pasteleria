@@ -18,6 +18,8 @@
 <script src="v2.js" defer></script>
 </head>
 <body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
 <header class="cab">
   <div class="cab-in">
     <a class="cab-marca" href="index.html" aria-label="SENTIDA Pastelería, inicio"><img src="../assets/logo-sentida.svg" alt="SENTIDA Pastelería" width="170" height="65"></a>
@@ -36,30 +38,22 @@
     </div>
   </div>
 </header>
-<main class="envoltorio listado">
-  <aside class="filtros" aria-label="Filtros">
-    <div>
-      <h2>Tortas</h2>
-      <ul><li><a class="on" href="tortas.html">Todas</a></li></ul>
-    </div>
-    <div>
-      <h2>Tamaños</h2>
-      <ul>
-        <li><span class="etiqueta" style="display:block;padding:var(--s1) 0">Chica · 10 / 12 porciones</span></li>
-        <li><span class="etiqueta" style="display:block;padding:var(--s1) 0">Mediana · 15 / 25 porciones</span></li>
-        <li><span class="etiqueta" style="display:block;padding:var(--s1) 0">Grande · 20 / 30 porciones</span></li>
-      </ul>
-    </div>
-    <div class="nota" style="margin:0">¿Buscás algo decorado o con temática? Eso se arma en <a href="decoradas.html">Tortas decoradas</a>.</div>
-  </aside>
-  <div>
-    <div class="listado-cab">
-      <span class="filete" aria-hidden="true"></span>
-      <h1>Nuestras tortas</h1>
-      <p class="n" id="n-tortas">&mdash;</p>
-    </div>
-    <div class="grilla" id="grilla-tortas"></div>
+<main id="contenido" class="envoltorio listado notas-abajo">
+  <div class="listado-cab">
+    <span class="filete" aria-hidden="true"></span>
+    <h1>Nuestras tortas</h1>
+    <p class="n" id="n-tortas">&mdash;</p>
   </div>
+  <aside class="filtros" aria-label="Sobre este catálogo">
+    <div class="nota" style="margin:0">
+      Los <strong>tamaños, las porciones y los precios</strong> de las tortas clásicas todavía
+      no están cargados. Los confirmamos al pasar el presupuesto.
+    </div>
+    <div class="nota" style="margin:0">
+      ¿Buscás algo decorado o con temática? Eso se arma en <a href="decoradas.html">Tortas decoradas</a>.
+    </div>
+  </aside>
+  <div class="grilla" id="grilla-tortas"></div>
 </main>
 <footer class="pie" id="contacto">
   <div class="pie-in">
@@ -68,7 +62,7 @@
       <p class="etiqueta">Lo soñás, lo creamos</p>
     </div>
     <div>
-      <h3>Tienda</h3>
+      <h2>Tienda</h2>
       <ul>
         <li><a href="tortas.html">Nuestras tortas</a></li>
         <li><a href="decoradas.html">Tortas decoradas</a></li>
@@ -77,7 +71,7 @@
       </ul>
     </div>
     <div>
-      <h3>Contacto</h3>
+      <h2>Contacto</h2>
       <ul>
         <li><a href="https://wa.me/5491158300787" target="_blank" rel="noopener">Anto · 11 5830-0787</a></li>
         <li><a href="https://wa.me/5491131459646" target="_blank" rel="noopener">Nadia · 11 3145-9646</a></li>
@@ -86,6 +80,6 @@
       </ul>
     </div>
   </div>
-  <p class="pie-fin etiqueta">SENTIDA Pastelería · Maqueta v2 · Precios y fechas pendientes de carga</p>
+  <p class="pie-fin">SENTIDA Pastelería · Maqueta v2 · Precios y fechas pendientes de carga.</p>
 </footer></body>
 </html>
