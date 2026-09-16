@@ -1,0 +1,240 @@
+{
+  "_nota": "Catálogo de SENTIDA. Se edita a mano. Las fotos con foto:null salen con placeholder marcado PROVISORIA. No se cargan las fotos que todavía llevan el sello de la marca anterior.",
+  "categorias": [
+    {
+      "slug": "clasicos",
+      "nombre": "Clásicos SENTIDA",
+      "subcategorias": [
+        {"slug": "tartas", "nombre": "Tartas"},
+        {"slug": "tortas", "nombre": "Tortas"},
+        {"slug": "porciones", "nombre": "Cajas y porciones"}
+      ]
+    },
+    {
+      "slug": "creaciones",
+      "nombre": "Creaciones",
+      "subcategorias": [
+        {"slug": "infantiles", "nombre": "Infantiles"},
+        {"slug": "vintage", "nombre": "Vintage con buttercream"},
+        {"slug": "florales", "nombre": "Florales"},
+        {"slug": "numero", "nombre": "Número y letra"},
+        {"slug": "mesas", "nombre": "Mesas dulces"}
+      ]
+    },
+    {
+      "slug": "temporada",
+      "nombre": "Temporada",
+      "subcategorias": []
+    }
+  ],
+  "productos": [
+    {
+      "id": 1,
+      "slug": "tarta-de-frutillas",
+      "nombre": "Tarta de frutillas",
+      "categoria": "clasicos",
+      "subcategoria": "tartas",
+      "estado": "clasico",
+      "foto": "../assets/producto-tarta-frutillas.webp",
+      "descripcion": "Base sablé crocante de vainilla, crema chantilly y frutillas frescas con un toque de lima.",
+      "porciones": [8, 12, 16],
+      "novedad": true,
+      "orden": 1
+    },
+    {
+      "id": 2,
+      "slug": "pie-de-limon",
+      "nombre": "Pie de limón",
+      "categoria": "clasicos",
+      "subcategoria": "tartas",
+      "estado": "clasico",
+      "foto": "../assets/producto-pie-limon.webp",
+      "descripcion": "Masa crocante, curd de limón y merengue quemado. Un clásico que nunca falla.",
+      "porciones": [8, 12],
+      "novedad": false,
+      "orden": 2
+    },
+    {
+      "id": 3,
+      "slug": "tarta-de-chocolate",
+      "nombre": "Tarta de chocolate",
+      "categoria": "clasicos",
+      "subcategoria": "tartas",
+      "estado": "clasico",
+      "foto": "../assets/producto-tarta-chocolate.webp",
+      "descripcion": "Ganache suave sobre masa crocante, terminada con chocolate en trozos.",
+      "porciones": [8, 12, 16],
+      "novedad": false,
+      "orden": 3
+    },
+    {
+      "id": 4,
+      "slug": "torta-de-limon-y-lima",
+      "nombre": "Torta de limón y lima",
+      "categoria": "clasicos",
+      "subcategoria": "tortas",
+      "estado": "clasico",
+      "foto": "../assets/provisoria-torta-limon.webp",
+      "descripcion": "Capas de crema con lima fresca y merengue, sobre base de vainilla.",
+      "porciones": [12, 20],
+      "novedad": false,
+      "orden": 4
+    },
+    {
+      "id": 5,
+      "slug": "cheesecake-de-frutos-rojos",
+      "nombre": "Cheesecake de frutos rojos",
+      "categoria": "clasicos",
+      "subcategoria": "tortas",
+      "estado": "clasico",
+      "foto": null,
+      "descripcion": "Cremoso, fresco y cubierto de frutos rojos.",
+      "porciones": [12, 20],
+      "novedad": false,
+      "orden": 5
+    },
+    {
+      "id": 6,
+      "slug": "brownie-con-frutos-rojos",
+      "nombre": "Brownie con frutos rojos",
+      "categoria": "clasicos",
+      "subcategoria": "tortas",
+      "estado": "clasico",
+      "foto": null,
+      "descripcion": "Base de brownie, crema y frutos rojos frescos, con esferas de chocolate.",
+      "porciones": [12, 20],
+      "novedad": false,
+      "orden": 6
+    },
+    {
+      "id": 7,
+      "slug": "caja-de-porciones",
+      "nombre": "Caja de porciones",
+      "categoria": "clasicos",
+      "subcategoria": "porciones",
+      "estado": "clasico",
+      "foto": null,
+      "descripcion": "Porciones surtidas de los clásicos, para llevar o regalar.",
+      "porciones": [6, 12],
+      "novedad": false,
+      "orden": 7
+    },
+    {
+      "id": 8,
+      "slug": "torta-infantil-tematica",
+      "nombre": "Torta infantil temática",
+      "categoria": "creaciones",
+      "subcategoria": "infantiles",
+      "estado": "encargo",
+      "foto": null,
+      "descripcion": "Diseño a medida sobre el personaje o el tema del cumpleaños. Contanos la idea y la cotizamos.",
+      "porciones": [20, 30, 40],
+      "novedad": false,
+      "orden": 8
+    },
+    {
+      "id": 9,
+      "slug": "torta-vintage",
+      "nombre": "Torta vintage con buttercream",
+      "categoria": "creaciones",
+      "subcategoria": "vintage",
+      "estado": "encargo",
+      "foto": null,
+      "descripcion": "Decoración en buttercream con boquilla, en la paleta que elijas.",
+      "porciones": [12, 20, 30],
+      "novedad": true,
+      "orden": 9
+    },
+    {
+      "id": 10,
+      "slug": "torta-floral",
+      "nombre": "Torta floral",
+      "categoria": "creaciones",
+      "subcategoria": "florales",
+      "estado": "encargo",
+      "foto": null,
+      "descripcion": "Flores naturales o de crema, según la fecha y la ocasión.",
+      "porciones": [12, 20, 30],
+      "novedad": false,
+      "orden": 10
+    },
+    {
+      "id": 11,
+      "slug": "torta-numero-o-letra",
+      "nombre": "Torta número o letra",
+      "categoria": "creaciones",
+      "subcategoria": "numero",
+      "estado": "encargo",
+      "foto": null,
+      "descripcion": "Base sablé con crema, flores y macarons. Se arma con los números o letras que pidas.",
+      "porciones": [15, 25],
+      "novedad": false,
+      "orden": 11
+    },
+    {
+      "id": 12,
+      "slug": "torta-de-pisos",
+      "nombre": "Torta de pisos",
+      "categoria": "creaciones",
+      "subcategoria": "vintage",
+      "estado": "encargo",
+      "foto": null,
+      "descripcion": "Dos o tres pisos para eventos grandes. Se cotiza según porciones y diseño.",
+      "porciones": [40, 60, 80],
+      "novedad": false,
+      "orden": 12
+    },
+    {
+      "id": 13,
+      "slug": "mesa-dulce",
+      "nombre": "Mesa dulce",
+      "categoria": "creaciones",
+      "subcategoria": "mesas",
+      "estado": "encargo",
+      "foto": null,
+      "descripcion": "Combinación de tortas, porciones y bocados dulces, armada para tu celebración.",
+      "porciones": [30, 50, 80],
+      "novedad": false,
+      "orden": 13
+    },
+    {
+      "id": 14,
+      "slug": "pan-dulce",
+      "nombre": "Pan dulce",
+      "categoria": "temporada",
+      "subcategoria": null,
+      "estado": "temporada",
+      "foto": null,
+      "descripcion": "Frutos secos tostados (avellanas, castañas, nueces y almendras) y chips de chocolate, glaseado con aroma a naranja. Aprox. 700 g.",
+      "porciones": [],
+      "novedad": false,
+      "orden": 14
+    },
+    {
+      "id": 15,
+      "slug": "box-papa-noel",
+      "nombre": "Box Papá Noel",
+      "categoria": "temporada",
+      "subcategoria": null,
+      "estado": "temporada",
+      "foto": null,
+      "descripcion": "Cookies para decorar, manga de glasé, confites, muffin de chocolate y carta para Papá Noel.",
+      "porciones": [],
+      "novedad": false,
+      "orden": 15
+    },
+    {
+      "id": 16,
+      "slug": "torta-dia-de-la-madre",
+      "nombre": "Torta Día de la Madre",
+      "categoria": "temporada",
+      "subcategoria": null,
+      "estado": "temporada",
+      "foto": null,
+      "descripcion": "Edición de temporada para el 18 de octubre. Preventa con fecha de retiro.",
+      "porciones": [12, 20],
+      "novedad": true,
+      "orden": 16
+    }
+  ]
+}

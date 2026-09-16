@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi pedido | SENTIDA Pastelería</title>
+  <meta name="description" content="Revisá lo que elegiste y pedí tu presupuesto a SENTIDA por WhatsApp.">
+  <meta name="theme-color" content="#FEFAF8">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="catalogo.css">
+  <script src="pedido.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html" aria-label="SENTIDA, inicio"><img src="../assets/logo-sentida.svg" alt="SENTIDA Pastelería" width="180" height="46"></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-principal"><span></span><span></span><span></span><span class="sr-only menu-label">Abrir menú</span></button>
+      <nav id="nav-principal" aria-label="Navegación principal">
+        <a href="../index.html#inicio">Inicio</a><a href="index.html">Catálogo</a><a href="../index.html#celebraciones">Mesas dulces</a><a href="../index.html#pedido">Pedidos</a><a href="../index.html#nosotras">Nosotras</a><a href="../index.html#contacto">Contacto</a>
+      </nav>
+      <a class="bag" href="pedido.html" aria-label="Ver mi pedido">
+        <svg viewBox="0 0 32 36" aria-hidden="true"><path d="M7 11h18l2 22H5L7 11Z"/><path d="M11 13V8a5 5 0 0 1 10 0v5"/></svg>
+        <span class="bag-n" id="bag-n" hidden>0</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <div class="ped-shell">
+
+      <div class="ped-head">
+        <div class="eb">Solicitud de presupuesto</div>
+        <h1>Mi pedido</h1>
+        <div class="n" id="ped-total" role="status" aria-live="polite">—</div>
+      </div>
+
+      <div class="ped-vacio" id="ped-vacio" hidden>
+        Todavía no elegiste nada. <a href="index.html">Mirá el catálogo</a> y sumá lo que te guste.
+      </div>
+
+      <div class="ped-lista" id="ped-lista"></div>
+
+      <div id="ped-cierre" hidden>
+        <div class="ped-form">
+          <div class="ped-campo">
+            <label for="ped-fecha">¿Para qué día lo necesitás?</label>
+            <input type="date" id="ped-fecha">
+          </div>
+          <div class="ped-campo">
+            <label for="ped-comentario">Contanos la idea</label>
+            <textarea id="ped-comentario" placeholder="Para cuántas personas, el tema o los colores, si hay alguna alergia, si lo retirás o querés envío…"></textarea>
+          </div>
+        </div>
+
+        <div class="ped-previo">
+          <div class="eb">Esto es lo que les va a llegar</div>
+          <pre id="ped-previo-texto"></pre>
+        </div>
+
+        <div class="ped-enviar">
+          <a class="whatsapp" id="env-anto" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.13a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.17c-.25-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.63.8-.78.96-.14.17-.29.19-.54.06-.25-.12-1.05-.38-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.41-.55-.42h-.47c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.06s.89 2.39 1.01 2.56c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.57.2-1.07.14-1.17-.06-.11-.22-.17-.47-.29Z"/></svg>
+            Enviar a Anto
+          </a>
+          <a class="whatsapp" id="env-nadia" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.13a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.17c-.25-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.63.8-.78.96-.14.17-.29.19-.54.06-.25-.12-1.05-.38-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.41-.55-.42h-.47c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.06s.89 2.39 1.01 2.56c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.57.2-1.07.14-1.17-.06-.11-.22-.17-.47-.29Z"/></svg>
+            Enviar a Nadia
+          </a>
+        </div>
+
+        <p class="ped-aviso">No hace falta que dejes tu nombre ni tu teléfono: llegan solos con el mensaje de WhatsApp. Te respondemos con el presupuesto y coordinamos desde ahí.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer id="contacto">
+    <a class="brand footer-brand" href="../index.html"><img src="../assets/logo-sentida.svg" alt="SENTIDA Pastelería" width="160" height="41"></a>
+    <nav aria-label="Navegación del pie">
+      <a href="../index.html#inicio">Inicio</a><a href="index.html">Catálogo</a><a href="../index.html#celebraciones">Mesas dulces</a><a href="../index.html#pedido">Pedidos</a><a href="../index.html#nosotras">Nosotras</a><a href="../index.html#contacto">Contacto</a>
+    </nav>
+    <div class="footer-contact">
+      <p class="footer-place etiqueta">Martínez, Buenos Aires</p>
+      <p><a href="https://wa.me/5491158300787?text=Hola%20SENTIDA%2C%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">Anto · 11 5830-0787</a></p>
+      <p><a href="https://wa.me/5491131459646?text=Hola%20SENTIDA%2C%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener">Nadia · 11 3145-9646</a></p>
+      <p class="social"><a href="https://www.instagram.com/sentidapasteleria/" target="_blank" rel="noopener" aria-label="SENTIDA en Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1"/></svg><span>@sentidapasteleria</span></a></p>
+    </div>
+    <p class="footer-tagline etiqueta"><span>Lo soñás, lo creamos</span></p>
+  </footer>
+</body>
+</html>
