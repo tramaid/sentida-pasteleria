@@ -259,6 +259,7 @@ footer nav a{padding:var(--sp-2) 0}
   text-decoration:none; border-bottom:1px solid transparent;
 }
 .footer-contact a:hover,.footer-contact a:focus-visible{border-color:var(--color-borde)}
+.footer-sello{width:84px; height:auto; margin:0 0 var(--sp-3) auto; display:block}
 .footer-contact .footer-place{margin-bottom:var(--sp-1)}
 .social svg{width:17px; height:17px; flex:none; fill:none; stroke:var(--color-texto); stroke-width:1.4}
 
@@ -337,6 +338,7 @@ footer nav a{padding:var(--sp-2) 0}
   }
   .footer-brand img{width:175px}
   .footer-contact{text-align:center; justify-self:auto; font-size:var(--fs-meta)}
+  .footer-sello{margin-inline:auto}
   .footer-contact a{justify-content:center}
   .footer-tagline{gap:var(--sp-3)}
 }

@@ -37,6 +37,9 @@
   --marron-medio:#6C4D38;
   --celeste:#DDE6ED;
   --celeste-profundo:#46627A;
+  /* El celeste real del logo, medido del SVG. Es color gráfico,
+     no de texto: sobre el blanco cálido da 2,2:1. */
+  --celeste-logo:#8FB1C9;
 
   /* Roles */
   --fondo:var(--blanco);
@@ -94,7 +97,7 @@ em,i{font-style:normal; font-weight:500}
 /* El doble filete celeste: la segunda línea mide el 78 % de la primera.
    Es el único grafismo recurrente del sistema. */
 .filete{display:flex; flex-direction:column; gap:3px; width:120px}
-.filete::before,.filete::after{content:""; height:1px; background:var(--acento); opacity:.55}
+.filete::before,.filete::after{content:""; height:1px; background:var(--celeste-logo)}
 .filete::after{width:78%}
 .filete.centro{margin-inline:auto}
 .filete.centro::after{align-self:center}
@@ -127,8 +130,8 @@ em,i{font-style:normal; font-weight:500}
   max-width:var(--ancho); margin-inline:auto; padding:var(--s4) var(--gutter);
   display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:var(--s5);
 }
-.cab-marca{font-family:var(--display); font-weight:600; font-size:1.6rem; letter-spacing:.14em; text-decoration:none}
-.cab-marca small{display:block; font-family:var(--ui); font-size:9px; letter-spacing:.34em; color:var(--texto-2); margin-top:2px}
+.cab-marca{display:block; text-decoration:none}
+.cab-marca img{width:170px; height:auto; display:block}
 .cab-nav{display:flex; justify-content:center; gap:clamp(.4rem,1.15vw,1.15rem); flex-wrap:nowrap}
 .cab-nav a{
   font-size:11px; letter-spacing:.12em; text-transform:uppercase;
@@ -151,7 +154,8 @@ em,i{font-style:normal; font-weight:500}
 .pie ul{list-style:none; margin:0; padding:0; display:grid; gap:var(--s2)}
 .pie a{display:inline-block; padding-block:var(--s2); text-decoration:none; font-size:var(--fs-meta); color:var(--texto-2)}
 .pie a:hover{color:var(--texto)}
-.pie-sello{width:92px; height:auto; margin-bottom:var(--s4)}
+/* Por debajo de unos 90px la bajada del sello deja de leerse */
+.pie-sello{width:112px; height:auto; margin-bottom:var(--s4)}
 .pie-fin{
   border-top:var(--linea); padding:var(--s4) var(--gutter);
   max-width:var(--ancho); margin-inline:auto; text-align:center;
@@ -386,6 +390,7 @@ em,i{font-style:normal; font-weight:500}
 
 @media (max-width:860px){
   .cab-in{grid-template-columns:1fr auto}
+  .cab-marca img{width:140px}
   .cab-burger{display:block}
   .cab-nav{
     position:absolute; top:100%; left:0; right:0; background:var(--fondo);
