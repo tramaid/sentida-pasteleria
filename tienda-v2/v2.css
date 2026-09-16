@@ -7,26 +7,16 @@
    sin itálicas, ninguna etiqueta por debajo de 11px, y el marrón
    oscuro es el único color de acción.
 
-   TIPOGRAFÍA DE MARCA: Agatho Regular, de Andrii Shevchyk
-   (andfonts.com). El archivo que tenemos es la versión demo: los
-   glifos acentuados dibujan un aviso de "personal use only", así
-   que en español es inusable y además no se puede publicar sin
-   licencia comercial. Hasta que esté la licenciada, la display va
-   en Cormorant Garamond, que es lo más parecido que hay libre:
-   Agatho es una serif transicional, no una didone, así que Bodoni
-   quedaba más lejos. Al comprar la licencia, se descomenta el
-   bloque @font-face de abajo y se cambia una línea en --display.
+   TIPOGRAFÍA: Erode, de Indian Type Foundry (Nikhil Ranganathan y
+   Jeremie Hornus), servida por Fontshare. Licencia libre para uso
+   comercial, al revés que Agatho, cuyo único archivo disponible era
+   la demo: ahí los glifos acentuados dibujaban un aviso de "personal
+   use only" y en español era inusable. Erode tiene los acentos
+   completos y con la misma métrica que las letras base.
+   Se eligió por parecido: Erode 500 es lo más cercano a Agatho de
+   todo lo probado, por encima de Prata, Cormorant y Bodoni.
    ============================================================ */
 
-/* Cuando esté la licencia de Agatho: dejar los .woff2 en fuentes/,
-   descomentar este bloque y poner "Agatho" primero en --display.
-   La conversión es: fonttools  ->  font.flavor = "woff2"  (1,5 MB -> 41 KB).
-
-@font-face{font-family:Agatho; src:url("fuentes/agatho-regular.woff2") format("woff2");
-           font-weight:400; font-style:normal; font-display:swap}
-@font-face{font-family:Agatho; src:url("fuentes/agatho-medium.woff2") format("woff2");
-           font-weight:500; font-style:normal; font-display:swap}
-*/
 
 :root{
   /* Paleta de marca */
@@ -53,7 +43,7 @@
   --acento-fondo:var(--celeste);
 
   /* Tipografía */
-  --display:"Prata", Georgia, serif;
+  --display:"Erode", Georgia, serif;
   --ui:"Montserrat", "Helvetica Neue", Arial, sans-serif;
   --fs-xl:clamp(3rem, 7vw, 5.75rem);
   --fs-h1:clamp(2.25rem, 4.6vw, 3.75rem);
@@ -85,7 +75,7 @@ img{max-width:100%; display:block}
 figure{margin:0}
 a{color:inherit}
 button{font:inherit}
-h1,h2,h3{font-family:var(--display); font-weight:400; margin:0; line-height:1.05; text-wrap:balance}
+h1,h2,h3{font-family:var(--display); font-weight:500; margin:0; line-height:1.05; text-wrap:balance}
 p{margin:0}
 em,i{font-style:normal; font-weight:500}
 :focus-visible{outline:2px solid var(--acento); outline-offset:3px}
@@ -176,7 +166,7 @@ em,i{font-style:normal; font-weight:500}
   display:flex; flex-direction:column; justify-content:center;
   padding:var(--s7) var(--s8) var(--s7) var(--gutter);
 }
-.hero-marca{font-family:var(--display); font-weight:400; font-size:var(--fs-xl); letter-spacing:.1em; line-height:1}
+.hero-marca{font-family:var(--display); font-weight:500; font-size:var(--fs-xl); letter-spacing:.1em; line-height:1}
 .hero-lema{font-family:var(--display); font-size:var(--fs-h2); color:var(--texto-2); margin-top:var(--s3)}
 .hero-baja{font-size:var(--fs-chico); color:var(--texto-2); max-width:34ch; margin-top:var(--s5)}
 .hero-cta{display:flex; flex-wrap:wrap; gap:var(--s3); margin-top:var(--s7)}
@@ -232,7 +222,7 @@ em,i{font-style:normal; font-weight:500}
 .prod-estado.encargo{background:var(--acento-fondo); color:var(--acento)}
 .prod-estado.agotado{background:var(--superficie); color:var(--texto-2)}
 .prod-cuerpo{padding-top:var(--s4); display:flex; flex-direction:column; gap:var(--s1); flex:1}
-.prod-nom{font-family:var(--display); font-size:1.4rem; line-height:1.15}
+.prod-nom{font-family:var(--display); font-weight:500; font-size:1.4rem; line-height:1.15}
 .prod-desc{font-size:var(--fs-meta); color:var(--texto-2); margin-top:var(--s1)}
 .prod-pie{margin-top:auto; padding-top:var(--s4); display:flex; align-items:baseline; justify-content:space-between; gap:var(--s3)}
 .prod-precio{font-size:var(--fs-chico); font-weight:600}
@@ -311,7 +301,7 @@ em,i{font-style:normal; font-weight:500}
   content:""; position:absolute; top:var(--s3); right:var(--s3);
   width:10px; height:10px; background:var(--accion); border-radius:50%;
 }
-.opcion .t{font-family:var(--display); font-size:1.3rem}
+.opcion .t{font-family:var(--display); font-weight:500; font-size:1.3rem}
 .opcion .s{font-size:var(--fs-meta); color:var(--texto-2)}
 .opcion .p{font-size:var(--fs-etiqueta); letter-spacing:var(--track); text-transform:uppercase; color:var(--texto-2); margin-top:var(--s2)}
 
