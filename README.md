@@ -19,6 +19,17 @@ Luego visitar `http://localhost:8080`.
 - `app.js`: menú mobile y navegación activa.
 - `assets/`: logo, fotografías y recursos originales.
 
+## Datos de contacto
+
+SENTIDA elabora en Martínez, Buenos Aires, y no tiene local a la calle. Los pedidos se toman por WhatsApp:
+
+- Anto: `https://wa.me/5491158300787` (11 5830-0787)
+- Nadia: `https://wa.me/5491131459646` (11 3145-9646)
+- Instagram: `https://www.instagram.com/sentidapasteleria/`
+
+El prefijo `54 9` es obligatorio para que WhatsApp resuelva móviles argentinos; no quitarlo al editar.
+
 ## Pendientes comerciales
 
-El botón de WhatsApp conserva una URL vacía (`https://wa.me/`) porque no se proporcionó el número real. Los enlaces de redes se mantienen internos por la misma razón.
+- Dos tarjetas de "Nuestros favoritos" muestran un producto distinto al que anuncia su título (ver `QA.md`).
+- No hay definición sobre precios, detalle por producto ni zona de entrega.
