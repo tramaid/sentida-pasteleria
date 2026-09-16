@@ -51,6 +51,7 @@
    Base
    ------------------------------------------------------------ */
 *,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none !important}
 html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
 body{
   margin:0;
@@ -66,6 +67,10 @@ a{color:inherit}
 img{max-width:100%}
 em,i{font-style:normal; font-weight:500}          /* sin itálicas */
 :focus-visible{outline:2px solid var(--color-acento-texto); outline-offset:4px}
+::selection{background:var(--color-acento-fondo); color:var(--color-texto)}
+::-moz-selection{background:var(--color-acento-fondo); color:var(--color-texto)}
+html{scrollbar-color:var(--color-borde) var(--color-fondo)}
+input,textarea{caret-color:var(--color-acento-texto)}
 
 .sr-only{position:absolute; width:1px; height:1px; clip:rect(0,0,0,0); overflow:hidden}
 .skip-link{
@@ -74,6 +79,11 @@ em,i{font-style:normal; font-weight:500}          /* sin itálicas */
   padding:var(--sp-3) var(--sp-4); border-radius:var(--radio);
 }
 .skip-link:focus{top:var(--sp-4)}
+
+/* Bajada: una frase debajo de un título no es una etiqueta. En caja alta
+   con 0,2 em de tracking a 12 px se lee mal y la etiqueta está pensada
+   para dos o tres palabras. */
+.bajada{font-size:var(--fs-texto-chico); color:var(--color-texto-2); line-height:1.5}
 
 /* Etiqueta: Montserrat, caja alta, tracking abierto, nunca bajo 11px */
 .etiqueta{
@@ -178,12 +188,25 @@ em,i{font-style:normal; font-weight:500}          /* sin itálicas */
 .section-heading h2{font-size:var(--fs-h2); line-height:1.05}
 .section-heading>p{margin-top:var(--sp-2)}
 .section-heading .filete{margin-inline:auto}
+.ver-todo{text-align:center; margin-top:var(--sp-7)}
 
+/* Eran seis columnas dentro de 1100 px: tarjetas de 170 px para
+   fotografía de producto. Con tres, la foto llega a 340 y se ve la torta.
+   subgrid alinea título, bajada y foto entre tarjetas aunque un nombre
+   ocupe dos líneas. */
 .products{
-  display:grid; grid-template-columns:repeat(6,1fr); gap:var(--sp-3);
+  display:grid; grid-template-columns:repeat(3,1fr); gap:var(--sp-6) var(--sp-5);
   max-width:var(--ancho-max); margin-inline:auto;
+  grid-template-rows:repeat(2, auto auto auto);
 }
-.product{text-align:center; min-width:0}
+.product{
+  text-align:center; min-width:0;
+  display:grid; grid-row:span 3; grid-template-rows:subgrid; gap:0;
+}
+@supports not (grid-template-rows:subgrid){
+  .products{grid-template-rows:none}
+  .product{grid-row:auto; display:block}
+}
 /* height:auto neutraliza el atributo height del HTML, que si no gana
    sobre aspect-ratio y devuelve la tarjeta a 9:16 */
 .product img{
@@ -218,9 +241,11 @@ em,i{font-style:normal; font-weight:500}          /* sin itálicas */
 
 /* Única firma que sobrevive de las cuatro frases manuscritas (AUD-05, opción A):
    fondo liso, redonda, marrón medio al 100 % — 7,3:1 */
-.firma{
+/* Iba a 15 px: .story-copy>p (0,1,1) le ganaba a .firma (0,1,0) y la
+   regla de marca dice que Cormorant no baja de 28 px. */
+.story-copy>p.firma{
   font-family:var(--font-display); font-size:1.75rem; line-height:1.25;
-  color:var(--color-texto-2); max-width:18ch;
+  color:var(--color-texto-2); max-width:18ch; margin-bottom:0;
 }
 
 /* ------------------------------------------------------------
@@ -236,7 +261,7 @@ em,i{font-style:normal; font-weight:500}          /* sin itálicas */
 .order-side p{text-align:center}
 .order-center{text-align:center}
 .order h2{font-size:var(--fs-h2); line-height:1.05}
-.order-center>.etiqueta{margin:var(--sp-2) 0 var(--sp-5)}
+.order-center>.bajada{margin:var(--sp-2) 0 var(--sp-5)}
 .order-actions{display:flex; flex-wrap:wrap; gap:var(--sp-3); justify-content:center}
 
 /* ------------------------------------------------------------
@@ -315,15 +340,18 @@ footer nav a{padding:var(--sp-2) 0}
 
   .products{
     display:flex; overflow-x:auto; scroll-snap-type:x mandatory;
-    padding-bottom:var(--sp-2);
+    grid-template-rows:none; padding-bottom:var(--sp-2);
   }
-  .product{flex:0 0 13rem; scroll-snap-align:start}
+  .product{flex:0 0 13rem; scroll-snap-align:start; display:block; grid-row:auto}
 
+  /* Estaban en display:none y en mobile se perdían los dos textos.
+     Quedan, sin los íconos, como una línea bajo los botones. */
   .order{grid-template-columns:1fr; text-align:center}
-  .order-side{display:none}
+  .order-side{gap:0}
+  .order-side svg{display:none}
+  .order-side p{font-size:var(--fs-meta)}
 
   footer{grid-template-columns:170px 1fr auto; padding-inline:var(--sp-5)}
-  .footer-contact{font-size:var(--fs-etiqueta)}
 }
 
 @media (max-width:600px){
@@ -350,5 +378,4 @@ footer nav a{padding:var(--sp-2) 0}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .button:hover,.button:focus-visible{transform:none}
-  *,*::before,*::after{animation-duration:.01ms !important; animation-iteration-count:1 !important}
 }

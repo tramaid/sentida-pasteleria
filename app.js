@@ -29,7 +29,14 @@ const links = document.querySelectorAll('.site-header nav a');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
-    links.forEach(link => link.classList.toggle('active', link.hash === `#${entry.target.id}`));
+    links.forEach(link => {
+      const activo = link.hash === `#${entry.target.id}`;
+      link.classList.toggle('active', activo);
+      // El estado activo era solo visual: sin aria-current no llegaba
+      // a quien navega con lector de pantalla.
+      if (activo) link.setAttribute('aria-current', 'true');
+      else link.removeAttribute('aria-current');
+    });
   });
 }, {rootMargin: '-25% 0px -65% 0px'});
 sections.forEach(section => observer.observe(section));

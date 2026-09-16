@@ -114,26 +114,34 @@
   /* ---------- tarjetas ---------- */
   var ICONO_TORTA = '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M15 49h34M18 45h28V31H18v14Zm6-14v-8h16v8M28 23v-9M36 23v-9M24 16c2-3 4-3 6 0M34 16c2-3 4-3 6 0"/></svg>';
 
+  // Sin porciones cargadas no se afirma nada. Antes devolvía 'Unidad',
+  // que para una torta es tan inventado como los 8/12/16 que había.
   function lineaPorciones(p) {
-    if (!p.porciones || !p.porciones.length) return 'Unidad';
+    if (!p.porciones || !p.porciones.length) return '';
     if (p.porciones.length === 1) return p.porciones[0] + ' porciones';
     return 'desde ' + p.porciones[0] + ' porciones · ' + p.porciones.length + ' tamaños';
+  }
+
+  function esc(t) {
+    return String(t == null ? '' : t)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
   function tarjeta(p) {
     var est = ESTADOS[p.estado] || ESTADOS.encargo;
     var foto = p.foto
-      ? '<img src="' + p.foto + '" alt="' + p.nombre + '" loading="lazy">'
+      ? '<img src="' + esc(p.foto) + '" alt="' + esc(p.nombre) + '" loading="lazy">'
       : '<span class="v2-sin-foto">' + ICONO_TORTA + '<span>Provisoria</span></span>';
     var el = document.createElement('div');
     el.className = 'v2-card entrando';
     el.innerHTML =
-      '<button type="button" class="v2-card-foto" data-ver="' + p.id + '" aria-label="Ver ' + p.nombre + '">' +
+      '<button type="button" class="v2-card-foto" data-ver="' + p.id + '" aria-label="Ver ' + esc(p.nombre) + '">' +
         '<span class="v2-chip ' + est.clase + '">' + est.texto + '</span>' + foto +
       '</button>' +
       '<div class="v2-card-body">' +
-        '<button type="button" class="v2-card-nombre" data-ver="' + p.id + '">' + p.nombre + '</button>' +
-        '<div class="v2-card-peso">' + lineaPorciones(p) + '</div>' +
+        '<button type="button" class="v2-card-nombre" data-ver="' + p.id + '">' + esc(p.nombre) + '</button>' +
+        (lineaPorciones(p) ? '<div class="v2-card-peso">' + lineaPorciones(p) + '</div>' : '') +
         '<div class="v2-card-foot">' +
           '<span class="v2-card-precio">A consultar</span>' +
           (p.estado === 'agotado'
@@ -224,7 +232,7 @@
     quienAbrio = origen || null;
     var est = ESTADOS[p.estado] || ESTADOS.encargo;
     var foto = p.foto
-      ? '<img src="' + p.foto + '" alt="' + p.nombre + '">'
+      ? '<img src="' + esc(p.foto) + '" alt="' + esc(p.nombre) + '">'
       : '<span class="v2-sin-foto">' + ICONO_TORTA + '<span>Provisoria</span></span>';
     var porciones = (p.porciones || []).map(function (n, i) {
       return '<button type="button" class="vr-porcion' + (i === 0 ? ' on' : '') + '" data-porcion="' + n + '">' + n + ' porciones</button>';
@@ -233,8 +241,8 @@
       '<div class="vr-foto">' + foto + '</div>' +
       '<div class="vr-info">' +
         '<p class="etiqueta">' + est.texto + '</p>' +
-        '<h2 id="vr-titulo">' + p.nombre + '</h2>' +
-        '<p class="vr-desc">' + p.descripcion + '</p>' +
+        '<h2 id="vr-titulo">' + esc(p.nombre) + '</h2>' +
+        '<p class="vr-desc">' + esc(p.descripcion) + '</p>' +
         (porciones ? '<div class="vr-porciones" role="group" aria-label="Elegí el tamaño">' + porciones + '</div>' : '') +
         '<label class="sr-only" for="vr-nota">Comentarios para esta creación</label>' +
         '<textarea class="vr-nota" id="vr-nota" placeholder="Tema, colores, alguna alergia…"></textarea>' +
@@ -319,6 +327,7 @@
     var b = this;
     b.disabled = true;
     estado.hasta += POR_PAGINA;
+    estado.pagina = Math.ceil(estado.hasta / POR_PAGINA);
     setTimeout(function () { pintar(true); b.disabled = false; }, 180);
   });
 

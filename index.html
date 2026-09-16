@@ -55,10 +55,11 @@
       <a class="brand" href="#inicio" aria-label="SENTIDA, inicio"><img src="assets/logo-sentida.svg" alt="SENTIDA Pastelería" width="180" height="46"></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-principal"><span></span><span></span><span></span><span class="sr-only menu-label">Abrir menú</span></button>
       <nav id="nav-principal" aria-label="Navegación principal">
-        <a class="active" href="#inicio">Inicio</a><a href="#productos">Productos</a><a href="#celebraciones">Mesas dulces</a><a href="#pedido">Pedidos</a><a href="#nosotras">Nosotras</a><a href="#contacto">Contacto</a>
+        <a class="active" href="#inicio">Inicio</a><a href="#productos">Productos</a><a href="tienda/index.html">Catálogo</a><a href="#celebraciones">Mesas dulces</a><a href="#pedido">Pedidos</a><a href="#nosotras">Nosotras</a><a href="#contacto">Contacto</a>
       </nav>
-      <!-- La bolsa queda como está hasta que exista la tienda de PepperLabs. TIENDA PEPPERLABS: conectar al carrito. -->
-      <a class="bag" href="#productos" aria-label="Ver productos">
+      <!-- Llevaba a #productos con ícono de bolsa: prometía un carrito que no
+           existe. Ahora va al catálogo, que es lo que hay. TIENDA PEPPERLABS: conectar al carrito. -->
+      <a class="bag" href="tienda/index.html" aria-label="Ver el catálogo">
         <svg viewBox="0 0 32 36" aria-hidden="true"><path d="M7 11h18l2 22H5L7 11Z"/><path d="M11 13V8a5 5 0 0 1 10 0v5"/></svg>
       </a>
     </div>
@@ -71,7 +72,7 @@
         <h1 id="hero-title">Pastelería artesanal para momentos que se sienten.</h1>
         <p>Tortas, tartas y creaciones personalizadas hechas con delicadeza, sabor y detalle.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#productos">Ver catálogo</a>
+          <a class="button primary" href="tienda/index.html">Ver catálogo</a>
           <a class="button secondary" href="#pedido">Hacer pedido</a>
         </div>
         <div class="values" aria-label="Valores de SENTIDA">
@@ -85,25 +86,27 @@
     <section class="favorites" id="productos" aria-labelledby="favorites-title">
       <header class="section-heading">
         <h2 id="favorites-title">Nuestros favoritos</h2>
-        <p class="etiqueta">Sabores que siempre son una buena idea</p>
+        <p class="bajada">Sabores que siempre son una buena idea</p>
         <span class="filete" aria-hidden="true"></span>
       </header>
-      <!-- PROVISORIA: las seis fotos se reemplazan en la sesión. Dos tarjetas
-           muestran un producto distinto al que anuncian (ver QA.md, AUD-03). -->
-      <div class="products" role="group" tabindex="0" aria-label="Productos destacados, desplazable horizontalmente">
-        <article class="product"><img src="assets/producto-torta-frutas.webp" alt="Tarta decorada con frutos rojos" width="720" height="1280" loading="lazy"><h3>Tarta frutos rojos</h3><p>Base de masa sablée, crema y frutos rojos frescos.</p></article>
-        <article class="product"><img src="assets/producto-pie-limon.webp" alt="Pie de limón decorado con crema y lima" width="900" height="1600" loading="lazy"><h3>Pie de limón</h3><p>Un clásico irresistible con todo el sabor.</p></article>
-        <article class="product"><img src="assets/producto-cheesecake-frutos-rojos.webp" alt="Cheesecake con frutos rojos" width="900" height="1600" loading="lazy"><h3>Cheesecake</h3><p>Cremoso, fresco y lleno de frutos rojos.</p></article>
-        <article class="product"><img src="assets/producto-tarta-frutillas.webp" alt="Tarta de frutillas con crema" width="900" height="1600" loading="lazy"><h3>Brownie con frutillas</h3><p>Intenso, húmedo y con el equilibrio perfecto.</p></article>
-        <article class="product"><img src="assets/provisoria-torta-limon.webp" alt="Torta de crema decorada con merengue y rodajas de lima" width="900" height="1600" loading="lazy"><h3>Torta Oreo</h3><p>Capas de crema, chocolate y galletas Oreo.</p></article>
-        <article class="product"><img src="assets/producto-tarta-chocolate.webp" alt="Tarta de chocolate" width="1200" height="1600" loading="lazy"><h3>Tarta de chocolate</h3><p>Ganache suave sobre masa crocante.</p></article>
+      <!-- Las seis salen de la lista de productos que pasaron las dueñas.
+           Antes el bloque anunciaba una "Torta Oreo" que mostraba una torta de
+           limón, un "Brownie con frutillas" que mostraba una tarta de frutillas,
+           y tres productos que no están en esa lista. -->
+      <div class="products" role="group" tabindex="0" aria-label="Productos destacados">
+        <article class="product"><img src="assets/producto-key-lime-pie.webp" alt="Key Lime Pie con merengue y rodajas de lima" width="1000" height="1000" loading="lazy"><h3>Key Lime Pie</h3><p>Base crocante, curd de lima y merengue.</p></article>
+        <article class="product"><img src="assets/producto-cheesecake-marroc.webp" alt="Cheesecake con cobertura de chocolate y trozos de Marroc" width="1000" height="1000" loading="lazy"><h3>Cheesecake Marroc</h3><p>Cobertura de chocolate con trozos de Marroc.</p></article>
+        <article class="product"><img src="assets/producto-brownie-frutos-rojos.webp" alt="Brownie con crema, frutos rojos y bombones" width="1000" height="1000" loading="lazy"><h3>Brownie con dulce de leche y frutos rojos</h3><p>Base de brownie, dulce de leche, crema y frutos rojos.</p></article>
+        <article class="product"><img src="assets/producto-frutillas-con-crema.webp" alt="Tarta cubierta de frutillas frescas sobre crema" width="1000" height="1000" loading="lazy"><h3>Frutillas con crema</h3><p>Frutillas frescas sobre crema, con un toque de lima.</p></article>
+        <article class="product"><img src="assets/producto-pavlova-lima.webp" alt="Pavlova de merengue con crema, curd de lima y frutos de estación" width="1000" height="1000" loading="lazy"><h3>Pavlova con curd de lima</h3><p>Merengue, crema, curd de lima y frutos de estación.</p></article>
+        <article class="product"><img src="assets/producto-chocotorta.webp" alt="Chocotorta con capas de galleta de chocolate y crema" width="1000" height="1000" loading="lazy"><h3>Chocotorta</h3><p>Capas de galleta de chocolate y crema de dulce de leche.</p></article>
       </div>
+      <p class="ver-todo"><a class="button secondary" href="tienda/index.html">Ver el catálogo completo</a></p>
     </section>
 
     <!-- PROVISORIA: reemplazar por foto real de la sesión -->
     <section class="celebrations" id="celebraciones" aria-labelledby="celebrations-title">
       <div class="celebrations-copy">
-        <p class="etiqueta">Creaciones únicas</p>
         <h2 id="celebrations-title">Creaciones para cumpleaños y celebraciones</h2>
         <p>Tortas y mesas dulces personalizadas para hacer de cada ocasión un momento inolvidable. Contanos tu idea y la hacemos realidad.</p>
         <a class="button secondary" href="#pedido">Contanos tu idea</a>
@@ -122,11 +125,11 @@
     <section class="order" id="pedido" aria-labelledby="order-title">
       <div class="order-side">
         <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M10 52C17 27 32 14 53 9c-3 24-14 39-35 42M18 51c9-14 18-24 31-34"/></svg>
-        <p class="etiqueta">Tortas, tartas, mesas dulces y más</p>
+        <p class="bajada">Tortas, tartas, mesas dulces y más</p>
       </div>
       <div class="order-center">
         <h2 id="order-title">Hacé tu pedido</h2>
-        <p class="etiqueta">Contanos qué tenés en mente</p>
+        <p class="bajada">Contanos qué tenés en mente</p>
         <div class="order-actions">
           <a class="whatsapp" href="https://wa.me/5491158300787?text=Hola%20SENTIDA%2C%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.13a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.17c-.25-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.63.8-.78.96-.14.17-.29.19-.54.06-.25-.12-1.05-.38-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.41-.55-.42h-.47c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.06s.89 2.39 1.01 2.56c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.57.2-1.07.14-1.17-.06-.11-.22-.17-.47-.29Z"/></svg> Escribile a Anto</a>
           <a class="whatsapp" href="https://wa.me/5491131459646?text=Hola%20SENTIDA%2C%20quiero%20hacer%20un%20pedido." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.13a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.17 8.17 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.17c-.25-.12-1.46-.72-1.69-.8-.22-.09-.39-.13-.55.12-.17.25-.63.8-.78.96-.14.17-.29.19-.54.06-.25-.12-1.05-.38-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.14.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.55-1.34-.76-1.83-.2-.48-.4-.41-.55-.42h-.47c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.06s.89 2.39 1.01 2.56c.13.16 1.74 2.66 4.22 3.73.59.25 1.05.4 1.41.52.59.19 1.13.16 1.56.1.47-.07 1.46-.6 1.67-1.18.2-.57.2-1.07.14-1.17-.06-.11-.22-.17-.47-.29Z"/></svg> Escribile a Nadia</a>
@@ -134,7 +137,7 @@
       </div>
       <div class="order-side">
         <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12 52h40M16 47h32V32H16v15Zm7-15V22h18v10M28 22v-9M37 22v-9M24 16c2-3 5-3 7 0M34 16c2-3 5-3 7 0"/></svg>
-        <p class="etiqueta">Creaciones personalizadas para cada ocasión</p>
+        <p class="bajada">Creaciones personalizadas para cada ocasión</p>
       </div>
     </section>
   </main>
@@ -142,7 +145,7 @@
   <footer id="contacto">
     <a class="brand footer-brand" href="#inicio"><img src="assets/logo-sentida.svg" alt="SENTIDA Pastelería" width="160" height="41"></a>
     <nav aria-label="Navegación del pie">
-      <a href="#inicio">Inicio</a><a href="#productos">Productos</a><a href="#celebraciones">Mesas dulces</a><a href="#pedido">Pedidos</a><a href="#nosotras">Nosotras</a><a href="#contacto">Contacto</a>
+      <a href="#inicio">Inicio</a><a href="#productos">Productos</a><a href="tienda/index.html">Catálogo</a><a href="#celebraciones">Mesas dulces</a><a href="#pedido">Pedidos</a><a href="#nosotras">Nosotras</a><a href="#contacto">Contacto</a>
     </nav>
     <div class="footer-contact">
       <img class="footer-sello" src="assets/SENTIDASELLO.svg" alt="" width="84" height="84" loading="lazy">

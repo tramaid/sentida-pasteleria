@@ -17,15 +17,22 @@ abierto y cerrado, en ventanas de 900 y 2000 px de alto:
 - Sin `font-style: italic` ni Segoe Print en el CSS.
 - Los únicos hex del CSS son los siete tokens de la paleta de marca.
 
+## Resuelto en la auditoría del 16/09/2026
+
+- Las seis tarjetas de «Nuestros favoritos» se rehicieron con la lista real de
+  productos. Ya no hay una «Torta Oreo» que muestre una torta de limón ni un
+  «Brownie con frutillas» que muestre una tarta de frutillas.
+- **Sello de «tienda de pasteles»:** se revisaron las 40 fotos del repositorio
+  una por una. Llevaban el sello cinco: tres en `assets/` (borradas o
+  reemplazadas) y dos en `tienda-v2/fotos/` (`deco-letra-s` y
+  `producto-pavlova-lima`, recortadas). Ninguna foto publicada lo lleva hoy.
+- El catálogo de `/tienda/` se rehizo contra la misma lista real. Las porciones
+  inventadas (8/12/16 por producto) se vaciaron.
+
 ## Pendiente de la sesión de fotos
 
-- «Torta Oreo» muestra una torta de limón, que además repite el producto de
-  la tarjeta 2. «Brownie con frutillas» muestra una tarta de frutillas.
-- **Varias fotos del banco llevan el sello de «tienda de pasteles»**, la marca
-  anterior: se ve en `producto-torta-frutas.webp`, en
-  `producto-cheesecake-frutos-rojos.webp` y en
-  `producto-brownie-frutos-rojos.webp`. Revisar todas antes de publicar.
-- Las fotos son verticales 9:16 recortadas a 1:1; falta `object-position` por
+- Ocho de las catorce tortas y dos productos de pastelería no tienen foto.
+- Las fotos son verticales de celular recortadas; falta `object-position` por
   foto hasta tener tomas cuadradas.
 - Los tres fondos (hero, celebraciones, proceso) siguen siendo provisorios.
 - Falta el retrato de Anto y Nadia para Nosotras.
@@ -37,4 +44,6 @@ abierto y cerrado, en ventanas de 900 y 2000 px de alto:
 - Bloque «Cómo pedir» (EST-04): falta seña, anticipación, zonas y costo de envío.
 - Horario de retiro y sello circular del pie (EST-06).
 - Facebook: no se conectó porque no hay cuenta confirmada.
-- Precio y detalle por producto: hoy las tarjetas no son clickeables.
+- Precio y detalle por producto.
+- Porciones y tamaños de las tortas clásicas: nadie los definió.
+- Si «Chocotorta» es el nombre correcto de la foto que la muestra con Oreos.

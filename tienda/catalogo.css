@@ -109,14 +109,9 @@
    Cabecera del listado
    ------------------------------------------------------------ */
 .cat-main-head{margin-bottom:16px}
-.cat-main-head .eb{
-  font-family:var(--font-texto); font-size:var(--fs-etiqueta);
-  letter-spacing:var(--tracking-etiqueta); text-transform:uppercase;
-  color:var(--acento); font-weight:500;
-}
 .cat-main-head h1{
   font-family:var(--font-display); font-size:clamp(28px,3.4vw,40px);
-  font-weight:500; color:var(--ink); letter-spacing:-.01em; margin:6px 0 0;
+  font-weight:500; color:var(--ink); letter-spacing:-.01em; margin:0;
 }
 .cat-main-head .n{font-family:var(--font-texto); font-size:var(--fs-meta); color:var(--ink-soft); margin-top:4px}
 
@@ -187,10 +182,12 @@
 .v2-chip.temporada{background:var(--color-boton); color:var(--color-boton-texto)}
 
 .v2-card-body{padding:13px 14px 15px; display:flex; flex-direction:column; gap:3px; flex:1}
+/* Era un botón de 20 px de alto en todos los anchos: por debajo de los
+   24×24 que pide la 2.5.8 AA. El padding vertical lo lleva a 28. */
 .v2-card-nombre{
   font-family:var(--font-texto); font-size:var(--fs-texto-chico); font-weight:600;
   line-height:1.3; color:var(--ink); text-decoration:none; text-align:left;
-  background:none; border:0; padding:0; cursor:pointer;
+  background:none; border:0; padding:4px 0; margin:-4px 0; cursor:pointer;
 }
 .v2-card-nombre:hover{color:var(--acento)}
 .v2-card-peso{
@@ -198,7 +195,10 @@
   color:var(--ink-soft); margin-bottom:8px; text-transform:uppercase;
 }
 .v2-card-foot{margin-top:auto; display:flex; align-items:center; justify-content:space-between; gap:8px}
+/* "A consultar" se partía en dos líneas en mobile y desalineaba el
+   pie de las tarjetas entre columnas. */
 .v2-card-precio{
+  white-space:nowrap;
   font-family:var(--font-texto); font-size:var(--fs-etiqueta); font-weight:500;
   letter-spacing:var(--tracking-etiqueta); text-transform:uppercase; color:var(--ink-soft);
 }
@@ -351,12 +351,7 @@
   padding:clamp(18px,3vw,30px) clamp(20px,4.5vw,52px) 40px;
 }
 .ped-head{margin-bottom:var(--sp-6)}
-.ped-head .eb{
-  font-family:var(--font-texto); font-size:var(--fs-etiqueta);
-  letter-spacing:var(--tracking-etiqueta); text-transform:uppercase;
-  color:var(--acento); font-weight:500;
-}
-.ped-head h1{font-family:var(--font-display); font-size:clamp(28px,3.4vw,40px); font-weight:500; margin:6px 0 0}
+.ped-head h1{font-family:var(--font-display); font-size:clamp(28px,3.4vw,40px); font-weight:500; margin:0}
 .ped-head .n{font-family:var(--font-texto); font-size:var(--fs-meta); color:var(--ink-soft); margin-top:4px}
 
 .ped-vacio{
