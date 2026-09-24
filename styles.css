@@ -2,7 +2,7 @@
    SENTIDA Pastelería — sistema visual
    Tokens y reglas según la base visual de TRAMA (16/09/2026).
    Reglas duras: el celeste nunca va en texto; sin itálicas;
-   Cormorant solo en títulos; ninguna etiqueta por debajo de 11px.
+   Erode solo en títulos; ninguna etiqueta por debajo de 11px.
    ============================================================ */
 
 :root{
@@ -27,7 +27,7 @@
   --color-boton-texto:var(--sentida-blanco);
 
   /* --- Tipografía --- */
-  --font-display:"Cormorant Garamond", Georgia, serif;
+  --font-display:"Erode", Georgia, serif;
   --font-texto:"Montserrat", "Helvetica Neue", Arial, sans-serif;
   --fs-h1:clamp(2.5rem, 5vw, 3.5rem);      /* 40–56 */
   --fs-h2:clamp(1.875rem, 3.5vw, 2.25rem); /* 30–36 */
@@ -163,11 +163,22 @@ input,textarea{caret-color:var(--color-acento-texto)}
 /* ------------------------------------------------------------
    Hero
    ------------------------------------------------------------ */
-.hero{
-  position:relative; min-height:26rem;
-  background:var(--color-superficie) url("assets/hero-sentida-desktop.webp") center/cover no-repeat;
+/* Las tres secciones con foto eran panorámicas generadas con el texto
+   encima. Con las fotos reales, verticales, pasan a dos columnas: texto
+   de un lado, foto del otro. La foto va absoluta para que la altura la
+   marque el texto y no el formato de la imagen. */
+.hero,.celebrations,.story{
+  display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); align-items:center;
 }
-.hero-content{padding:var(--sp-7) var(--gutter) var(--sp-6); max-width:38rem}
+.hero-foto,.celebrations-foto{position:relative; margin:0; align-self:stretch; min-height:100%}
+.hero-foto img,.celebrations-foto img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; display:block;
+}
+
+.hero{min-height:34rem; background:var(--color-superficie)}
+.hero-foto img{object-position:center 38%}
+.hero-content{padding:var(--sp-8) var(--sp-7) var(--sp-7) var(--gutter); max-width:40rem; justify-self:end}
 .hero h1{font-size:var(--fs-h1); line-height:.95; letter-spacing:-.025em; margin-bottom:var(--sp-4); max-width:14ch}
 .hero-content>p{font-size:var(--fs-texto-chico); margin-bottom:var(--sp-5); max-width:38ch}
 .hero-actions{display:flex; flex-wrap:wrap; gap:var(--sp-3)}
@@ -223,26 +234,31 @@ input,textarea{caret-color:var(--color-acento-texto)}
 /* ------------------------------------------------------------
    Celebraciones e historia
    ------------------------------------------------------------ */
-.celebrations{
-  position:relative; min-height:22rem; display:flex; align-items:center;
-  background:var(--color-fondo) url("assets/celebraciones-30-desktop.webp") center/cover no-repeat;
-}
-.celebrations-copy{width:52%; margin-left:48%; padding:var(--sp-7) var(--sp-7) var(--sp-7) var(--sp-5)}
+.celebrations{min-height:26rem; background:var(--color-fondo)}
+.celebrations-foto img{object-position:center 45%}
+.celebrations-copy{padding:var(--sp-8) var(--gutter) var(--sp-8) var(--sp-7); max-width:40rem}
 .celebrations h2{font-size:var(--fs-h2); line-height:1.05; margin:var(--sp-2) 0 var(--sp-4)}
 .celebrations-copy>p:not(.etiqueta){font-size:var(--fs-texto-chico); max-width:46ch; margin-bottom:var(--sp-5)}
 
-.story{
-  position:relative; min-height:20rem; display:flex; align-items:center;
-  background:var(--color-superficie) url("assets/proceso-crema-desktop.webp") center/cover no-repeat;
+.story{background:var(--color-superficie)}
+.story-copy{padding:var(--sp-8) var(--sp-7) var(--sp-8) var(--gutter); max-width:40rem; justify-self:end}
+.story-fotos{
+  display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-4);
+  padding:var(--sp-8) var(--gutter) var(--sp-8) 0; max-width:36rem;
 }
-.story-copy{width:52%; padding:var(--sp-7) var(--gutter)}
+.story-fotos figure{margin:0}
+.story-fotos img{
+  width:100%; height:auto; aspect-ratio:3/4; object-fit:cover;
+  display:block; border-radius:8px;
+}
+.story-fotos figcaption{margin-top:var(--sp-2); text-align:center}
 .story h2{font-size:var(--fs-h2); line-height:1.05}
 .story-copy>p{font-size:var(--fs-texto-chico); max-width:46ch; margin:var(--sp-4) 0 var(--sp-5)}
 
 /* Única firma que sobrevive de las cuatro frases manuscritas (AUD-05, opción A):
    fondo liso, redonda, marrón medio al 100 % — 7,3:1 */
 /* Iba a 15 px: .story-copy>p (0,1,1) le ganaba a .firma (0,1,0) y la
-   regla de marca dice que Cormorant no baja de 28 px. */
+   regla de marca dice que la display no baja de 28 px. */
 .story-copy>p.firma{
   font-family:var(--font-display); font-size:1.75rem; line-height:1.25;
   color:var(--color-texto-2); max-width:18ch; margin-bottom:0;
@@ -314,28 +330,17 @@ footer nav a{padding:var(--sp-2) 0}
   .site-header nav.open{display:flex}
   .site-header nav a{padding:var(--sp-3) var(--sp-2)}
 
-  .hero,.celebrations,.story{
-    display:flex; flex-direction:column; align-items:stretch;
-    min-height:0; background-image:none;
-  }
-  .hero{background-color:var(--color-superficie)}
-  .celebrations{background-color:var(--color-fondo)}
-  .story{background-color:var(--color-superficie)}
-
-  .hero::after,.celebrations::after,.story::after{
-    content:""; display:block; width:100%; aspect-ratio:1.8/1;
-    background-size:cover; background-repeat:no-repeat;
-  }
-  .hero::after{background-image:url("assets/hero-sentida-mobile.webp"); background-position:62% center; order:2}
-  .celebrations::after{background-image:url("assets/celebraciones-30-mobile.webp"); background-position:center; order:1}
-  .story::after{background-image:url("assets/proceso-crema-mobile.webp"); background-position:70% center; order:2}
+  .hero,.celebrations,.story{display:flex; flex-direction:column; align-items:stretch; min-height:0}
+  .hero-foto,.celebrations-foto{min-height:0; aspect-ratio:4/3}
 
   .hero-content{order:1}
+  .hero-foto{order:2}
+  .celebrations-foto{order:1}
   .celebrations-copy{order:2}
-  .story-copy{order:1}
   .hero-content,.celebrations-copy,.story-copy{
     width:100%; max-width:none; margin:0; padding:var(--sp-6) var(--sp-5);
   }
+  .story-fotos{max-width:none; padding:0 var(--sp-5) var(--sp-7); gap:var(--sp-3)}
   .values{gap:var(--sp-5)}
 
   .products{
@@ -356,7 +361,7 @@ footer nav a{padding:var(--sp-2) 0}
 
 @media (max-width:600px){
   .hero h1{max-width:none}
-  .hero::after,.celebrations::after,.story::after{aspect-ratio:1.5/1}
+  .hero-foto,.celebrations-foto{aspect-ratio:1/1}
   .favorites{padding-inline:var(--sp-4)}
   .products{margin-right:calc(var(--sp-4) * -1)}
   .order{margin-inline:var(--sp-4)}

@@ -1,11 +1,13 @@
 {
   "_nota": "Fuente única de datos de la v3: la usan la home, el catálogo, la ficha y el configurador. Los productos son los que pasaron las dueñas; no se agrega ninguno que no esté en esa lista.",
-  "_pendiente": "porciones vacías a propósito: nadie las definió para las tortas clásicas. Faltan también precio, seña, anticipación mínima, costos de envío y horarios de retiro.",
+  "_pendiente": "porciones vacías a propósito: nadie las definió para las tortas clásicas. Faltan también precio, seña, anticipación mínima, costos de envío y horarios de retiro. Confirmar con las dueñas: que la Torta Matilda es la de chocolate de la foto, y si la «Marquise con dulce de leche y frutos rojos» de su nota es el mismo producto que el brownie con dulce de leche y frutos rojos. Chupitos: definir sabores y si se venden por unidad o por caja.",
   "_fotos_sin_asignar": [
-    "cheesecake con frutos rojos (dos tomas)",
-    "tarta con base sablée, crema, frutos rojos y bombones (dos tomas)",
-    "brownie con crema, frutillas y bombones",
-    "tarta de chocolate con ganache",
+    "chupitos, tres tomas más (maracuyá, dulce de leche, flores); falta la lista de sabores",
+    "carrot cake en cuadraditos con rosetas (CARROTSMINI) — ¿producto aparte?",
+    "torta de chocolate, tres tomas más",
+    "Anto y Nadia trabajando en la masa con flores (WORKING)",
+    "cheesecake con frutos rojos (dos tomas, llevan el sello viejo)",
+    "brownie con crema, frutillas y bombones (lleva el sello viejo)",
     "tarta de frutillas (tres tomas más)",
     "cheesecake con cobertura de chocolate y trozos (segunda toma)",
     "key lime pie (dos tomas más)",
@@ -52,6 +54,10 @@
         {
           "slug": "cupcakes",
           "nombre": "Cupcakes"
+        },
+        {
+          "slug": "chupitos",
+          "nombre": "Chupitos"
         }
       ]
     },
@@ -70,7 +76,7 @@
       "subcategoria": "",
       "estado": "clasico",
       "foto": "../assets/producto-key-lime-pie.webp",
-      "descripcion": "Base crocante, curd de lima y merengue.",
+      "descripcion": "Base crocante de galletitas, curd de lima y crema chantilly.",
       "porciones": [],
       "destacado": true,
       "orden": 1
@@ -109,7 +115,7 @@
       "subcategoria": "",
       "estado": "clasico",
       "foto": "../assets/producto-frutillas-con-crema.webp",
-      "descripcion": "Frutillas frescas sobre crema, con un toque de lima.",
+      "descripcion": "Frutillas frescas sobre crema, en base sablée de vainilla.",
       "porciones": [],
       "destacado": true,
       "orden": 4
@@ -122,7 +128,7 @@
       "subcategoria": "",
       "estado": "clasico",
       "foto": "../assets/producto-pavlova-lima.webp",
-      "descripcion": "Merengue, crema, curd de lima y frutos de estación.",
+      "descripcion": "Crema, curd de lima y frutas de estación.",
       "porciones": [],
       "destacado": true,
       "orden": 5
@@ -173,7 +179,7 @@
       "categoria": "pasteleria",
       "subcategoria": "cookies",
       "estado": "clasico",
-      "foto": "../assets/past-galletas-decoradas.webp",
+      "foto": null,
       "descripcion": "Con glasé, a tema o con el nombre.",
       "porciones": [],
       "destacado": false,
@@ -199,7 +205,7 @@
       "categoria": "pasteleria",
       "subcategoria": "cupcakes",
       "estado": "clasico",
-      "foto": "../assets/past-cupcakes-tematicos.webp",
+      "foto": null,
       "descripcion": "Con personajes en pasta de azúcar.",
       "porciones": [],
       "destacado": false,
@@ -212,7 +218,7 @@
       "categoria": "pasteleria",
       "subcategoria": "cookies",
       "estado": "clasico",
-      "foto": "../assets/past-galletas-tematicas.webp",
+      "foto": "../assets/deco-galletas-dino.webp",
       "descripcion": "Para acompañar la torta del cumpleaños.",
       "porciones": [],
       "destacado": false,
@@ -226,7 +232,7 @@
       "subcategoria": "",
       "estado": "clasico",
       "foto": null,
-      "descripcion": "El clásico de la casa.",
+      "descripcion": "Estilo New York: base de galletitas de vainilla, salsa de frutos rojos y crema chantilly.",
       "porciones": [],
       "destacado": false,
       "orden": 13
@@ -251,7 +257,7 @@
       "categoria": "tortas",
       "subcategoria": "",
       "estado": "clasico",
-      "foto": null,
+      "foto": "../assets/producto-brownie-chantilly.webp",
       "descripcion": "",
       "porciones": [],
       "destacado": false,
@@ -264,8 +270,8 @@
       "categoria": "tortas",
       "subcategoria": "",
       "estado": "clasico",
-      "foto": null,
-      "descripcion": "",
+      "foto": "../assets/producto-sablee-frutos-rojos.webp",
+      "descripcion": "Base sablée con dulce de leche, crema y frutos rojos.",
       "porciones": [],
       "destacado": false,
       "orden": 16
@@ -277,7 +283,7 @@
       "categoria": "tortas",
       "subcategoria": "",
       "estado": "clasico",
-      "foto": null,
+      "foto": "../assets/producto-carrot-cake.webp",
       "descripcion": "",
       "porciones": [],
       "destacado": false,
@@ -290,7 +296,7 @@
       "categoria": "tortas",
       "subcategoria": "",
       "estado": "clasico",
-      "foto": null,
+      "foto": "../assets/producto-torta-matilda.webp",
       "descripcion": "",
       "porciones": [],
       "destacado": false,
@@ -316,7 +322,7 @@
       "categoria": "tortas",
       "subcategoria": "",
       "estado": "clasico",
-      "foto": null,
+      "foto": "../assets/producto-havannet.webp",
       "descripcion": "",
       "porciones": [],
       "destacado": false,
@@ -329,7 +335,7 @@
       "categoria": "temporada",
       "subcategoria": "",
       "estado": "temporada",
-      "foto": null,
+      "foto": "../assets/producto-pan-dulce.webp",
       "descripcion": "Frutos secos tostados y chips de chocolate, glaseado con aroma a naranja. Aprox. 700 g.",
       "porciones": [],
       "destacado": false,
@@ -347,24 +353,38 @@
       "porciones": [],
       "destacado": false,
       "orden": 22
+    },
+    {
+      "id": 23,
+      "slug": "choco-oreo",
+      "nombre": "Choco Oreo",
+      "categoria": "tortas",
+      "subcategoria": "",
+      "estado": "clasico",
+      "foto": "../assets/producto-choco-oreo.webp",
+      "descripcion": "Base de galletitas Oreo, dulce de leche y crema chantilly.",
+      "porciones": [],
+      "destacado": false,
+      "orden": 23
+    },
+    {
+      "id": 24,
+      "slug": "chupitos",
+      "nombre": "Chupitos",
+      "categoria": "pasteleria",
+      "subcategoria": "chupitos",
+      "estado": "clasico",
+      "foto": "../assets/past-chupitos.webp",
+      "descripcion": "Postres en vaso, en distintos sabores.",
+      "porciones": [],
+      "destacado": false,
+      "orden": 13
     }
   ],
   "galeria_decoradas": [
     {
-      "foto": "../assets/deco-tematica-hp.webp",
-      "alt": "Torta temática de Harry Potter"
-    },
-    {
-      "foto": "../assets/deco-tematica-frozen.webp",
-      "alt": "Tortas temáticas de Frozen con Olaf"
-    },
-    {
       "foto": "../assets/deco-numero-15.webp",
       "alt": "Torta número 15 con macarons y flores"
-    },
-    {
-      "foto": "../assets/deco-tematica-vaquita.webp",
-      "alt": "Torta infantil con motivo de vaquita"
     },
     {
       "foto": "../assets/deco-numero-celeste.webp",
@@ -375,20 +395,32 @@
       "alt": "Torta con forma de letra S y flores"
     },
     {
-      "foto": "../assets/deco-tematica-golf.webp",
-      "alt": "Torta temática de golf con galletas a juego"
-    },
-    {
-      "foto": "../assets/deco-tematica-tiktok.webp",
-      "alt": "Torta temática de TikTok"
-    },
-    {
       "foto": "../assets/deco-numero-cactus.webp",
       "alt": "Torta número 30 de galletas con cactus"
     },
     {
       "foto": "../assets/deco-dos-pisos.webp",
       "alt": "Torta de dos pisos con flores naturales"
+    },
+    {
+      "foto": "../assets/deco-flores-naturales.webp",
+      "alt": "Torta alta de buttercream con corona de flores naturales"
+    },
+    {
+      "foto": "../assets/deco-hello-30.webp",
+      "alt": "Torta de cumpleaños mitad «RIP 20s» y mitad «hello 30s» con flores"
+    },
+    {
+      "foto": "../assets/deco-letra-d.webp",
+      "alt": "Torta con forma de letra D con flores, hojas de monstera y sombrillitas"
+    },
+    {
+      "foto": "../assets/deco-flores-comestibles.webp",
+      "alt": "Torta alta de buttercream con pétalos de flores comestibles"
+    },
+    {
+      "foto": "../assets/deco-galletas-dino.webp",
+      "alt": "Galletas decoradas de dinosaurios con la letra M"
     }
   ],
   "configurador": {
@@ -487,5 +519,6 @@
       "Flores naturales",
       "Decoraciones extraordinarias"
     ]
-  }
+  },
+  "_marcas_y_nombres": "Regla del brief de TRAMA: en la web comercial no van tortas con personajes con marca registrada ni con nombres de chicos. Se sacaron de la galería Harry Potter, Frozen (VICKY y MORA), la vaquita de Toy Story, golf (BENITO) y TikTok (FRANCESCA); y de pastelería las fotos de Angry Birds, Paw Patrol y Cars (BRUNO). Los archivos se borraron el 24/09/2026 junto con /tienda/ y /tienda-v2/; se recuperan desde el historial de git."
 }
