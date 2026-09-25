@@ -68,6 +68,13 @@ def test_el_pie_lleva_a_las_tres_partes(abrir):
     assert hrefs(pg, ".pie-links a")[:4] == ["tortas/", "decoradas/", "antojos/", "#madre"]
 
 
+def test_el_pie_no_lleva_el_sentida_gigante(abrir):
+    # El pie cierra con el sello y los enlaces, como en el resto del sitio: nada en letra enorme.
+    pg = abrir()
+    mayor = pg.eval_on_selector_all(".pie *", "es => Math.max(...es.map(e => parseFloat(getComputedStyle(e).fontSize)))")
+    assert mayor <= 28
+
+
 def test_la_barra_del_celular_sigue_siendo_whatsapp(abrir):
     pg = abrir(390, 844, is_mobile=True, has_touch=True)
     assert pg.get_attribute(".barra-pedido", "href").startswith("https://wa.me/5491158300787?text=")

@@ -417,13 +417,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex="0"]:focus-
 .tel{white-space:nowrap}
 
 /* ------------------------------------------------------------
-   Pie. El «SENTIDA» gigante es decorativo: no recibe clics y queda
-   debajo de los enlaces.
+   Pie
    ------------------------------------------------------------ */
-.pie{background:var(--marron); color:var(--crema); overflow:hidden}
+.pie{background:var(--marron); color:var(--crema)}
 .pie a{color:var(--crema)}
 .pie a:hover{color:var(--blanco); text-decoration:underline; text-underline-offset:4px}
-.pie-in{position:relative; z-index:1; padding-top:72px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px}
+.pie-in{padding-block:72px 48px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px}
 .pie-marca{display:flex; align-items:center; gap:20px}
 .pie-marca img{width:88px; height:88px; background:var(--blanco); border-radius:50%}
 .pie-marca p{font-family:var(--display); font-size:28px; line-height:1.1; color:var(--blanco)}
@@ -431,11 +430,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex="0"]:focus-
 .pie-links ul{list-style:none; padding:0}
 .pie-links a{display:inline-flex; align-items:center; min-height:44px}
 .pie-links p{padding-top:6px; line-height:1.9}
-.pie-gigante{
-  font-family:var(--display); font-weight:500; font-size:23vw; line-height:.78;
-  letter-spacing:-.045em; color:var(--marron-medio); text-align:center;
-  padding:48px 0 .06em; pointer-events:none; user-select:none;
-}
 .pie-fin{padding-block:20px; border-top:1px solid var(--marron-medio); display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; font-size:12px}
 
 .barra-pedido{display:none}
@@ -531,7 +525,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex="0"]:focus-
   .deco-pisos{margin-top:40px}
   .deco-celeste{grid-column:1 / -1; width:62%; justify-self:end}
   .deco-15{margin-top:10vh}
-  .pie-gigante{padding-bottom:.1em}
 }
 
 @media (prefers-reduced-motion:reduce){
