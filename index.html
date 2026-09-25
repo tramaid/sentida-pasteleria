@@ -27,7 +27,7 @@
      comercial) y Montserrat (OFL). Sin hojas de terceros que bloqueen el render. -->
 <link rel="preload" href="assets/fuentes/erode-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fuentes/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="assets/fotos/hero-flores-960.webp" imagesrcset="assets/fotos/hero-flores-640.webp 640w, assets/fotos/hero-flores-960.webp 960w, assets/fotos/hero-flores-1220.webp 1220w" imagesizes="(max-width: 899px) and (orientation: landscape) and (max-height: 560px) 50vw, (max-width: 899px) 100vw, 50vw" fetchpriority="high">
+<link rel="preload" as="image" href="assets/fotos/hero-key-lime-1400.webp" imagesrcset="assets/fotos/hero-key-lime-800.webp 800w, assets/fotos/hero-key-lime-1400.webp 1400w, assets/fotos/hero-key-lime-2048.webp 2048w" imagesizes="(max-width: 899px) and (orientation: landscape) and (max-height: 560px) 60vw, (max-width: 899px) 100vw, 62vw" fetchpriority="high">
 <link rel="stylesheet" href="home.css">
 <link rel="stylesheet" href="comun/ticket.css">
 <script>
@@ -41,6 +41,7 @@
 })(document.documentElement);
 </script>
 <script src="home.js" defer></script>
+<script src="hero.js" defer></script>
 <script src="comun/base.js" defer></script>
 <script src="comun/pedido-mensaje.js" defer></script>
 <script src="comun/carrito.js" data-raiz="" defer></script>
@@ -71,6 +72,8 @@
   <symbol id="i-flecha" viewBox="0 0 24 24"><path d="M4 12h15M13.5 6.5 19 12l-5.5 5.5"/></symbol>
   <symbol id="i-izq" viewBox="0 0 24 24"><path d="M20 12H5M10.5 6.5 5 12l5.5 5.5"/></symbol>
   <symbol id="i-abajo" viewBox="0 0 24 24"><path d="M12 4v15M6.5 13.5 12 19l5.5-5.5"/></symbol>
+  <symbol id="i-pausa" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12"/></symbol>
+  <symbol id="i-seguir" viewBox="0 0 24 24"><path d="M8 5.5v13l10-6.5-10-6.5Z"/></symbol>
   <symbol id="i-diagonal" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
   <symbol id="i-cerrar" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
@@ -117,7 +120,22 @@
     <p class="hero-lugar">Pastelería artesanal por encargo · Martínez, San Isidro</p>
   </div>
   <figure class="hero-foto">
-    <img src="assets/fotos/hero-flores-960.webp" srcset="assets/fotos/hero-flores-640.webp 640w, assets/fotos/hero-flores-960.webp 960w, assets/fotos/hero-flores-1220.webp 1220w" sizes="(max-width: 899px) and (orientation: landscape) and (max-height: 560px) 50vw, (max-width: 899px) 100vw, 50vw" width="1220" height="1600" alt="Torta alta de buttercream blanco con rombos pintados a mano y una corona de flores naturales" fetchpriority="high">
+    <img class="activa" src="assets/fotos/hero-key-lime-1400.webp" srcset="assets/fotos/hero-key-lime-800.webp 800w, assets/fotos/hero-key-lime-1400.webp 1400w, assets/fotos/hero-key-lime-2048.webp 2048w" sizes="(max-width: 899px) and (orientation: landscape) and (max-height: 560px) 60vw, (max-width: 899px) 100vw, 62vw" width="2048" height="3072" alt="Key Lime Pie con rosetas de crema y rodajas de lima" fetchpriority="high" data-nombre="Key Lime Pie" data-ir="Ver en la tienda" data-href="tortas/#key-lime-pie" style="--pos:50% 50%; --pos-m:50% 50%">
+    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-srcset="assets/fotos/hero-cheesecake-800.webp 800w, assets/fotos/hero-cheesecake-1400.webp 1400w, assets/fotos/hero-cheesecake-2048.webp 2048w" sizes="(max-width: 899px) and (orientation: landscape) and (max-height: 560px) 60vw, (max-width: 899px) 100vw, 62vw" width="2048" height="3072" alt="Cheesecake estilo New York cubierto de frutillas y frutos rojos" aria-hidden="true" decoding="async" data-nombre="Cheesecake estilo New York" data-ir="Ver en la tienda" data-href="tortas/#cheesecake-new-york" style="--pos:50% 50%; --pos-m:50% 50%">
+    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-srcset="assets/fotos/hero-carrot-800.webp 800w, assets/fotos/hero-carrot-1400.webp 1400w, assets/fotos/hero-carrot-2048.webp 2048w" sizes="(max-width: 899px) and (orientation: landscape) and (max-height: 560px) 60vw, (max-width: 899px) 100vw, 62vw" width="2048" height="3072" alt="Carrot cake de tres capas con rosetas de frosting" aria-hidden="true" decoding="async" data-nombre="Carrot cake" data-ir="Ver en la tienda" data-href="tortas/#carrot-cake" style="--pos:50% 42%; --pos-m:50% 45%">
+    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-srcset="assets/fotos/hero-letra-f-800.webp 800w, assets/fotos/hero-letra-f-1400.webp 1400w, assets/fotos/hero-letra-f-2048.webp 2048w" sizes="(max-width: 899px) and (orientation: landscape) and (max-height: 560px) 60vw, (max-width: 899px) 100vw, 62vw" width="2048" height="3072" alt="Torta con forma de letra F, con macarons, rosas y una gerbera" aria-hidden="true" decoding="async" data-nombre="Torta con letra" data-ir="Armá la tuya" data-href="decoradas/?ref=letras" style="--pos:50% 30%; --pos-m:50% 35%">
+    <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-srcset="assets/fotos/hero-marroc-800.webp 800w, assets/fotos/hero-marroc-1400.webp 1400w, assets/fotos/hero-marroc-2048.webp 2048w" sizes="(max-width: 899px) and (orientation: landscape) and (max-height: 560px) 60vw, (max-width: 899px) 100vw, 62vw" width="2048" height="3072" alt="Cheesecake Marroc con cobertura de chocolate y trozos de Marroc" aria-hidden="true" decoding="async" data-nombre="Cheesecake Marroc" data-ir="Ver en la tienda" data-href="tortas/#cheesecake-marroc" style="--pos:50% 50%; --pos-m:50% 25%">
+    <figcaption class="hero-pie">
+      <a class="hero-etiqueta" href="tortas/#key-lime-pie"><span class="hero-etiqueta-n">Key Lime Pie</span> · <span class="hero-etiqueta-ir">Ver en la tienda</span><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-flecha"/></svg></a>
+      <div class="hero-avance" hidden>
+        <button type="button" data-foto="0" aria-label="Foto 1 de 5: Key Lime Pie"><span class="hero-barra"><span></span></span></button>
+        <button type="button" data-foto="1" aria-label="Foto 2 de 5: Cheesecake estilo New York"><span class="hero-barra"><span></span></span></button>
+        <button type="button" data-foto="2" aria-label="Foto 3 de 5: Carrot cake"><span class="hero-barra"><span></span></span></button>
+        <button type="button" data-foto="3" aria-label="Foto 4 de 5: Torta con letra"><span class="hero-barra"><span></span></span></button>
+        <button type="button" data-foto="4" aria-label="Foto 5 de 5: Cheesecake Marroc"><span class="hero-barra"><span></span></span></button>
+        <button type="button" class="hero-pausa" aria-label="Pausar las fotos"><svg class="ico ico-pausa" aria-hidden="true" focusable="false"><use href="#i-pausa"/></svg><svg class="ico ico-seguir" aria-hidden="true" focusable="false"><use href="#i-seguir"/></svg></button>
+      </div>
+    </figcaption>
   </figure>
 </section>
 

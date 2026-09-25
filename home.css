@@ -137,28 +137,60 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex="0"]:focus-
 }
 
 /* ------------------------------------------------------------
-   01 Hero: producto primero. Foto, promesa y botón en el primer frame.
+   01 Hero: producto primero. El texto queda quieto sobre crema y las
+   fotos (a sangre, a la derecha) se funden con el crema en un degradado.
+   hero.js las turna; sin él se ve la primera.
    ------------------------------------------------------------ */
 .hero{
-  margin-top:var(--cab);
-  display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  position:relative; margin-top:var(--cab); overflow:hidden; background:var(--crema);
+  display:flex; align-items:center;
   min-height:calc(100svh - var(--cab)); max-height:980px;
 }
 .hero-txt{
-  align-self:center; display:flex; flex-direction:column; align-items:flex-start; gap:26px;
-  padding:clamp(40px,7vh,96px) clamp(24px,4vw,72px) clamp(40px,7vh,96px) max(var(--lateral), calc((100vw - var(--ancho)) / 2 + var(--lateral)));
+  /* El margen izquierdo crece en pantallas anchas; el ancho del texto se
+     cuenta aparte, así el título no se parte en más de dos renglones. El
+     texto termina antes de que la foto se vuelva opaca (el 59 % del ancho). */
+  --pad-izq:max(var(--lateral), calc((100vw - var(--ancho)) / 2 + var(--lateral)));
+  position:relative; z-index:2; display:flex; flex-direction:column; align-items:flex-start; gap:26px;
+  width:calc(var(--pad-izq) + min(600px, 55vw - var(--pad-izq)));
+  padding:clamp(40px,7vh,96px) 0 clamp(40px,7vh,96px) var(--pad-izq);
 }
 .hero h1{font-size:clamp(3.25rem,6.4vw,6.25rem); line-height:.9; letter-spacing:-.035em}
 .hero h1 span{display:block; color:var(--marron-medio)}
 .hero-baja{font-family:var(--display); font-size:clamp(1.375rem,2vw,1.875rem); line-height:1.3; max-width:24ch; text-wrap:balance}
 .botones{display:flex; flex-wrap:wrap; gap:10px}
 .hero-lugar{font-size:13px; line-height:1.5; color:var(--marron-medio)}
-.hero-foto{position:relative; overflow:hidden; background:var(--crema)}
-.hero-foto img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 40%}
+.hero-foto{
+  position:absolute; top:0; right:0; bottom:0; left:38%; margin:0; background:var(--crema);
+  -webkit-mask-image:linear-gradient(90deg, transparent 0, rgba(0,0,0,.35) 14%, #000 34%);
+          mask-image:linear-gradient(90deg, transparent 0, rgba(0,0,0,.35) 14%, #000 34%);
+}
+.hero-foto img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:var(--pos, 50% 45%); opacity:0}
+.hero-foto img.activa{opacity:1}
+.mov .hero-foto img{transition:opacity 1.2s ease}
 
-/* El único gesto de entrada: la foto se abre de píldora a rectángulo al
-   cargar. Arranca visible y no depende del scroll. */
-.mov:not(.visto) .hero-foto img{animation:abrir 1.5s cubic-bezier(.16,1,.3,1) both}
+/* Sobre la foto: qué torta es (con su enlace) y las barritas para pasar. */
+.hero-pie{position:absolute; z-index:3; right:var(--lateral); bottom:28px; display:flex; flex-direction:column; align-items:flex-end; gap:10px}
+.hero-etiqueta{display:inline-flex; align-items:center; gap:6px; min-height:36px; padding:8px 12px; background:var(--blanco); border-radius:2px; font-size:13px; font-weight:600; line-height:1.3; color:var(--marron)}
+.hero-etiqueta:hover{color:var(--marron); text-decoration:underline; text-underline-offset:4px}
+.hero-etiqueta-ir{font-weight:400; color:var(--marron-medio)}
+.hero-etiqueta .ico{width:13px; height:13px}
+.hero-avance{display:flex; align-items:center; gap:2px; padding:2px 2px 2px 10px; background:var(--blanco); border-radius:22px}
+.hero-avance[hidden]{display:none}
+.hero-avance [data-foto]{width:40px; height:32px; padding:0 4px; border:0; background:none; cursor:pointer; display:grid; align-items:center}
+.hero-barra{display:block; height:3px; border-radius:2px; background:var(--beige); overflow:hidden}
+.hero-barra span{display:block; width:0; height:100%; background:var(--marron)}
+.hero-avance .hecho .hero-barra span,.hero-avance .activo .hero-barra span{width:100%}
+.mov .hero:not(.hero-quieto) .hero-avance .activo .hero-barra span{animation:llenar 6.5s linear both}
+@keyframes llenar{from{width:0} to{width:100%}}
+.hero-pausa{display:grid; place-items:center; width:32px; height:32px; margin-left:2px; padding:0; border:0; border-radius:50%; background:var(--crema); color:var(--marron); cursor:pointer}
+.hero-pausa .ico{width:15px; height:15px}
+.hero-pausa .ico-seguir,.hero-pausa.en-pausa .ico-pausa{display:none}
+.hero-pausa.en-pausa .ico-seguir{display:block}
+
+/* El único gesto de entrada: la primera foto se abre de píldora a
+   rectángulo al cargar. Arranca visible y no depende del scroll. */
+.mov:not(.visto) .hero-foto img:first-child{animation:abrir 1.5s cubic-bezier(.16,1,.3,1) both}
 @keyframes abrir{
   from{clip-path:inset(6% 12% round 999px); transform:scale(1.06)}
   to{clip-path:inset(0 round 0); transform:none}
@@ -420,9 +452,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex="0"]:focus-
 
   /* La foto no puede empujar el botón fuera del primer frame ni debajo
      de la barra de pedido: se limita por ancho y por alto. */
-  .hero{display:flex; flex-direction:column; min-height:0; max-height:none}
-  .hero-foto{order:-1; height:min(80vw, 48svh)}
-  .hero-txt{align-self:stretch; padding:28px var(--lateral) 40px; gap:22px}
+  .hero{flex-direction:column; align-items:stretch; min-height:0; max-height:none}
+  .hero-foto{
+    position:relative; inset:auto; order:-1; flex:none; height:min(92vw, 54svh);
+    -webkit-mask-image:linear-gradient(0deg, transparent 0, rgba(0,0,0,.4) 14%, #000 36%);
+            mask-image:linear-gradient(0deg, transparent 0, rgba(0,0,0,.4) 14%, #000 36%);
+  }
+  .hero-foto img{object-position:var(--pos-m, var(--pos))}
+  .hero-pie{top:14px; bottom:auto}
+  .hero-txt{width:auto; margin-top:-48px; padding:0 var(--lateral) 40px; gap:22px}
 
   .carta-intro{flex-basis:min(78vw,360px); padding-top:0}
   .plato,.carta-otra{flex-basis:min(72vw,320px); margin-top:0}
@@ -463,9 +501,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex="0"]:focus-
 
 /* Celular apaisado: foto y texto lado a lado, texto compacto. */
 @media (max-width:899px) and (orientation:landscape) and (max-height:560px){
-  .hero{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); min-height:calc(100svh - var(--cab))}
-  .hero-foto{order:0; height:auto}
-  .hero-txt{padding:16px var(--lateral); gap:14px}
+  .hero{flex-direction:row; align-items:center; min-height:calc(100svh - var(--cab))}
+  .hero-foto{
+    position:absolute; top:0; right:0; bottom:0; left:40%; height:auto;
+    -webkit-mask-image:linear-gradient(90deg, transparent 0, rgba(0,0,0,.35) 14%, #000 34%);
+            mask-image:linear-gradient(90deg, transparent 0, rgba(0,0,0,.35) 14%, #000 34%);
+  }
+  .hero-foto img{object-position:var(--pos)}
+  .hero-pie{top:auto; bottom:14px}
+  .hero-txt{width:52%; margin-top:0; padding:16px var(--lateral); gap:14px}
   .hero h1{font-size:2.5rem}
   .hero-baja{font-size:1.125rem}
   .hero .chip{font-size:13px}

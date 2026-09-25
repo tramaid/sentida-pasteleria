@@ -53,6 +53,16 @@ Propuesta para las dueñas: queda así hasta que ellas la revisen. Spec en
   tienda; las fotos de decoradas abren la comanda con su referencia
   (`?ref=`); «Cómo pedir» ofrece la tienda, Decoradas y WhatsApp directo. El
   Día de la Madre y la barra de WhatsApp del celular siguen iguales.
+- **El hero de la home** tiene el texto quieto y cinco fotos que se turnan
+  (`hero.js`): Key Lime, cheesecake New York, carrot, la torta con letra y el
+  cheesecake Marroc, a sangre y fundidas con el crema. Para cambiar una foto,
+  pasar la nueva (JPEG, PNG o WebP; 2048 x 3072 va bien) por
+  `python herramientas/preparar_foto.py --hero <archivo> hero-key-lime` (o
+  `hero-cheesecake`, `hero-carrot`, `hero-letra-f`, `hero-marroc`): borra los
+  tamaños anteriores y arma los nuevos. Si la nueva tiene otro ancho, hay que
+  corregir en `index.html` el `srcset` (y el preload, si es la Key Lime), el
+  `width` y el `height` de esa foto. El encuadre de cada una se ajusta con
+  `--pos` (escritorio) y `--pos-m` (celular) en su `style`.
 - **La tienda** se genera: `python herramientas/generar_tienda.py` arma
   `tortas/index.html` y `antojos/index.html` desde `datos/catalogo.json`.
   No se editan a mano. Una foto nueva se prepara con
