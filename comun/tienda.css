@@ -1,0 +1,60 @@
+/* ============================================================
+   SENTIDA · la tienda: Nuestras tortas y Antojos (TRAMA, 24/09/2026)
+   Grilla de productos y, al costado, el ticket «Tu pedido». Sin
+   JavaScript, cada tarjeta se pide con su enlace de WhatsApp.
+   ============================================================ */
+.tienda{margin-top:var(--cab)}
+.tienda-in{max-width:var(--ancho); margin:0 auto; padding:clamp(40px,7vh,80px) var(--lateral) clamp(72px,12vh,120px); display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:clamp(24px,4vw,64px); align-items:start}
+.tienda-cab{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:end; gap:16px 40px; margin-bottom:clamp(28px,5vh,48px)}
+.tienda-cab h1{font-size:clamp(3rem,6vw,5.5rem); line-height:.9; letter-spacing:-.03em}
+.tienda-cab p{font-size:16px; line-height:1.6; color:var(--marron-medio); max-width:44ch}
+
+.productos{list-style:none; padding:0; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(28px,3vw,40px) clamp(14px,1.6vw,24px)}
+.producto{display:flex; flex-direction:column; gap:8px}
+.producto-foto{aspect-ratio:4/5; overflow:hidden; border-radius:2px; background:var(--crema); outline:2px solid transparent; outline-offset:4px; transition:outline-color .3s}
+.producto-foto img{width:100%; height:100%; object-fit:cover}
+.sin-foto{display:flex; align-items:flex-end; padding:clamp(14px,1.6vw,22px)}
+.sin-foto span{font-size:clamp(22px,2.2vw,32px); line-height:1.05; letter-spacing:-.01em; color:var(--marron)}
+.producto-tipo{margin-top:6px; font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--celeste-profundo)}
+.producto h3{margin-top:4px; font-size:clamp(20px,1.7vw,24px); line-height:1.1}
+.producto-desc{font-size:14px; line-height:1.5; color:var(--marron-medio)}
+.producto-acc{margin-top:auto; padding-top:8px; display:flex; align-items:center; min-height:56px}
+.producto-agregar{width:100%; height:auto; padding:8px 12px; line-height:1.3; text-align:center}
+.producto.en-pedido .producto-foto{outline-color:var(--beige)}
+.producto.marcada .producto-foto{outline-color:var(--marron)}
+
+.tienda-panel{position:sticky; top:calc(var(--cab) + 24px); display:flex; flex-direction:column; gap:14px}
+.tienda-terminar{width:100%}
+
+.mesa-dulce{margin-top:clamp(72px,12vh,120px); padding-top:clamp(40px,6vh,64px); border-top:1px solid var(--beige); display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.3fr); gap:24px 48px; align-items:end}
+.mesa-dulce h2{font-size:clamp(2.25rem,4vw,3.5rem); line-height:.95; letter-spacing:-.025em}
+.mesa-dulce-txt{display:flex; flex-direction:column; align-items:flex-start; gap:12px}
+.mesa-dulce-txt p{font-size:15px; line-height:1.6; color:var(--marron-medio); max-width:44ch}
+.mesa-fotos{grid-column:1 / -1; list-style:none; padding:0; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px}
+.mesa-fotos .foto{aspect-ratio:4/5; overflow:hidden; border-radius:2px; background:var(--crema)}
+.mesa-fotos img{width:100%; height:100%; object-fit:cover}
+.mesa-fotos figcaption{margin-top:8px; font-size:13px; line-height:1.4; color:var(--marron-medio)}
+
+.tira-pedido{display:none}
+
+@media (max-width:1099px){
+  .tienda-in{grid-template-columns:minmax(0,1fr) 300px}
+  .productos{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:899px){
+  .tienda-in{grid-template-columns:minmax(0,1fr); padding-bottom:120px}
+  .tienda-panel{position:static; max-width:440px}
+  .mesa-dulce{grid-template-columns:minmax(0,1fr); align-items:start}
+  .mesa-fotos{grid-template-columns:repeat(2,minmax(0,1fr))}
+  /* Con algo en el pedido, una tira abajo lo muestra y lo abre. */
+  .tira-pedido{
+    position:fixed; left:12px; right:12px; bottom:calc(12px + env(safe-area-inset-bottom)); z-index:55;
+    display:flex; align-items:center; gap:12px; min-height:56px; padding:6px 6px 6px 16px;
+    background:var(--marron); color:var(--blanco); border-radius:2px; box-shadow:0 10px 24px -10px var(--sombra);
+  }
+  .tira-pedido-t{font-family:var(--display); font-size:18px}
+  .tira-pedido-n{flex:1; font-size:13px; font-weight:600; color:var(--crema)}
+  .tira-pedido button{min-height:44px; padding:0 16px; background:var(--blanco); color:var(--marron); border:0; border-radius:2px; font-family:var(--ui); font-size:11px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; cursor:pointer}
+  .tira-pedido button:focus-visible{outline:2px solid var(--crema); outline-offset:2px}
+  html{scroll-padding-bottom:88px}
+}

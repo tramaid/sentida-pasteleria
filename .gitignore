@@ -1,3 +1,6 @@
 # Artefactos locales de herramientas (críticas de Impeccable, planes en curso)
 .impeccable/
 .superpowers/
+
+# Caché de Python
+__pycache__/

@@ -1,0 +1,128 @@
+/* ============================================================
+   SENTIDA · base común (TRAMA, 24/09/2026)
+   La usan Decoradas, Nuestras tortas y Antojos: tokens, tipografías,
+   botones, cabecera y pie. La home tiene home.css, con los mismos tokens.
+   ============================================================ */
+
+@font-face{font-family:Erode; src:url("../assets/fuentes/erode-400.woff2") format("woff2"); font-weight:400; font-display:swap}
+@font-face{font-family:Erode; src:url("../assets/fuentes/erode-500.woff2") format("woff2"); font-weight:500; font-display:swap}
+@font-face{font-family:Montserrat; src:url("../assets/fuentes/montserrat-latin.woff2") format("woff2"); font-weight:100 900; font-display:swap}
+@font-face{font-family:"Montserrat respaldo"; src:local("Arial"), local("Helvetica"); size-adjust:109.2%; ascent-override:88.6%; descent-override:23%; line-gap-override:0%}
+@font-face{font-family:"Erode respaldo"; src:local("Georgia"); size-adjust:94.4%; ascent-override:98.5%; descent-override:23.3%; line-gap-override:9.5%}
+
+:root{
+  --blanco:#FEFAF8;
+  --crema:#F8EADE;
+  --beige:#CFB59E;
+  --celeste:#DDE6ED;          /* solo relleno chico, nunca texto */
+  --marron:#402D21;
+  --marron-medio:#6C4D38;
+  --celeste-profundo:#46627A;
+  --linea:rgba(207,181,158,.6);
+  --sombra:rgba(64,45,33,.28);
+  --velo:rgba(64,45,33,.45);
+
+  --display:Erode, "Erode respaldo", Georgia, serif;
+  --ui:Montserrat, "Montserrat respaldo", system-ui, sans-serif;
+  --lateral:clamp(20px,4vw,56px);
+  --ancho:1440px;
+  --cab:69px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-padding-top:calc(var(--cab) + 8px); scrollbar-color:var(--beige) var(--blanco)}
+html.mov{scroll-behavior:smooth}
+html,body{margin:0; background:var(--blanco); color:var(--marron); font-family:var(--ui); -webkit-font-smoothing:antialiased; overflow-x:clip}
+a{color:var(--marron); text-decoration:none}
+:where(a:hover){color:var(--marron-medio)}
+img{display:block; max-width:100%; height:auto}
+h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}
+a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex="0"]:focus-visible,
+input:focus-visible,textarea:focus-visible{outline:2px solid var(--celeste-profundo); outline-offset:3px}
+[tabindex="-1"]:focus{outline:none}
+::selection{background:var(--celeste); color:var(--marron)}
+
+.sr{position:absolute!important; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap}
+.saltar{position:fixed; z-index:99; left:16px; top:-6rem; background:var(--marron); color:var(--blanco); padding:12px 16px; border-radius:2px; border:1px solid transparent}
+.saltar:focus{top:16px; color:var(--blanco)}
+.ico{width:1.15em; height:1.15em; flex:none; fill:none; stroke:currentColor; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round}
+.ico-wa{fill:currentColor; stroke:none}
+.display{font-family:var(--display); font-weight:500}
+.envoltorio{max-width:var(--ancho); margin:0 auto; padding-inline:var(--lateral)}
+
+/* Botones y enlaces */
+.btn,.enlace,.cab-nav a,.menu summary{font-size:11px; font-weight:600; letter-spacing:.18em; text-transform:uppercase}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  min-height:48px; padding:0 22px; border:1px solid transparent; border-radius:2px;
+  font-family:var(--ui); cursor:pointer; transition:background-color .2s, color .2s;
+}
+.btn .ico{width:16px; height:16px}
+.btn-1{background:var(--marron); color:var(--blanco)}
+.btn-1:hover{background:var(--marron-medio); color:var(--blanco)}
+.btn-2{background:transparent; color:var(--marron); border-color:var(--marron)}
+.btn-2:hover{background:var(--crema); color:var(--marron)}
+.botones{display:flex; flex-wrap:wrap; gap:10px}
+.enlace{display:inline-flex; align-items:center; gap:8px; min-height:44px; text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:7px}
+.enlace .ico{width:14px; height:14px}
+.enlace-btn{background:none; border:0; padding:0; min-height:44px; font:inherit; font-size:14px; color:var(--marron); text-decoration:underline; text-underline-offset:5px; cursor:pointer}
+
+/* ------------------------------------------------------------
+   Cabecera: el mismo contenido en las cuatro páginas
+   ------------------------------------------------------------ */
+.cab{position:fixed; top:0; left:0; right:0; z-index:60; background:var(--blanco); border-bottom:1px solid var(--linea)}
+.cab-in{position:relative; max-width:var(--ancho); margin:0 auto; height:calc(var(--cab) - 1px); padding:0 var(--lateral); display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:24px}
+.cab-nav{display:flex; gap:0 24px}
+.cab-nav a{display:inline-flex; align-items:center; min-height:44px; white-space:nowrap}
+.cab-nav a[aria-current="page"]{text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:7px}
+.cab-nav .solo-ancho{display:none}
+.cab-marca{display:flex; align-items:center; min-height:44px}
+.cab-marca img{height:44px; width:auto}
+.cab-acc{display:flex; justify-content:flex-end; align-items:center; gap:12px}
+.menu{display:none}
+.menu summary{list-style:none; cursor:pointer; display:inline-flex; align-items:center; gap:10px; min-height:44px; padding:0 14px; border:1px solid var(--marron); border-radius:2px}
+.menu summary::-webkit-details-marker{display:none}
+.menu-cerrar,.menu-i-cerrar,.menu[open] .menu-abrir,.menu[open] .menu-i-abrir{display:none}
+.menu[open] .menu-cerrar,.menu[open] .menu-i-cerrar{display:inline}
+.menu nav{position:absolute; top:100%; left:0; right:0; background:var(--blanco); border-bottom:1px solid var(--beige); padding:8px var(--lateral) 24px; display:flex; flex-direction:column; max-height:calc(100vh - var(--cab)); max-height:calc(100dvh - var(--cab)); overflow-y:auto; overscroll-behavior:contain}
+.menu nav a{font-family:var(--display); font-size:26px; line-height:1.1; display:flex; align-items:center; min-height:56px; border-bottom:1px solid var(--linea)}
+.menu nav a[aria-current="page"]{color:var(--marron-medio)}
+
+/* ------------------------------------------------------------
+   Pie
+   ------------------------------------------------------------ */
+.pie{background:var(--marron); color:var(--crema)}
+.pie a{color:var(--crema)}
+.pie a:hover{color:var(--blanco); text-decoration:underline; text-underline-offset:4px}
+.pie :focus-visible{outline-color:var(--crema)}
+.pie-in{padding-block:64px 40px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px}
+.pie-marca{display:flex; align-items:center; gap:20px}
+.pie-marca img{width:88px; height:88px; background:var(--blanco); border-radius:50%}
+.pie-marca p{font-size:28px; line-height:1.1; color:var(--blanco)}
+.pie-links{display:flex; flex-wrap:wrap; gap:16px 56px; font-size:13px; line-height:1.5}
+.pie-links ul{list-style:none; padding:0}
+.pie-links a{display:inline-flex; align-items:center; min-height:44px}
+.pie-links p{padding-top:12px; line-height:1.9}
+.pie-fin{padding-block:20px; border-top:1px solid var(--marron-medio); display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; font-size:12px}
+
+/* Con cuatro secciones, el menú entra entero recién desde 1100 px;
+   «Nosotras», desde 1280 px (antes queda en el pie). */
+@media (min-width:1280px){
+  .cab-nav .solo-ancho{display:inline-flex}
+}
+@media (max-width:1099px){
+  .cab-in{grid-template-columns:auto 1fr; gap:12px}
+  .cab-nav{display:none}
+  .menu{display:block}
+}
+@media (max-width:899px){
+  :root{--cab:65px}
+  .cab-marca img{height:38px}
+}
+@media (max-width:380px){
+  .btn{padding:0 14px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}

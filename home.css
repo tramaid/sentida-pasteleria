@@ -106,8 +106,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex="0"]:focus-
 }
 .cab-nav{display:flex; gap:0 24px}
 .cab-nav .solo-ancho{display:none}
-@media (min-width:1200px){.cab-nav .solo-ancho{display:inline-flex}}
-.cab-nav a,.cab-tienda{display:inline-flex; align-items:center; min-height:44px}
+@media (min-width:1280px){.cab-nav .solo-ancho{display:inline-flex}}
+.cab-nav a{display:inline-flex; align-items:center; min-height:44px; white-space:nowrap}
 .cab-marca{display:flex; align-items:center; min-height:44px}
 .cab-marca img{height:44px; width:auto}
 .cab-acc{display:flex; justify-content:flex-end; align-items:center; gap:24px}
@@ -129,6 +129,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex="0"]:focus-
 .menu nav a{
   font-family:var(--display); font-size:26px; line-height:1.1;
   display:flex; align-items:center; min-height:56px; border-bottom:1px solid var(--linea);
+}
+@media (max-width:1099px){
+  .cab-in{grid-template-columns:auto 1fr; gap:12px}
+  .cab-nav{display:none}
+  .menu{display:block}
 }
 
 /* ------------------------------------------------------------
@@ -351,7 +356,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex="0"]:focus-
 .mesas .foto{height:clamp(260px,44vh,460px); aspect-ratio:var(--ar); background:var(--crema)}
 
 /* ------------------------------------------------------------
-   08 Pedido: un camino principal (WhatsApp de Anto) y el resto al lado
+   08 Pedido: tres caminos (la tienda, Decoradas y WhatsApp directo)
    ------------------------------------------------------------ */
 .pedido{background:var(--crema); border-top:1px solid var(--beige)}
 .pedido-in{padding-block:clamp(112px,16vh,180px); display:flex; flex-direction:column; gap:clamp(48px,8vh,88px)}
@@ -364,24 +369,20 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex="0"]:focus-
 .paso-n{font-size:11px; font-weight:600; letter-spacing:.16em; color:var(--celeste-profundo)}
 .pasos strong{font-size:26px; font-weight:500}
 .pasos li > span:last-child{font-size:14px; line-height:1.5; color:var(--marron-medio)}
-.wa{gap:12px; align-items:stretch}
-.wa-principal{
-  background:var(--marron); color:var(--blanco); border:1px solid transparent; border-radius:2px;
-  padding:clamp(28px,4vw,48px); display:flex; flex-direction:column; gap:20px;
-  transition:background-color .2s;
-}
-.wa-principal:hover{background:var(--marron-medio); color:var(--blanco)}
-.wa-eti{display:inline-flex; align-items:center; gap:10px; font-size:11px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--crema)}
-.wa-eti .ico{width:18px; height:18px}
-.wa-num{font-weight:400; font-size:clamp(40px,5vw,80px); line-height:1; letter-spacing:-.02em}
-.wa-nota{font-size:14px; line-height:1.5; color:var(--crema); max-width:44ch}
-.wa-otras{display:flex; flex-direction:column; justify-content:space-between; gap:20px; padding-block:4px}
-.wa-tamanos{font-size:15px; line-height:1.6; color:var(--marron-medio); max-width:44ch}
+.caminos{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px}
+.camino{display:flex; flex-direction:column; gap:14px; padding:clamp(24px,3vw,40px); background:var(--blanco); border:1px solid var(--beige); border-radius:2px}
+.camino-eti{font-size:11px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--celeste-profundo)}
+.camino strong{font-size:clamp(28px,2.6vw,40px); font-weight:500; line-height:1}
+.camino p{font-size:15px; line-height:1.6; color:var(--marron-medio)}
+.camino .botones{margin-top:auto}
+.camino-wa{background:var(--marron); border-color:transparent; color:var(--blanco)}
+.camino-wa .camino-eti,.camino-wa p{color:var(--crema)}
+.camino-wa ul{list-style:none; padding:0; margin-top:auto; border-top:1px solid var(--marron-medio)}
+.camino-wa li a{display:flex; align-items:center; gap:12px; min-height:52px; padding:10px 0; border-bottom:1px solid var(--marron-medio); color:var(--blanco); font-size:15px; line-height:1.4}
+.camino-wa li a:hover{color:var(--crema); text-decoration:underline; text-underline-offset:5px}
+.camino-wa .ico{width:16px; height:16px}
+.camino-wa :focus-visible{outline-color:var(--crema)}
 .tel{white-space:nowrap}
-.wa-otras ul{list-style:none; padding:0; border-top:1px solid var(--beige)}
-.wa-otras li a{display:flex; align-items:center; gap:12px; min-height:52px; padding:12px 0; border-bottom:1px solid var(--beige); font-size:15px; line-height:1.4}
-.wa-otras li a:hover{text-decoration:underline; text-underline-offset:5px}
-.wa-otras .ico{width:16px; height:16px; color:var(--marron-medio)}
 
 /* ------------------------------------------------------------
    Pie. El «SENTIDA» gigante es decorativo: no recibe clics y queda
@@ -413,7 +414,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex="0"]:focus-
 @media (max-width:899px){
   :root{--cab:65px}
   .cab-in{grid-template-columns:auto 1fr; gap:12px}
-  .cab-nav,.cab-tienda,.cab-pedido{display:none}
+  .cab-nav{display:none}
   .cab-marca img{height:38px}
   .menu{display:block}
 
@@ -435,6 +436,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex="0"]:focus-
   .nos-b{grid-column:8 / span 5; margin-top:14vh}
   .nos-texto{grid-column:1 / -1; padding-top:24px}
   .nos figcaption{flex-direction:column; align-items:flex-start; gap:0}
+  .caminos{grid-template-columns:minmax(0,1fr)}
 
   /* Atajo fijo al alcance del pulgar. home.js lo esconde cuando la
      sección de pedido ya está en pantalla. */
@@ -468,11 +470,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex="0"]:focus-
   .hero-baja{font-size:1.125rem}
   .hero .chip{font-size:13px}
   .hero-lugar{display:none}
-  /* Con 390 px de alto, la barra fija se come demasiado: el pedido
-     vuelve a la cabecera. */
-  .cab-in{grid-template-columns:auto 1fr auto}
-  .cab-acc{display:contents}
-  .cab-pedido{display:inline-flex; justify-self:end}
+  /* Con 390 px de alto, la barra fija se come demasiado: se esconde. */
   .barra-pedido{display:none}
   html{scroll-padding-bottom:0}
 }

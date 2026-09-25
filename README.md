@@ -14,10 +14,11 @@ Luego visitar `http://localhost:8080`.
 
 ## Estructura
 
-- `index.html`: contenido y estructura semántica.
-- `styles.css`: sistema visual y responsive.
-- `app.js`: menú mobile y navegación activa.
-- `assets/`: logo, fotografías y recursos originales.
+- `index.html`, `home.css`, `home.js`: la home (v4).
+- `decoradas/`, `tortas/`, `antojos/` y `comun/`: el resto del sitio (ver «El sitio en tres partes», más abajo).
+- `datos/catalogo.json` y `herramientas/`: el catálogo de la tienda y los scripts que arman sus páginas y sus fotos.
+- `assets/`: logo, fuentes y fotografías (`assets/fotos/`, cada una en 480, 800 y tamaño completo).
+- `home-v1.html`, `styles.css` y `app.js`: la home anterior, de referencia.
 
 ## Datos de contacto
 
@@ -34,73 +35,69 @@ El prefijo `54 9` es obligatorio para que WhatsApp resuelva móviles argentinos;
 - Varias fotos del banco llevan el sello de la marca anterior y dos tarjetas muestran un producto distinto al de su título (ver `QA.md`).
 - No hay definición sobre precios, detalle por producto ni zona de entrega.
 
-## Propuesta «La comanda» (24/09/2026)
+## El sitio en tres partes (24/09/2026)
 
-`/comanda/` es una home alternativa para mostrarles a las dueñas: la
-visitante arma su torta decorada en seis pasos, cada elección se imprime
-en un ticket y el ticket se manda como mensaje de WhatsApp a Anto. Va en
-`noindex` y no reemplaza a la v4. Especificación en
-`docs/superpowers/specs/2026-09-24-comanda-design.md`; pruebas en
-`tests/comanda/` (`node --test "tests/comanda/*.test.mjs"` y
-`python -m pytest tests/comanda/`).
+Propuesta para las dueñas: queda así hasta que ellas la revisen. Spec en
+`docs/superpowers/specs/2026-09-24-sitio-tres-partes-design.md`; plan en
+`docs/superpowers/plans/2026-09-24-sitio-tres-partes.md`.
 
-Sin JavaScript funciona igual: el mensaje se escribe a mano en el cuadro
-del final y el formulario lo manda a `wa.me`. **Falta probar en un teléfono
-real** que WhatsApp muestre bien los espacios en ese modo (un formulario
-GET los manda como `+`).
+| Menú | Dirección | Qué hay | Cómo se pide |
+| --- | --- | --- | --- |
+| Nuestras tortas | `/tortas/` | Las tortas de la casa | Carrito que termina en un WhatsApp |
+| Decoradas | `/decoradas/` | La comanda, un paso por vez | Presupuesto por WhatsApp |
+| Antojos | `/antojos/` | Alfajores, galletas, cupcakes, chupitos y la mesa dulce | Carrito; la mesa dulce, por WhatsApp |
+| Nosotras | `/#nosotras` | La sección de la home | — |
 
-Falsos positivos conocidos del detector de Impeccable en esta página:
-`cramped-padding` (el motor estático no lee `padding-block` ni `clamp()`),
-`clipped-overflow-container` en `html`/`body` (es el `overflow-x:clip`
-que evita el desborde) y `overused-font` / `cream-palette` (Montserrat y
-`#FEFAF8` son de marca).
+- **La home** (`index.html`, `home.css`, `home.js`) es la v4. Su hero lleva a
+  Decoradas y a Nuestras tortas; «Las de la casa» lleva a cada torta en la
+  tienda; las fotos de decoradas abren la comanda con su referencia
+  (`?ref=`); «Cómo pedir» ofrece la tienda, Decoradas y WhatsApp directo. El
+  Día de la Madre y la barra de WhatsApp del celular siguen iguales.
+- **La tienda** se genera: `python herramientas/generar_tienda.py` arma
+  `tortas/index.html` y `antojos/index.html` desde `datos/catalogo.json`.
+  No se editan a mano. Una foto nueva se prepara con
+  `python herramientas/preparar_foto.py <archivo> <slug>` y se vuelve a
+  generar. El brief para generar fotos con GPT está en
+  `docs/fotos/brief-fotos.html`.
+- **El pedido** (`comun/carrito.js`) se guarda en el navegador y se ve en
+  «Mi pedido» desde cualquier página. Sin JavaScript, cada producto se pide
+  con su propio enlace de WhatsApp.
+- **Decoradas** (`decoradas/`) es la comanda: un paso por vez con Volver y
+  Siguiente, sin «Lo charlamos»; lo especial va en «¿Algo más que tengamos
+  que saber?». `/comanda/` redirige ahí. Sin JavaScript se ven los seis
+  pasos juntos y el mensaje se escribe a mano.
+- **Lo común** vive en `comun/`: `base.css` (tokens, cabecera y pie),
+  `ticket.css`, `tienda.css`, `base.js`, `menu.js`, `pedido-mensaje.js`,
+  `carrito.js` y `tienda.js`.
+- `/tienda-v3/` se borró el 24/09/2026 (queda en el historial de git).
+- Las páginas nuevas van en `noindex` hasta que las dueñas aprueben.
 
-## Home v4 (24/09/2026)
+**Pruebas** (desde esta carpeta):
 
-`/index.html` es la home v4, implementada desde «SENTIDA Home.dc.html» de
-Claude Design (handoff «Sitio web mil dólares») y corregida tras la auditoría
-del mismo día: `index.html`, `home.css` y `home.js`, con fotos en
-`assets/fotos/` (cada una en 480 px y en tamaño completo) y fuentes alojadas
-en `assets/fuentes/`.
+```bash
+node --test "tests/**/*.test.mjs"
+python -m pytest tests -q -p no:cacheprovider
+```
 
-- **Sin JavaScript la página se ve completa y quieta.** El movimiento vive bajo
-  `.mov` (JS activo y sin «reducir movimiento»). La carta fija que avanza en
-  horizontal vive bajo `.pin` (además, pantalla de 900 × 620 o más); en el
-  resto es una fila con desplazamiento propio y flechas.
-- **Hasta que exista la tienda de PepperLabs se pide solo por WhatsApp.** Todos
-  los «Hacer un pedido» abren el WhatsApp de Anto con un mensaje que pide fecha,
-  porciones y torta; cada torta de la carta y cada foto de Decoradas trae su
-  propio mensaje. La home no enlaza a `tienda-v3/`, que sigue siendo prototipo
-  (disponibilidad de ejemplo, precios sin cargar). En celular hay una barra fija
-  de pedido que se esconde en el hero, en el pedido y en el pie.
-- **Día de la Madre (domingo 18/10):** franja propia debajo del hero, con su
-  mensaje de WhatsApp y tres piezas.
-- «Hecho a mano» usa una foto real del proceso; ya no hay imágenes generadas
-  en la home.
+**Para confirmar con las dueñas:** los tamaños de las tortas de la casa (hoy
+se piden por cantidad); cuántos shots trae cada caja de chupitos y cómo se
+vende cada antojo; los precios y la plataforma de pago; que la Marquise es el
+«Brownie con dulce de leche y frutos rojos» de su lista; que la Torta Matilda
+es la de chocolate de la foto; «Sin conservantes ni aditivos» (convive con la
+Choco Oreo); las porciones que se superponen (Mediana 15 a 25, Grande 20 a
+30); y quién atiende los pedidos entre Anto y Nadia.
+
+**Para probar en un teléfono real:** el envío sin JavaScript (un formulario
+GET manda los espacios como `+`), el selector de fecha en iPhone y el
+navegador interno de Instagram.
+
+**Para después:** el logo de la cabecera se pierde; la idea es una animación
+en bucle «SENTIDA» → «Pastelería» → «Lo soñás, lo creamos».
+
+Falsos positivos conocidos del detector de Impeccable: `cramped-padding` (el
+motor estático no lee `padding-block` ni `clamp()`),
+`clipped-overflow-container` en `html`/`body` (es el `overflow-x:clip` que
+evita el desborde) y `overused-font` / `cream-palette` (Montserrat y `#FEFAF8`
+son de marca).
 
 La home anterior (v1) quedó en `home-v1.html`, en `noindex`, como referencia.
-
-**Para confirmar con las dueñas:** «Sin conservantes ni aditivos» (convive con
-la Choco Oreo, que lleva galletitas Oreo), las porciones que se superponen
-(Mediana 15 a 25, Grande 20 a 30), si la Marquise es el brownie con dulce de
-leche y frutos rojos, y quién atiende los pedidos entre Anto y Nadia.
-
-**Marcas y nombres:** la galería y la pastelería de la tienda ya no muestran
-tortas con personajes con marca registrada ni con nombres de chicos (ver
-`_marcas_y_nombres` en `tienda-v3/datos.json`). `/tienda/` y `/tienda-v2/` se
-borraron el 24/09/2026 junto con esas fotos (quedan en el historial de git).
-
-## Versión definitiva (23/09/2026)
-
-**La home es la de la raíz (v1) y la tienda es `/tienda-v3/`.**
-
-- `/index.html` — la home v1, con las fotos reales de la sesión nueva (hero,
-  celebraciones y el retrato de Anto y Nadia en «Nosotras») y la display en
-  Erode, igual que la tienda. Todos sus enlaces de catálogo, pedido y
-  «Crear mi torta» van a la v3.
-- `/tienda-v3/` — catálogo, ficha, tortas decoradas, cómo comprar y pedido.
-  «Inicio», «Nosotras» y «Contacto» vuelven a la home de la raíz.
-  `tienda-v3/index.html` quedó como redirección a la raíz.
-- `/tienda/` (catálogo v1) y `/tienda-v2/` se borraron el 24/09/2026.
-- Los banners generados (`hero-sentida-*`, `celebraciones-30-*`,
-  `proceso-crema-*`) se borraron el 24/09/2026.

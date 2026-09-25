@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Brief de fotos · SENTIDA</title>
+<style>
+@font-face{font-family:Erode; src:url("../../assets/fuentes/erode-500.woff2") format("woff2"); font-weight:500; font-display:swap}
+@font-face{font-family:Montserrat; src:url("../../assets/fuentes/montserrat-latin.woff2") format("woff2"); font-weight:100 900; font-display:swap}
+:root{--blanco:#FEFAF8; --crema:#F8EADE; --beige:#CFB59E; --marron:#402D21; --marron-medio:#6C4D38; --celeste-profundo:#46627A}
+*{box-sizing:border-box}
+body{margin:0; background:var(--blanco); color:var(--marron); font:15px/1.6 Montserrat, Arial, sans-serif}
+main{max-width:1100px; margin:0 auto; padding:48px 20px 96px}
+h1,h2,h3{font-family:Erode, Georgia, serif; font-weight:500; line-height:1; margin:0}
+h1{font-size:clamp(40px,6vw,72px); letter-spacing:-.02em}
+h2{font-size:32px; margin:64px 0 20px}
+h3{font-size:24px}
+p{margin:0 0 12px; max-width:70ch}
+code{font-size:13px; background:var(--crema); padding:2px 6px; border-radius:2px}
+ol{padding-left:20px; max-width:70ch}
+.baja{font-size:17px; color:var(--marron-medio); margin-top:16px}
+.composiciones{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px}
+.composicion{background:var(--crema); padding:20px; border-radius:2px}
+.composicion ul{padding-left:18px; margin:8px 0 0}
+.eti{font-size:11px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--celeste-profundo)}
+.ficha{display:grid; grid-template-columns:220px minmax(0,1fr); gap:24px; padding:28px 0; border-top:1px solid var(--beige)}
+.ficha-ref{display:flex; flex-direction:column; gap:8px}
+.ficha-ref img{width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:2px; background:var(--crema)}
+.ficha-ref small{font-size:12px; color:var(--marron-medio)}
+.estado{display:inline-block; margin-left:8px; font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; padding:2px 6px; border-radius:2px; background:var(--marron); color:var(--blanco)}
+.estado.rehacer{background:var(--crema); color:var(--marron)}
+textarea.prompt{width:100%; min-height:190px; margin:12px 0 8px; padding:12px; font:14px/1.5 Montserrat, Arial, sans-serif; color:var(--marron); background:var(--blanco); border:1px solid var(--marron); border-radius:2px; resize:vertical}
+button.copiar{min-height:44px; padding:0 18px; font:600 11px Montserrat, Arial, sans-serif; letter-spacing:.18em; text-transform:uppercase; color:var(--blanco); background:var(--marron); border:0; border-radius:2px; cursor:pointer}
+button.copiar:focus-visible,textarea.prompt:focus-visible{outline:2px solid var(--celeste-profundo); outline-offset:3px}
+.letras{display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:12px; margin-top:12px}
+.letras img{width:100%; aspect-ratio:1; object-fit:cover; border-radius:2px}
+@media (max-width:640px){ .ficha{grid-template-columns:1fr} .ficha-ref img{max-width:240px} }
+</style>
+</head>
+<body>
+<main>
+  <p class="eti">SENTIDA · para TRAMA</p>
+  <h1>Brief de fotos</h1>
+  <p class="baja">Para generar con GPT las fotos de la tienda que faltan o que no combinan con el resto. Cada ficha trae la foto real de referencia, el prompt listo y el nombre con el que tiene que volver.</p>
+
+  <h2>Cómo se usa</h2>
+  <ol>
+    <li>Guardá la foto de referencia de la ficha (clic derecho, «Guardar imagen») y subila a GPT.</li>
+    <li>Tocá «Copiar» y pegá el prompt.</li>
+    <li>Guardá el resultado con el nombre de la ficha, por ejemplo <code>cheesecake-dulce-de-leche.png</code>.</li>
+    <li>Desde <code>sentida-site/</code>, corré <code>python herramientas/preparar_foto.py &lt;archivo&gt; &lt;nombre&gt;</code> y después <code>python herramientas/generar_tienda.py</code>.</li>
+    <li>Mirá la tarjeta en <code>/tortas/</code> o <code>/antojos/</code>, y revisá que no tenga texto, logos ni sellos inventados.</li>
+  </ol>
+
+  <h2>Una composición por tipo</h2>
+  <div class="composiciones">
+    <section class="composicion">
+      <p class="eti">A · tienda</p>
+      <h3>Tortas de la casa</h3>
+      <ul>
+        <li>Vertical 4:5.</li>
+        <li>La torta entera, centrada, ocupando dos tercios del alto, sobre un plato o una base simple.</li>
+        <li>Cámara a tres cuartos (unos 30° sobre la mesa), lente normal.</li>
+        <li>Pared lisa crema (#F8EADE) y mesa de madera clara.</li>
+        <li>Luz natural de ventana desde la izquierda, sombras suaves.</li>
+        <li>Como mucho un plato, un tenedor o un ingrediente real de la torta.</li>
+        <li>Nunca: texto, carteles, logos, sellos o stickers (tampoco el de «tienda de pasteles»), personas ni manos.</li>
+      </ul>
+    </section>
+    <section class="composicion">
+      <p class="eti">B · tienda</p>
+      <h3>Antojos</h3>
+      <ul>
+        <li>Vertical 4:5.</li>
+        <li>Entre tres y seis piezas agrupadas, con aire alrededor; una puede estar partida para ver el relleno.</li>
+        <li>Cámara cenital o a 45°.</li>
+        <li>Papel manteca o bandeja clara sobre la misma mesa, con fondo crema.</li>
+        <li>La misma luz que las tortas.</li>
+        <li>Nunca: texto inventado, logos, sellos, personajes de marca, nombres propios, personas ni manos.</li>
+      </ul>
+    </section>
+    <section class="composicion">
+      <p class="eti">C · Decoradas</p>
+      <h3>Referencias de la comanda</h3>
+      <ul>
+        <li>Cuadradas 1:1: la torta decorada de frente, a su altura, centrada, con fondo claro liso.</li>
+        <li>No se generan: son tortas que hicieron ellas y sirven de referencia real.</li>
+        <li>Para «Letras y números» hay tres letras además de los números: la F (la que se usa hoy), la S y la D.</li>
+      </ul>
+      <div class="letras">
+        <img src="../../assets/fotos/letra-f-480.webp" alt="Torta con forma de letra F">
+        <img src="../../assets/deco-letra-s.webp" alt="Torta con forma de letra S y flores">
+        <img src="../../assets/deco-letra-d.webp" alt="Torta con forma de letra D con flores">
+      </div>
+    </section>
+  </div>
+
+  <h2>Fotos para generar</h2>
+
+  <article class="ficha" data-archivo="cheesecake-dulce-de-leche">
+    <div class="ficha-ref"><img src="../../assets/fotos/cheesecake-ny-480.webp" alt="Cheesecake estilo New York de la casa"><small>Referencia: el cheesecake de la casa.</small></div>
+    <div>
+      <h3>Cheesecake de dulce de leche <span class="estado">Falta</span></h3>
+      <p>Composición A. Archivo: <code>cheesecake-dulce-de-leche</code> · <code>python herramientas/preparar_foto.py cheesecake-dulce-de-leche.png cheesecake-dulce-de-leche</code></p>
+      <textarea class="prompt" readonly aria-label="Prompt: Cheesecake de dulce de leche">Un cheesecake entero, alto y liso, con base de galletitas, cubierto por una capa brillante de dulce de leche que cae apenas por el borde. Que parezca de la misma casa que la foto de referencia, pero con dulce de leche arriba en lugar de frutos rojos. Foto de producto vertical 4:5, luz natural suave de ventana desde la izquierda, sombras suaves. La torta entera, centrada, ocupando dos tercios del alto, sobre un plato simple; cámara a tres cuartos (unos 30° sobre la mesa), lente normal, sin deformar. Fondo: pared lisa color crema (#F8EADE) y mesa de madera clara. Estética cálida y artesanal, colores naturales. Sin texto, sin carteles, sin logos, sin sellos ni stickers, sin personas ni manos.</textarea>
+      <button type="button" class="copiar">Copiar</button>
+    </div>
+  </article>
+
+  <article class="ficha" data-archivo="pavlova-dulce-de-leche">
+    <div class="ficha-ref"><img src="../../assets/fotos/pavlova-480.webp" alt="Pavlova de lima de la casa"><small>Referencia: la pavlova de lima.</small></div>
+    <div>
+      <h3>Pavlova de dulce de leche y frutos rojos <span class="estado">Falta</span></h3>
+      <p>Composición A. Archivo: <code>pavlova-dulce-de-leche</code> · <code>python herramientas/preparar_foto.py pavlova-dulce-de-leche.png pavlova-dulce-de-leche</code></p>
+      <textarea class="prompt" readonly aria-label="Prompt: Pavlova de dulce de leche y frutos rojos">Una pavlova entera: base de merengue crocante, crema chantilly, hilos de dulce de leche y frutos rojos frescos arriba (frutillas, arándanos y frambuesas). La misma familia que la pavlova de la foto de referencia. Foto de producto vertical 4:5, luz natural suave de ventana desde la izquierda, sombras suaves. La torta entera, centrada, ocupando dos tercios del alto, sobre un plato simple; cámara a tres cuartos (unos 30° sobre la mesa), lente normal, sin deformar. Fondo: pared lisa color crema (#F8EADE) y mesa de madera clara. Estética cálida y artesanal, colores naturales. Sin texto, sin carteles, sin logos, sin sellos ni stickers, sin personas ni manos.</textarea>
+      <button type="button" class="copiar">Copiar</button>
+    </div>
+  </article>
+
+  <article class="ficha" data-archivo="galletas-decoradas">
+    <div class="ficha-ref"><img src="../../assets/fotos/galletas-te-amo-480.webp" alt="Galletas corazón con mensaje"><small>Referencia: el glasé de las galletas corazón.</small></div>
+    <div>
+      <h3>Galletas decoradas <span class="estado">Falta</span></h3>
+      <p>Composición B. Archivo: <code>galletas-decoradas</code> · <code>python herramientas/preparar_foto.py galletas-decoradas.png galletas-decoradas</code></p>
+      <textarea class="prompt" readonly aria-label="Prompt: Galletas decoradas">Seis galletas de manteca decoradas con glasé en colores suaves (crema, celeste pálido, rosa viejo y marrón claro), con motivos simples: flores, corazones, puntos y líneas. Sin letras ni personajes. El mismo estilo de glasé que las galletas de la foto de referencia. Foto de producto vertical 4:5, luz natural suave de ventana desde la izquierda. Las piezas agrupadas con aire alrededor, sobre papel manteca, en una mesa de madera clara con fondo crema (#F8EADE); cámara cenital. Estética cálida y artesanal. Sin texto inventado, sin logos, sin sellos ni stickers, sin personajes de marca, sin nombres propios, sin personas ni manos.</textarea>
+      <button type="button" class="copiar">Copiar</button>
+    </div>
+  </article>
+
+  <article class="ficha" data-archivo="cupcakes-tematicos">
+    <div class="ficha-ref"><img src="../../assets/past-cupcakes.webp" alt="Cupcakes decorados de la casa"><small>Referencia: los cupcakes de la casa.</small></div>
+    <div>
+      <h3>Cupcakes temáticos <span class="estado">Falta</span></h3>
+      <p>Composición B. Archivo: <code>cupcakes-tematicos</code> · <code>python herramientas/preparar_foto.py cupcakes-tematicos.png cupcakes-tematicos</code></p>
+      <textarea class="prompt" readonly aria-label="Prompt: Cupcakes temáticos">Seis cupcakes con buttercream y figuras simples de pasta de azúcar de un mismo tema genérico, por ejemplo flores o dinosaurios en colores suaves. Sin personajes de marca ni nombres. El mismo tipo de cupcake que la foto de referencia. Foto de producto vertical 4:5, luz natural suave de ventana desde la izquierda. Las piezas agrupadas con aire alrededor, sobre una bandeja clara, en una mesa de madera clara con fondo crema (#F8EADE); cámara a 45°. Estética cálida y artesanal. Sin texto inventado, sin logos, sin sellos ni stickers, sin personajes de marca, sin nombres propios, sin personas ni manos.</textarea>
+      <button type="button" class="copiar">Copiar</button>
+    </div>
+  </article>
+
+  <article class="ficha" data-archivo="cheesecake-marroc">
+    <div class="ficha-ref"><img src="../../assets/producto-cheesecake-marroc.webp" alt="Cheesecake Marroc, foto actual"><small>Referencia: la foto actual.</small></div>
+    <div>
+      <h3>Cheesecake Marroc <span class="estado rehacer">Rehacer para que combine</span></h3>
+      <p>Composición A. Archivo: <code>cheesecake-marroc</code> · <code>python herramientas/preparar_foto.py cheesecake-marroc.png cheesecake-marroc</code></p>
+      <textarea class="prompt" readonly aria-label="Prompt: Cheesecake Marroc">El mismo cheesecake de la foto de referencia: cobertura de chocolate con trozos de bombón Marroc arriba, sin el envoltorio ni el logo de la golosina. Una toma nueva de la misma torta. Foto de producto vertical 4:5, luz natural suave de ventana desde la izquierda, sombras suaves. La torta entera, centrada, ocupando dos tercios del alto, sobre un plato simple; cámara a tres cuartos (unos 30° sobre la mesa), lente normal, sin deformar. Fondo: pared lisa color crema (#F8EADE) y mesa de madera clara. Estética cálida y artesanal, colores naturales. Sin texto, sin carteles, sin logos, sin sellos ni stickers, sin personas ni manos.</textarea>
+      <button type="button" class="copiar">Copiar</button>
+    </div>
+  </article>
+
+  <article class="ficha" data-archivo="brownie-chantilly">
+    <div class="ficha-ref"><img src="../../assets/producto-brownie-chantilly.webp" alt="Brownie con dulce de leche y crema chantilly, foto actual"><small>Referencia: la foto actual.</small></div>
+    <div>
+      <h3>Brownie con dulce de leche y crema chantilly <span class="estado rehacer">Rehacer para que combine</span></h3>
+      <p>Composición A. Archivo: <code>brownie-chantilly</code> · <code>python herramientas/preparar_foto.py brownie-chantilly.png brownie-chantilly</code></p>
+      <textarea class="prompt" readonly aria-label="Prompt: Brownie con dulce de leche y crema chantilly">La misma torta de la foto de referencia: brownie con dulce de leche y crema chantilly, sin cambiar sus capas ni su decoración. Una toma nueva de la misma torta. Foto de producto vertical 4:5, luz natural suave de ventana desde la izquierda, sombras suaves. La torta entera, centrada, ocupando dos tercios del alto, sobre un plato simple; cámara a tres cuartos (unos 30° sobre la mesa), lente normal, sin deformar. Fondo: pared lisa color crema (#F8EADE) y mesa de madera clara. Estética cálida y artesanal, colores naturales. Sin texto, sin carteles, sin logos, sin sellos ni stickers, sin personas ni manos.</textarea>
+      <button type="button" class="copiar">Copiar</button>
+    </div>
+  </article>
+
+  <article class="ficha" data-archivo="chocotorta">
+    <div class="ficha-ref"><img src="../../assets/producto-chocotorta.webp" alt="Chocotorta, foto actual"><small>Referencia: la foto actual.</small></div>
+    <div>
+      <h3>Chocotorta <span class="estado rehacer">Rehacer para que combine</span></h3>
+      <p>Composición A. Archivo: <code>chocotorta</code> · <code>python herramientas/preparar_foto.py chocotorta.png chocotorta</code></p>
+      <textarea class="prompt" readonly aria-label="Prompt: Chocotorta">La misma chocotorta de la foto de referencia (capas de galletitas de chocolate y crema de dulce de leche), sin cambiar su cobertura ni su decoración. Una toma nueva de la misma torta. Foto de producto vertical 4:5, luz natural suave de ventana desde la izquierda, sombras suaves. La torta entera, centrada, ocupando dos tercios del alto, sobre un plato simple; cámara a tres cuartos (unos 30° sobre la mesa), lente normal, sin deformar. Fondo: pared lisa color crema (#F8EADE) y mesa de madera clara. Estética cálida y artesanal, colores naturales. Sin texto, sin carteles, sin logos, sin sellos ni stickers, sin personas ni manos.</textarea>
+      <button type="button" class="copiar">Copiar</button>
+    </div>
+  </article>
+
+  <article class="ficha" data-archivo="torta-matilda">
+    <div class="ficha-ref"><img src="../../assets/producto-torta-matilda.webp" alt="Torta Matilda, foto actual"><small>Referencia: la foto actual.</small></div>
+    <div>
+      <h3>Torta Matilda <span class="estado rehacer">Rehacer para que combine</span></h3>
+      <p>Composición A. Archivo: <code>torta-matilda</code> · <code>python herramientas/preparar_foto.py torta-matilda.png torta-matilda</code></p>
+      <textarea class="prompt" readonly aria-label="Prompt: Torta Matilda">La misma torta de chocolate de la foto de referencia, sin cambiar su cobertura ni su decoración. Una toma nueva de la misma torta. Foto de producto vertical 4:5, luz natural suave de ventana desde la izquierda, sombras suaves. La torta entera, centrada, ocupando dos tercios del alto, sobre un plato simple; cámara a tres cuartos (unos 30° sobre la mesa), lente normal, sin deformar. Fondo: pared lisa color crema (#F8EADE) y mesa de madera clara. Estética cálida y artesanal, colores naturales. Sin texto, sin carteles, sin logos, sin sellos ni stickers, sin personas ni manos.</textarea>
+      <button type="button" class="copiar">Copiar</button>
+    </div>
+  </article>
+
+  <article class="ficha" data-archivo="torta-havannet">
+    <div class="ficha-ref"><img src="../../assets/producto-havannet.webp" alt="Torta Havannet, foto actual"><small>Referencia: la foto actual.</small></div>
+    <div>
+      <h3>Torta Havannet <span class="estado rehacer">Rehacer para que combine</span></h3>
+      <p>Composición A. Archivo: <code>torta-havannet</code> · <code>python herramientas/preparar_foto.py torta-havannet.png torta-havannet</code></p>
+      <textarea class="prompt" readonly aria-label="Prompt: Torta Havannet">La misma torta de la foto de referencia, sin cambiar sus capas, su cobertura ni su decoración. Una toma nueva de la misma torta. Foto de producto vertical 4:5, luz natural suave de ventana desde la izquierda, sombras suaves. La torta entera, centrada, ocupando dos tercios del alto, sobre un plato simple; cámara a tres cuartos (unos 30° sobre la mesa), lente normal, sin deformar. Fondo: pared lisa color crema (#F8EADE) y mesa de madera clara. Estética cálida y artesanal, colores naturales. Sin texto, sin carteles, sin logos, sin sellos ni stickers, sin personas ni manos.</textarea>
+      <button type="button" class="copiar">Copiar</button>
+    </div>
+  </article>
+
+  <article class="ficha" data-archivo="cupcakes-decorados">
+    <div class="ficha-ref"><img src="../../assets/past-cupcakes.webp" alt="Cupcakes decorados, foto actual"><small>Referencia: la foto actual.</small></div>
+    <div>
+      <h3>Cupcakes decorados <span class="estado rehacer">Rehacer para que combine</span></h3>
+      <p>Composición B. Archivo: <code>cupcakes-decorados</code> · <code>python herramientas/preparar_foto.py cupcakes-decorados.png cupcakes-decorados</code></p>
+      <textarea class="prompt" readonly aria-label="Prompt: Cupcakes decorados">Los mismos cupcakes de la foto de referencia, decorados a mano con buttercream, sin cambiar su decoración. Una toma nueva. Foto de producto vertical 4:5, luz natural suave de ventana desde la izquierda. Entre cuatro y seis cupcakes agrupados con aire alrededor, sobre una bandeja clara, en una mesa de madera clara con fondo crema (#F8EADE); cámara a 45°. Estética cálida y artesanal. Sin texto inventado, sin logos, sin sellos ni stickers, sin personajes de marca, sin nombres propios, sin personas ni manos.</textarea>
+      <button type="button" class="copiar">Copiar</button>
+    </div>
+  </article>
+
+  <article class="ficha" data-archivo="galletas-tematicas">
+    <div class="ficha-ref"><img src="../../assets/deco-galletas-dino.webp" alt="Galletas de dinosaurios, foto actual"><small>Referencia: la foto actual.</small></div>
+    <div>
+      <h3>Galletas temáticas <span class="estado rehacer">Rehacer para que combine</span></h3>
+      <p>Composición B. Archivo: <code>galletas-tematicas</code> · <code>python herramientas/preparar_foto.py galletas-tematicas.png galletas-tematicas</code></p>
+      <textarea class="prompt" readonly aria-label="Prompt: Galletas temáticas">Las mismas galletas de dinosaurios de la foto de referencia, sin cambiar su glasé ni sus colores y sin agregar nombres. Una toma nueva. Foto de producto vertical 4:5, luz natural suave de ventana desde la izquierda. Las piezas agrupadas con aire alrededor, sobre papel manteca, en una mesa de madera clara con fondo crema (#F8EADE); cámara cenital. Estética cálida y artesanal. Sin texto inventado, sin logos, sin sellos ni stickers, sin personajes de marca, sin nombres propios, sin personas ni manos.</textarea>
+      <button type="button" class="copiar">Copiar</button>
+    </div>
+  </article>
+
+  <article class="ficha" data-archivo="chupitos">
+    <div class="ficha-ref"><img src="../../assets/past-chupitos.webp" alt="Chupitos, foto actual"><small>Referencia: la foto actual.</small></div>
+    <div>
+      <h3>Chupitos <span class="estado rehacer">Rehacer para que combine</span></h3>
+      <p>Composición B. Archivo: <code>chupitos</code> · <code>python herramientas/preparar_foto.py chupitos.png chupitos</code></p>
+      <textarea class="prompt" readonly aria-label="Prompt: Chupitos">Seis chupitos como los de la foto de referencia: postres en vasitos de shot, de distintos sabores, agrupados. Una toma nueva. Foto de producto vertical 4:5, luz natural suave de ventana desde la izquierda. Los vasitos agrupados con aire alrededor, sobre una bandeja clara, en una mesa de madera clara con fondo crema (#F8EADE); cámara a 45°. Estética cálida y artesanal. Sin texto inventado, sin logos, sin sellos ni stickers, sin personajes de marca, sin nombres propios, sin personas ni manos.</textarea>
+      <button type="button" class="copiar">Copiar</button>
+    </div>
+  </article>
+</main>
+<script>
+/* «Copiar»: el prompt de la ficha va al portapapeles. */
+document.addEventListener('click', function (ev) {
+  var b = ev.target.closest('button.copiar');
+  if (!b) return;
+  var t = b.closest('.ficha').querySelector('textarea.prompt');
+  function listo() { b.textContent = 'Copiado'; setTimeout(function () { b.textContent = 'Copiar'; }, 2000); }
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t.value).then(listo, function () { t.select(); });
+  else { t.select(); document.execCommand('copy'); listo(); }
+});
+</script>
+</body>
+</html>
