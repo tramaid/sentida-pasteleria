@@ -1,6 +1,6 @@
 {
   "_nota": "Fuente única de la tienda (Nuestras tortas y Antojos). herramientas/generar_tienda.py arma tortas/index.html y antojos/index.html con esto. «foto» es el nombre en assets/fotos/ sin .webp; si no está, se usa el slug, y si no hay archivo la tarjeta sale sin foto. «visible»: false la deja cargada pero fuera de la página. No se agregan productos que las dueñas no hayan pasado, ni descripciones inventadas.",
-  "_pendiente": "Confirmar con las dueñas: los tamaños de las tortas de la casa (hoy se piden por cantidad); cuántos shots trae cada caja de chupitos y cómo se vende cada antojo (unidad, docena, caja); los precios; que la Marquise es el «Brownie con dulce de leche y frutos rojos» de su lista; que la Torta Matilda es la de chocolate de la foto. Los vasitos no se venden sueltos: van solo en la mesa dulce.",
+  "_pendiente": "Confirmar con las dueñas: los tamaños de las tortas de la casa (hoy se piden por cantidad); cuántos shots trae cada caja y cómo se vende cada antojo (unidad, docena, caja); los precios; que la Marquise es el «Brownie con dulce de leche y frutos rojos» de su lista; que la Torta Matilda es la de chocolate de la foto. Los vasitos no se venden sueltos: van solo en la mesa dulce.",
   "secciones": {
     "tortas": {
       "titulo": "Nuestras tortas.",
@@ -10,16 +10,16 @@
     },
     "antojos": {
       "titulo": "Antojos.",
-      "bajada": "Alfajores, galletas, cupcakes y chupitos, para regalar o para la mesa dulce. Sumalos a tu pedido y te confirmamos precio y disponibilidad por WhatsApp.",
+      "bajada": "Alfajores, galletas, cupcakes y shots, para regalar o para la mesa dulce. Sumalos a tu pedido y te confirmamos precio y disponibilidad por WhatsApp.",
       "title": "Antojos · SENTIDA Pastelería",
-      "descripcion": "Alfajores, galletas, cupcakes y chupitos de SENTIDA Pastelería, por encargo en Martínez. Armá tu pedido y mandalo por WhatsApp."
+      "descripcion": "Alfajores, galletas, cupcakes y shots de SENTIDA Pastelería, por encargo en Martínez. Armá tu pedido y mandalo por WhatsApp."
     }
   },
   "tipos": {
     "alfajores": "Alfajores",
     "galletas": "Galletas",
     "cupcakes": "Cupcakes",
-    "chupitos": "Chupitos"
+    "shots": "Shots"
   },
   "productos": [
     {"slug": "key-lime-pie", "nombre": "Key Lime Pie", "seccion": "tortas", "descripcion": "Base crocante de galletitas, curd de lima y crema chantilly."},
@@ -43,7 +43,7 @@
     {"slug": "galletas-decoradas", "nombre": "Galletas decoradas", "seccion": "antojos", "tipo": "galletas", "descripcion": "Con glasé, a tema o con el nombre."},
     {"slug": "cupcakes-decorados", "nombre": "Cupcakes decorados", "seccion": "antojos", "tipo": "cupcakes", "descripcion": "Decorados a mano, en la paleta que elijas."},
     {"slug": "cupcakes-tematicos", "nombre": "Cupcakes temáticos", "seccion": "antojos", "tipo": "cupcakes", "descripcion": "Con figuras en pasta de azúcar, a tema."},
-    {"slug": "chupitos", "nombre": "Chupitos", "seccion": "antojos", "tipo": "chupitos", "descripcion": "Postres en vaso, en distintos sabores."},
+    {"slug": "shots", "nombre": "Shots", "seccion": "antojos", "tipo": "shots", "descripcion": "Postres en vaso, en distintos sabores."},
     {"slug": "pan-dulce", "nombre": "Pan dulce", "seccion": "temporada", "visible": false, "descripcion": "Frutos secos tostados y chips de chocolate, glaseado con aroma a naranja. Aprox. 700 g."},
     {"slug": "rosca-de-pascua", "nombre": "Rosca de Pascua", "seccion": "temporada", "visible": false, "descripcion": ""}
   ]

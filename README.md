@@ -45,7 +45,7 @@ Propuesta para las dueñas: queda así hasta que ellas la revisen. Spec en
 | --- | --- | --- | --- |
 | Nuestras tortas | `/tortas/` | Las tortas de la casa | Carrito que termina en un WhatsApp |
 | Decoradas | `/decoradas/` | La comanda, un paso por vez | Presupuesto por WhatsApp |
-| Antojos | `/antojos/` | Alfajores, galletas, cupcakes, chupitos y la mesa dulce | Carrito; la mesa dulce, por WhatsApp |
+| Antojos | `/antojos/` | Alfajores, galletas, cupcakes, shots y la mesa dulce | Carrito; la mesa dulce, por WhatsApp |
 | Nosotras | `/#nosotras` | La sección de la home | — |
 
 - **La home** (`index.html`, `home.css`, `home.js`) es la v4. Su hero lleva a
@@ -80,7 +80,7 @@ python -m pytest tests -q -p no:cacheprovider
 ```
 
 **Para confirmar con las dueñas:** los tamaños de las tortas de la casa (hoy
-se piden por cantidad); cuántos shots trae cada caja de chupitos y cómo se
+se piden por cantidad); cuántos shots trae cada caja y cómo se
 vende cada antojo; los precios y la plataforma de pago; que la Marquise es el
 «Brownie con dulce de leche y frutos rojos» de su lista; que la Torta Matilda
 es la de chocolate de la foto; «Sin conservantes ni aditivos» (convive con la

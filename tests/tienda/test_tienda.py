@@ -26,7 +26,9 @@ def test_los_antojos_y_la_mesa_dulce(abrir):
     pg = abrir(pagina="antojos/")
     assert pg.text_content("h1") == "Antojos."
     assert pg.locator("[data-producto]").count() == 7
-    assert pg.text_content('[data-producto="chupitos"] .producto-tipo') == "Chupitos"
+    assert pg.text_content('[data-producto="shots"] .producto-tipo') == "Shots"
+    assert pg.text_content('[data-producto="shots"] h3') == "Shots"
+    assert "chupito" not in pg.content().lower()
     assert pg.locator(".mesa-fotos img").count() == 4
     href = pg.get_attribute(".mesa-dulce .enlace", "href")
     assert unquote(href.split("?text=", 1)[1]) == "Hola SENTIDA, quiero consultar por una mesa dulce.\nFecha:\nInvitados:"

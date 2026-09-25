@@ -1,6 +1,6 @@
 ARCHIVOS = ["cheesecake-dulce-de-leche", "pavlova-dulce-de-leche", "galletas-decoradas", "cupcakes-tematicos",
             "cheesecake-marroc", "brownie-chantilly", "chocotorta", "torta-matilda", "torta-havannet",
-            "cupcakes-decorados", "galletas-tematicas", "chupitos"]
+            "cupcakes-decorados", "galletas-tematicas", "shots"]
 
 
 def test_el_brief_tiene_una_ficha_por_foto(abrir):
@@ -25,6 +25,11 @@ def test_todas_las_fotos_de_referencia_cargan(abrir):
 
 def test_copiar_el_prompt(abrir):
     pg = abrir(pagina="docs/fotos/brief-fotos.html", permissions=["clipboard-read", "clipboard-write"])
-    pg.click('.ficha[data-archivo="chupitos"] button.copiar')
-    pg.wait_for_function("document.querySelector('.ficha[data-archivo=\"chupitos\"] button.copiar').textContent === 'Copiado'")
-    assert pg.evaluate("navigator.clipboard.readText()") == pg.input_value('.ficha[data-archivo="chupitos"] textarea.prompt')
+    pg.click('.ficha[data-archivo="shots"] button.copiar')
+    pg.wait_for_function("document.querySelector('.ficha[data-archivo=\"shots\"] button.copiar').textContent === 'Copiado'")
+    assert pg.evaluate("navigator.clipboard.readText()") == pg.input_value('.ficha[data-archivo="shots"] textarea.prompt')
+
+
+def test_el_brief_no_dice_chupitos(abrir):
+    pg = abrir(pagina="docs/fotos/brief-fotos.html")
+    assert "chupito" not in pg.content().lower()

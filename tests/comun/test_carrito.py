@@ -178,10 +178,10 @@ def test_dos_pestanas_se_sincronizan(abrir, sitio):
 
 
 def test_no_pasa_de_99(abrir):
-    pg = abrir(init=guardado([{"slug": "chupitos", "nombre": "Chupitos", "cant": 99}]))
+    pg = abrir(init=guardado([{"slug": "shots", "nombre": "Shots", "cant": 99}]))
     abrir_pedido(pg)
     assert pg.is_disabled("#carrito-dialogo [data-mas]")
-    pg.evaluate("Carrito.cambiar('chupitos', 'Chupitos', 1)")
+    pg.evaluate("Carrito.cambiar('shots', 'Shots', 1)")
     assert pg.text_content(".cab .mi-pedido-n") == "99"
 
 

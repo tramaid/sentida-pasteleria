@@ -100,3 +100,9 @@ def test_los_botones_del_pedido_en_la_home_son_de_la_marca(abrir):
     assert fondo == "rgba(0, 0, 0, 0)"
     assert color == "rgb(64, 45, 33)"
     assert pg.eval_on_selector("#carrito-dialogo [type=submit]", estilo)[0].startswith("Montserrat")
+
+
+def test_en_la_home_no_dice_chupitos(abrir):
+    # Se llaman «Shots» en todo el sitio.
+    pg = abrir()
+    assert "chupito" not in pg.content().lower()

@@ -38,18 +38,18 @@ test('sumar, restar y sacar', () => {
   assert.deepEqual(e.items, [{slug: 'marquise', nombre: 'Marquise', cant: 1}]);
   e = P.cambiar(e, 'marquise', 'Marquise', 2);
   assert.equal(P.cantidad(e, 'marquise'), 3);
-  e = P.cambiar(e, 'chupitos', 'Chupitos', 1);
+  e = P.cambiar(e, 'shots', 'Shots', 1);
   assert.equal(P.total(e), 4);
   e = P.cambiar(e, 'marquise', 'Marquise', -3);
   assert.equal(P.cantidad(e, 'marquise'), 0);
-  assert.deepEqual(e.items.map(i => i.slug), ['chupitos']);
+  assert.deepEqual(e.items.map(i => i.slug), ['shots']);
   assert.deepEqual(P.cambiar(e, 'no-esta', 'No', -1).items, e.items);
 });
 
 test('no pasa de 99', () => {
-  let e = P.cambiar(P.vacio(), 'chupitos', 'Chupitos', 98);
-  e = P.cambiar(e, 'chupitos', 'Chupitos', 5);
-  assert.equal(P.cantidad(e, 'chupitos'), 99);
+  let e = P.cambiar(P.vacio(), 'shots', 'Shots', 98);
+  e = P.cambiar(e, 'shots', 'Shots', 5);
+  assert.equal(P.cantidad(e, 'shots'), 99);
   assert.equal(P.MAXIMO, 99);
 });
 
